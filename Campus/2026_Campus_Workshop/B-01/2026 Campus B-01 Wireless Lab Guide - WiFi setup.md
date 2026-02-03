@@ -1,53 +1,36 @@
-Campus B-01 Wireless Lab Guide  
-WiFi Setup  
+# Campus B-01 Wireless Lab Guide WiFi Setup  
 ![https://lh5.googleusercontent.com/TuE\_1X5at4VjzVhbTsRrQDC3NE6PyS6N\_XjvzKXMFqyjDoEXMoi10DIW2eMeLzUIPfMJTD5fKEq8ShDJed\_ubWGNmU7\_Rq5E4XNt2vlDeZf6PMLcYIktpJ6QRkv2uCPmouTReMoBURk](images/image1.png)     
 
-**Links:**
+## Links
 
 1. This Lab Guide:  
    1. [https://github.com/arista-rockies/Workshops/tree/main/Campus](https://github.com/arista-rockies/Workshops/tree/main/Campus)  
 2. Lab Floor Plan Download:  
    1. [https://tinyurl.com/wififloorplan](https://tinyurl.com/wififloorplan) \[Arista-rockies Github\]
 
-**Table of Contents**
+## Table of Contents
 
-**[Arista WiFi Solution Diagram	2](#arista-wifi-solution-diagram)**
+1. Arista WiFi Solution Diagram	
+2. CloudVision Cognitive Unified Edge CV-CUE Access	
+    * Launchpad	
+    * Add a User and Assign Privileges	
+    * Assign User Privileges	
+    * WiFi Device Registration \- Reference section	
+3. CV-CUE CloudVision Wifi Access	
+4. Assign AP Name	
+5. Managing the Configuration Hierarchy	
+    * Customize the Locations Hierarchy:
+       * Creating Folders:	
+       * Creating Floors:	
+    * Move AP to destination folder	
+6. Creating an SSID	
+7. Troubleshooting	
+8. Floor Plans	
+9. Dashboard \- Client Journey
 
-[**1\. CloudVision Cognitive Unified Edge CV-CUE Access	3**](#1.-cloudvision-cognitive-unified-edge-cv-cue-access)
 
-[Launchpad	4](#launchpad)
 
-[Add a User and Assign Privileges	5](#add-a-user-and-assign-privileges)
-
-[Assign User Privileges	6](#assign-user-privileges)
-
-[WiFi Device Registration \- Reference section	10](#wifi-device-registration---reference-section)
-
-[**2\. CV-CUE CloudVision Wifi Access	12**](#2.-cv-cue-cloudvision-wifi-access)
-
-[**3\. Assign AP Name	15**](#3.-assign-ap-name)
-
-[**4\. Managing the Configuration Hierarchy	17**](#4.-managing-the-configuration-hierarchy)
-
-[Customize the Locations Hierarchy:	17](#customize-the-locations-hierarchy:)
-
-[Creating Folders:	18](#creating-folders:)
-
-[Creating Floors:	19](#creating-floors:)
-
-[Move AP to destination folder	24](#move-ap-to-destination-folder)
-
-[**5\. Creating an SSID	28**](#5.-creating-an-ssid)
-
-[**6\. Troubleshooting	35**](#6.-troubleshooting)
-
-[**7\. Floor Plans	43**](#7.-floor-plans)
-
-[**8\. Dashboard \- Client Journey	47**](#8.-dashboard---client-journey)
-
-# 
-
-# Arista WiFi Solution Diagram  
+## 1. Arista WiFi Solution Diagram  
 
 ![](images/image2.png)
 
@@ -57,7 +40,7 @@ For more information on the TCP/UDP ports and protocols involved for management 
 [https://wifihelp.arista.com/post/access-point-wireless-manager-communication](https://wifihelp.arista.com/post/access-point-wireless-manager-communication)  
 [https://wifihelp.arista.com/post/tcp-and-udp-ports-used-by-arista-wi-fi-products](https://wifihelp.arista.com/post/tcp-and-udp-ports-used-by-arista-wi-fi-products)
 
-# 1\. CloudVision Cognitive Unified Edge CV-CUE Access {#1.-cloudvision-cognitive-unified-edge-cv-cue-access}
+## 2. CloudVision Cognitive Unified Edge CV-CUE Access 
 
 Go to the Arista CloudVision CUE portal via: [https://launchpad.wifi.arista.com/](https://launchpad.wifi.arista.com/)
 
@@ -67,11 +50,11 @@ User Passwords are: *\[Provided by event staff\]*
 ![](images/image3.png) 
 Click **Sign In**
 
-## Launchpad {#launchpad}
+### Launchpad 
 
 Launchpad is the portal to access your Arista cloud services including **WiFi Management** (CV-CUE) and **AGNI** (Network Access Control). When you open the launcher, you are presented with management applications on the Dashboard menu and access controls with the Admin menu.
 
-**![](images/image4.png)**
+![](images/image4.png)
 
 Dashboard Applications Summary:
 
@@ -83,7 +66,7 @@ Dashboard Applications Summary:
 * **WiFi Device Registration** is the process for importing APs onto your account  
 * **AGNI \- Beta** Arista Guardian for Network Identity (Network Access Control)
 
-## Add a User and Assign Privileges {#add-a-user-and-assign-privileges}
+## Add a User and Assign Privileges 
 
 First, use the Admin menu to add a user.
 
@@ -158,7 +141,7 @@ End of Section 1 Exercise: CV-CUE Access
 
 The next section begins on the following page.
 
-# 2\. CV-CUE CloudVision Wifi Access {#2.-cv-cue-cloudvision-wifi-access}
+## 2. CV-CUE CloudVision Wifi Access
 
 CloudVision CUE \- Cognitive Unified Edge, provides the management plane and monitoring functions for the Arista WiFi solution. 
 
@@ -188,7 +171,7 @@ In addition to the menu bar navigation and Locations Hierarchy, the UI provides 
 
 End of lab section.
 
-# 3\. Assign AP Name {#3.-assign-ap-name}
+## 3. Assign AP Name
 
 Access points that successfully receive an IP address, DNS, and default gateway, via DHCP, and have connectivity over HTTPS/TCP/443 to CV-CUE will be shown within CV-CUE under **Monitor** \> **WiFi**   
 ![](images/image21.png) 
@@ -205,7 +188,7 @@ Give the AP a name such as: “POD-**\#\#**\-FL1” where **\#\#** is a 2 digit 
 
 ---
 
-# 4\. Managing the Configuration Hierarchy {#4.-managing-the-configuration-hierarchy}
+## 4. Managing the Configuration Hierarchy 
 
 In **CloudVision CUE** the configuration is hierarchical. 
 
@@ -216,9 +199,8 @@ Child containers can define the sites, buildings, functions, or any other logica
 
      
 
-## 
 
-## Customize the Locations Hierarchy: {#customize-the-locations-hierarchy:}
+### Customize the Locations Hierarchy: 
 
 Expand the “**Locations**'' pane by clicking on the hamburger icon toward the top left of the screen. Now select the three dots to the left of “**Locations**'' and click on “**Manage Navigator**”.
 
@@ -249,7 +231,7 @@ You can optionally nest folders to further define your organization and configur
 
 Note: the folder level is the lowest level you can customize the configuration. Configuration is not mapped to Floors directly, these are for AP placement within the Folder containers.
 
-### Creating Floors: {#creating-floors:}
+### Creating Floors:
 
 Next, create 2 floors called “**1st Floor”** and “**2nd Floor”**.  Right click on the word “**Corp**” to expose the menu. Be sure to click the “**Floor**” radial button (the default is “**Folder**”)
 
@@ -286,9 +268,9 @@ Under Transmit Power Selection, select **Manual and set EIRP to 4**
 
 Click “**Save**” at the bottom of the page then click “**Continue**” to confirm.
 
-## 
 
-## Move AP to destination folder {#move-ap-to-destination-folder}
+
+### Move AP to destination folder 
 
 Click “**Locations**” in the tree structure and choose “**Manage Navigator**”  
 ![](images/image34.png)
@@ -317,7 +299,7 @@ Moving APs into the folders ensures the child devices inherit the configuration 
 
 The next section begins on the following page.
 
-# 5\. Creating an SSID {#5.-creating-an-ssid}
+## 5. Creating an SSID
 
 In this lab, we will be working in the “**WiFi**” configuration area. **This list is just a summary of the steps. Follow the detailed configuration steps below.**
 
@@ -399,7 +381,7 @@ Next, go ahead and connect your phone to the SSID (PSK is “**AristaCampus**”
 
 The next section begins on the following page.
 
-# 6\. Troubleshooting {#6.-troubleshooting}
+## 6. Troubleshooting
 
 Make sure you are at the “**Corp**” folder in the hierarchy, and then hover over “**Troubleshoot**” in the left hand menu, then click “**Packet Trace”.**
 
@@ -474,7 +456,7 @@ Explore the “**Analyze**” feature by clicking on the various menu options an
 
 The next section begins on the following page.
 
-# 7\. Floor Plans {#7.-floor-plans}
+## 7. Floor Plans
 
 Utilize the floor plan image file provided in the Workshop Files download location and shown on the title page of this guide. Save that image to your computer.
 
@@ -514,7 +496,7 @@ Next, explore the other menu options like **RF Heatmaps** (in the menu on the up
 
 ![](images/image89.png)
 
-# 8\. Dashboard \- Client Journey {#8.-dashboard---client-journey}
+# 8. Dashboard - Client Journey 
 
 Now that a client device is connected to the WiFi network we can use the dashboard functions to gain insight to the client’s journey: 
 
@@ -602,4 +584,4 @@ For more information on the “**Application Experience**” that we use to dete
 
 [Arista whitepaper on App QoE](https://www.arista.com/assets/data/pdf/Whitepapers/Arista-Application-QoE.pdf)
 
-LAB GUIDE COMPLETE
+**LAB GUIDE COMPLETE**

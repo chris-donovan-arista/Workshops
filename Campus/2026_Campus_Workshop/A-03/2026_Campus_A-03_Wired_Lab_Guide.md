@@ -465,6 +465,7 @@ Make sure to save your changes in this screen with the Save button along the top
   b. After a minute or two, you should receive the email alert at the email address you configured in the Receiver.
 
 ![Test Notification Email](images/test-notification-email.png)
+
 Congratulations, you’ve completed the “Event Notification Lab” !
 
 ---

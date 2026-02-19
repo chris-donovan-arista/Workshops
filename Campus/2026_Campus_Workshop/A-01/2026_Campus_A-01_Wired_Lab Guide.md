@@ -3,7 +3,7 @@
 
 This Lab Guide:
 
-https://github.com/arista-rockies/Workshops/tree/main/Campus
+Campus/2026_Campus_Workshop/A-01/2026_Campus_A-01_Wired_Lab Guide.md
 
 ---
 

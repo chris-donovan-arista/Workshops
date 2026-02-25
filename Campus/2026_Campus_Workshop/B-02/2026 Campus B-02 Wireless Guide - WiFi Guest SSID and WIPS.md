@@ -13,8 +13,7 @@
 
 1. Arista WiFi Solution Diagram
 2. Log in to CV-CUE CloudVision Cognitive Unified Edge	
-3. Creating a Guest Captive Portal	
-4. WIPS Wireless Intrusion Prevention System	
+3. WIPS Wireless Intrusion Prevention System	
     * WIPS Classify and Prevent individual client	
 
 

@@ -1,4 +1,4 @@
-# Campus C-03 AGNI Lab Guide EAP-TLS Wired Policy
+# Campus C-04 AGNI Lab Guide EAP-TLS Wired Policy
 
 ## This Lab Guide: ##
 
@@ -17,7 +17,7 @@ https://github.com/arista-rockies/Workshops/tree/main/Campus
 
 Full Lab Topology  
 POD Topology  
-NAC Lab #3 - Create EAP-TLS Wired Policy  
+NAC Lab #4 - Create EAP-TLS Wired Policy  
 1. Access CloudVision as a Service  
 2. Enable RadSec on campus-pod<xx>-leaf1c  
 3. Access AGNI from the LaunchPad.  
@@ -41,7 +41,7 @@ C. Adding Access Control Lists for Wired Users
 
 ---
 
-## NAC Lab #3 - Create EAP-TLS Wired Policy
+## NAC Lab #4 - Create EAP-TLS Wired Policy
 
 
 ### 1. Access CloudVision as a Service
@@ -280,4 +280,4 @@ Arista-PeriodicIdentity:
 
 ---
 
-NAC LAB #3 COMPLETE
+NAC LAB #4 COMPLETE

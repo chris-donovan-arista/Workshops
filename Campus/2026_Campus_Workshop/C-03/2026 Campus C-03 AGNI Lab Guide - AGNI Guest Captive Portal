@@ -1,4 +1,4 @@
-# Campus C-03 AGNI Lab Guide AGNI Guest Wireless Captive Portal
+# Campus C-03 AGNI Lab Guide Wireless Guest Captive Portal
 
 ![image1](images/image1.png)
 ![image2](images/image2.png)
@@ -14,12 +14,11 @@ https://github.com/arista-rockies/Workshops/tree/main/Campus
 
 Full Lab Topology  
 POD Topology  
-NAC Lab #3 - Create AGNI Guest Captive Portal  
-1. Create Identity UPSK SSID:  
-2. Create UPSK Network and Segment:  
-3. Create an AGNI Local User and Enroll Personal Device  
-4. Create an AGNI Client Group  
-
+NAC Lab #3 - Configuring Wireless Guest Captive Portal  
+1. Create Guest Portal in AGNI
+2. Create Role Profile in CV-CUE 
+3. Create SSID in CV-CUE  
+ 
 ---
 
 ## Full Lab Topology
@@ -34,11 +33,11 @@ NAC Lab #3 - Create AGNI Guest Captive Portal
 ![image4](images/image4.png)
 ---
 
-## NAC Lab #2 - Create UPSK Wireless Policy
+## NAC Lab #3 - Configuring Wireless Guest Captive Portal
 
 ---
 
-## 2. Creating a Guest Captive Portal 
+## 1. Creating a Guest Captive Portal in AGNI
 
 CloudVision CUE allows captive portal authentication using public cloud identity providers, social media, or your organization's own directory through SAML integration.
 

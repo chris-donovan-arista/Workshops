@@ -1,0 +1,7 @@
+__pycache__
+tmp
+old
+*.swi
+*.swp
+*.tok
+tokenConfig.yml

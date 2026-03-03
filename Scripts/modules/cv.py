@@ -1,0 +1,668 @@
+from modules import config
+from modules import pgf
+import uuid, requests, time, yaml, tempfile
+
+#######
+from cvprac.cvp_client import CvpClient, json_decoder
+#######
+from cloudvision.Connector.grpc_client import GRPCClient, create_query
+from cloudvision.Connector.codec.custom_types import FrozenDict
+from cloudvision.Connector.codec import Wildcard, Path
+import json
+#######
+import pyavd, asyncio, pyavd._cv.client
+import pyavd._cv.api.arista.studio.v1
+import pyavd._cv.api.fmp
+import pyavd._cv.api.arista.tag.v2
+import pyavd._cv.api.arista.workspace.v1
+import pyavd._cv.api.arista.time
+import pyavd._cv.api.arista.changecontrol.v1
+import pyavd._cv.api.arista.alert.v1
+#######
+from modules.sync_cc_templates import (
+    getCcTemplates,
+    getCcActionBundles,
+    getCcPath,
+    getCcPathVersions,
+    publish,
+)
+
+class pgfCVClient():
+    def configure():
+        config.parser.add_argument('-cvCleanup', default=False, action='store_true', help='do cleanup steps')
+        config.parser.add_argument('-cvSetup', default=False, action='store_true', help='do setup steps')
+        config.parser.add_argument('-i', default="2024CampusWorkshopHardware.csv", help="hardware inventory")
+
+        config.parser.add_argument('-addPackages', default=False, action='store_true', help='this option is only required for alraedy provisioned pods and will add the required packages.  these steps are automatically done on pods as they are provisioned moving forward')
+        config.parser.add_argument('-addCCStuff', default=False, action='store_true', help='this option is only required for already provisioned pods and will add actionBundles and ccTemplates only.  these steps are automatically done on pods as they are provisioned moving forward')
+        config.parser.add_argument('-cleanupNotifiers', default=False, action='store_true', help='only cleanup the event system')
+        config.parser.add_argument('-allCleanup', default=False, action='store_true', help='cleanup everything')
+        config.parser.add_argument('-thirdParty', default='d4:af:f7:92:85:3f,d4:af:f7:92:68:19', help='comma delimited list of 3rd party devices to configure')
+
+    def __init__(self, token):
+        self.token = token
+        self.tok = token["cv"]["key1"]
+        self.tok2 = token["cv"].get("key2", self.tok)
+        self.server = token["cv"]["server"]
+        self.baseURL = f'https://{self.server}'
+
+    # not a huge fan, but i'm out of time
+    def findDeviceBySerial(self, deviceInventory, sn):
+        for device in deviceInventory:
+            if device["sn"] == sn:
+                return device
+        return None
+
+    def findDeviceByName(self, deviceInventory, hostname):
+        for device in deviceInventory:
+            if device["hostname"] == hostname:
+                return device
+        return None
+
+    async def scsCleanup(self, c, workspaceID):
+        print(f"{config.currentPod} - scsCleanup")
+        # cleanup here is a bit of a mess because we can't just use the configlet rapi
+        #  we need to use the studios api too
+        rootContainers = await c.get_studio_inputs(studio_id='studio-static-configlet', workspace_id=workspaceID)
+
+        # let's loop over the array of roots and delete them
+        for containerID in rootContainers["configletAssignmentRoots"]:
+            await c.delete_configlet_container(
+                workspace_id=workspaceID,
+                assignment_id=containerID
+            )
+
+        await c.set_studio_inputs(studio_id='studio-static-configlet', workspace_id=workspaceID, inputs={"configletAssignmentRoots": []})
+
+        # delete all the configlets
+        configlets = await c.get_configlets(workspace_id=workspaceID, configlet_ids=[])
+        for configlet in configlets:
+            #print(configlet.key.configlet_id)
+            await c.delete_configlets(workspace_id=workspaceID, configlet_ids=[configlet.key.configlet_id])
+        ###################### scs cleanup ####################
+
+    async def inventoryCleanup(self, c, workspaceID):
+        print(f"{config.currentPod} - inventoryCleanup")
+        topologyInventory = await c.set_studio_inputs(studio_id="TOPOLOGY", workspace_id=workspaceID, inputs={'devices': []})
+
+    async def tagsCleanup(self, c, workspaceID):
+        print(f"{config.currentPod} - tagsCleanup")
+        # first let's unassign all tags from both interfaces and devices
+        tagAssignments = await c.get_tag_assignments(workspace_id=workspaceID, creator_type="user")
+
+        for tag in tagAssignments:
+            eType = "device" if tag.key.element_type == pyavd._cv.api.arista.tag.v2.ElementType.DEVICE else "interface"
+
+            t = (tag.key.label, tag.key.value, tag.key.device_id, tag.key.interface_id)
+            await c.delete_tag_assignments(
+                workspace_id=workspaceID,
+                tag_assignments=[t],
+                element_type=eType)
+
+        # now we can get all tags and delete them
+        tags = await c.get_tags(workspace_id=workspaceID, creator_type="user")
+
+        request = pyavd._cv.api.arista.tag.v2.TagConfigSetSomeRequest(values=[])
+        for tag in tags:
+            request.values.append(
+                    pyavd._cv.api.arista.tag.v2.TagConfig(
+                        key=pyavd._cv.api.arista.tag.v2.TagKey(
+                            workspace_id=workspaceID,
+                            element_type=tag.key.element_type,
+                            label=tag.key.label,
+                            value=tag.key.value
+                        ),
+                        remove=True
+                    )
+                )
+
+        if len(request.values) > 0:
+            inputKeys = []
+            client = pyavd._cv.api.arista.tag.v2.TagConfigServiceStub(c._channel)
+            responses = client.set_some(request, metadata=c._metadata, timeout=300)
+            async for response in responses:
+                inputKeys.append(response.key)
+
+    async def onboardDevices(self, c, cvpRacClient, workspaceID, deviceInventory):
+        print(f"{config.currentPod} - onboardDevices")
+        deviceList = {}
+        devices = cvpRacClient.api.get_inventory()
+
+        leaf1a = self.findDeviceBySerial(deviceInventory
+        for device in devices:
+            d = self.findDeviceBySerial(deviceInventory, device["serialNumber"])
+            if not d:
+                #raise Exception(f"couldn't find {device}")
+                continue
+
+            newDevice = pgf.pgfDevice(device["serialNumber"], device["modelName"], device["systemMacAddress"], d["hostname"], self.tok)
+            newDevice.fetchInterfaces()
+
+            deviceList[device["serialNumber"]] = newDevice
+
+        data = {
+            "partialEqFilter": [
+                {
+                    "key": {
+                        "workspaceId": workspaceID,
+                        "studioId": "TOPOLOGY"
+                    }
+                }
+            ]
+        }
+        url = f'{self.baseURL}/api/resources/topology/v1/Edge/all'
+        resp = requests.get(url, json=data, verify=False, timeout=300, headers={'Authorization': f'Bearer {self.tok}'})
+
+        edges = json_decoder(resp.text)
+        print(json.dumps(edges, indent=2))
+        for edge in edges:
+            left = deviceList.get(edge["result"]["value"]["key"]["from"], None)
+            right = deviceList.get(edge["result"]["value"]["key"]["to"], None)
+            if not (left and right):
+                continue
+
+            for individualEdge in edge["result"]["value"]["lldpLinks"]["values"]:
+                lPort = individualEdge["key"]["srcPort"]
+                rPort = individualEdge["key"]["dstPort"]
+                if left:
+                    left.addPeer(lPort, edge["result"]["value"]["key"]["to"], rPort)
+                if right:
+                    right.addPeer(rPort, edge["result"]["value"]["key"]["from"], lPort)
+                                 
+
+        # now pull the current inputs from the studio
+        request = pyavd._cv.api.arista.studio.v1.InputsConfigSetSomeRequest(values=[])
+
+        topologyInventory = await c.get_studio_inputs(studio_id="TOPOLOGY", workspace_id=workspaceID)
+        for deviceIndex, device in enumerate(topologyInventory.get("devices", [])):
+            #print(device)
+            pass
+
+        idx = 0
+        for deviceName, device in deviceList.items():
+            request.values.append(
+                pyavd._cv.api.arista.studio.v1.InputsConfig(
+                    key=pyavd._cv.api.arista.studio.v1.InputsKey(
+                        studio_id="TOPOLOGY",
+                        workspace_id=workspaceID,
+                        path=pyavd._cv.api.fmp.RepeatedString(values=["devices", str(idx)]),
+                    ),
+                    inputs = f"{device}"
+                )
+            )
+            idx+=1
+
+        inputKeys = []
+        client = pyavd._cv.api.arista.studio.v1.InputsConfigServiceStub(c._channel)
+        responses = client.set_some(request, metadata=c._metadata, timeout=300)
+        async for response in responses:
+            inputKeys.append(response.key)
+
+    async def assignTags(self, c, workspaceID, deviceInventory):
+        print(f"{config.currentPod} - assignTags")
+        leaf1a = self.findDeviceByName(deviceInventory, f"campus-pod{config.currentPod:0>2}-leaf1a")
+        leaf1b = self.findDeviceByName(deviceInventory, f"campus-pod{config.currentPod:0>2}-leaf1b")
+
+        if not leaf1a or not leaf1b:
+            raise Exception("could not find leaf1a or leaf1b in deviceInventory")
+
+        tags = [
+            ("Campus", f"Workshop"),
+            ("Campus-Pod", f"IT-Bldg"),
+            ("Access-Pod", f"IDF1"),
+            ("Role", "Leaf"),
+        ]
+        tagAssignments = [
+            ("Campus", f"Workshop", leaf1a["sn"],  None),
+            ("Campus", f"Workshop", leaf1b["sn"], None),
+            ("Campus-Pod", f"IT-Bldg", leaf1a["sn"],  None),
+            ("Campus-Pod", f"IT-Bldg", leaf1b["sn"], None),
+            ("Access-Pod", f"IDF1", leaf1a["sn"],  None),
+            ("Access-Pod", f"IDF1", leaf1b["sn"], None),
+            ("Role", "Leaf", leaf1a["sn"],  None),
+            ("Role", "Leaf", leaf1b["sn"], None)
+        ]
+        # assign tags
+        await c.set_tags(workspaceID, tags, "device", 300)
+        await c.set_tag_assignments(workspaceID, tagAssignments, "device", 300)
+
+    async def scsSetup(self, c, workspaceID, deviceInventory):
+        print(f"{config.currentPod} - scsSetup")
+        #configletContainers = await c.get_configlet_containers(workspace_id=workspaceID)
+        #print(configletContainers)
+        #return
+
+        ###################### scs upload ####################
+        leaf1a = self.findDeviceByName(deviceInventory, f"campus-pod{config.currentPod:0>2}-leaf1a")
+        leaf1b = self.findDeviceByName(deviceInventory, f"campus-pod{config.currentPod:0>2}-leaf1b")
+
+        if not leaf1a or not leaf1b:
+            raise Exception("couldn't find leaf1a or leaf1b in deviceInventory")
+        
+        configlets = [
+            {
+                "filename": "Studios-campus-global-config.txt",
+                "configletName": f"Studios-campus-pod{config.currentPod}-global-config",
+                "container": "Device",
+                "query": "device: *",
+                "children": [leaf1a["hostname"], leaf1b["hostname"]]
+            },{
+                "filename": "Studios-campus-leaf1a-deviceconfig.txt",
+                "configletName": f"Studios-campus-pod{config.currentPod}-leaf1a-deviceconfig",
+                "container": leaf1a["hostname"],
+                "query": f"device:{leaf1a['sn']}",
+                "children": None
+            },{
+                "filename": "Studios-campus-leaf1b-deviceconfig.txt",
+                "configletName": f"Studios-campus-pod{config.currentPod}-leaf1b-deviceconfig",
+                "container": leaf1b["hostname"],
+                "query": f"device:{leaf1b['sn']}",
+                "children": None
+            },{
+                "filename": "Studios-campus-radsec-config.txt",
+                "configletName": f"Studios-campus-pod{config.currentPod}-radsec-config",
+                "container": None,
+                "query": None,
+                "children": None
+            }
+        ]
+
+        vals = {
+            "podStr": f"{config.currentPod:0>2}",
+            "podInt": int(config.currentPod)+100
+        }
+        for configlet in configlets:
+            configletID = configlet["configletName"]
+
+            f = open(f"files/campusConfiglets/{configlet['filename']}", "r")
+            configletText = f.read().format(**vals)
+
+            await c.set_configlet(
+                workspace_id=workspaceID,
+                configlet_id=configletID,
+                display_name=configletID,
+                description=configletID,
+                body=configletText
+            )
+
+            if configlet["container"]:
+                # let's create the assignment
+                await c.set_configlet_container(
+                        workspace_id=workspaceID,
+                        container_id=configlet["container"],
+                        display_name=configlet["container"],
+                        description=configlet["container"],
+                        configlet_ids=[configletID],
+                        child_assignment_ids=configlet["children"],
+                        query=configlet["query"],
+                )
+        await c.set_studio_inputs(studio_id='studio-static-configlet', workspace_id=workspaceID, inputs={"configletAssignmentRoots": ["Device"]})
+
+        ###################### sms upload ####################
+    async def smsSetup(self, c, workspaceID, deviceInventory):
+        print(f"{config.currentPod} - smsStudioSetup")
+
+        leaf1a = self.findDeviceByName(deviceInventory, f"campus-pod{config.currentPod:0>2}-leaf1a")
+        leaf1b = self.findDeviceByName(deviceInventory, f"campus-pod{config.currentPod:0>2}-leaf1b")
+
+        if not leaf1a or not leaf1b:
+            raise Exception("could not find leaf1a or leaf1b in deviceInventory")
+
+        vals = {
+            "leaf1": leaf1a["sn"],
+            "leaf2": leaf1b["sn"],
+        }
+        f = open("files/campusWorkshop_softwareManagementInputs.txt", "r")
+        smsStudio = yaml.safe_load(f.read().format(**vals))
+        smsStudioID = "studio-software-management"
+        await c.set_studio_inputs(
+                studio_id=smsStudioID,
+                workspace_id=workspaceID,
+                inputs=smsStudio["inputs"])
+
+        ###################### scs upload ####################
+
+    async def campusStudioSetup(self, c, workspaceID, deviceInventory):
+        print(f"{config.currentPod} - campusStudioSetup")
+        #with open("files/campusWorkshop_campusFabricInputs.yml", "r") as f:
+                #campusStudio = yaml.safe_load(f.read())
+
+        #### to make this work you need to
+        ####  replace {} as {{}}
+        ####  replace serial references
+        ####  replace pod number references in queries
+        ####  replace pod number references in vlan ids
+
+        leaf1a = self.findDeviceByName(deviceInventory, f"campus-pod{config.currentPod:0>2}-leaf1a")
+        leaf1b = self.findDeviceByName(deviceInventory, f"campus-pod{config.currentPod:0>2}-leaf1b")
+
+        if not leaf1a or not leaf1b:
+            raise Exception("could not find leaf1a or leaf1b in deviceInventory")
+
+        vals = {
+            "podStr": config.currentPod,
+            "podInt": 100+int(config.currentPod),
+            "leaf1": leaf1a["sn"],
+            "leaf2": leaf1b["sn"]
+        }
+        f = open("files/campusWorkshop_campusFabricInputs.txt", "r")
+        campusStudio = yaml.safe_load(f.read().format(**vals))
+
+        #  if there are third-party devices, register them
+        #  this is horrible code
+        t = campusStudio["inputs"]["campus"][0]["inputs"]["campusDetails"]["campusPod"][0]["inputs"]["campusPodFacts"]["thirdPartyDevices"]
+        cnt = 1
+        for device in config.args.thirdParty.split(','):
+            t.append({
+                "hostname": f"campus-spine{cnt}",
+                "identifier": device,
+                "nodeId": cnt,
+                "role": "spine"
+            })
+            cnt += 1
+
+        campusStudioID = "studio-avd-campus-fabric"
+        await c.set_studio_inputs(
+            studio_id=campusStudioID,
+            workspace_id=workspaceID,
+            inputs=campusStudio["inputs"])
+
+    async def studioCleanup(self, c, workspaceID, studioID):
+        print(f"{config.currentPod} - studioCleanup({studioID})")
+        await c.set_studio_inputs(studio_id=studioID, workspace_id=workspaceID, inputs={})
+
+    async def buildAndSubmitWorkspace(self, c, workspaceID, expectCC=True):
+        print(f"{config.currentPod} - buildAndSubmit")
+        result = await c.build_workspace(workspaceID)
+        print("building workspace")
+        buildResult, workspace = await c.wait_for_workspace_response(workspaceID, result.request_params.request_id)
+        if buildResult.status != 1: # SUCCESS
+            raise Exception(f"build failed for pod: {config.currentPod} {workspaceID}: {buildResult.status}")
+
+        # HERE
+        return
+        result = await c.submit_workspace(workspaceID, force=True)
+        print("submitting workspace")
+        submitResult, workspace = await c.wait_for_workspace_response(workspaceID, result.request_params.request_id)
+
+        if submitResult.status != 1: #SUCCESS
+            raise Exception(f"submit failed for pod: {config.currentPod} {workspaceID}: {submitResult.status}")
+
+        #there is a better way to do this......
+        if expectCC:
+            return workspace.cc_ids.values[0]
+        else:
+            return
+
+    async def executeChangeControl(self, c, ccID, wait=True):
+        print(f"{config.currentPod} - executeChangeControl")
+        # now that we were a success let's execute the cc
+        changeControl = await c.get_change_control(change_control_id=ccID)
+
+        result = await c.approve_change_control(
+                change_control_id=ccID,
+                timestamp=changeControl.change.time
+        )
+
+        result = await c.start_change_control(change_control_id=ccID)
+
+        if wait:
+            result = await c.wait_for_change_control_state(cc_id=ccID, state="completed")
+            if result.status != 2: #SUCCESS
+                raise Exception("cc didn't complete properly.")
+
+    async def workspacesCleanup(self, c):
+        request = pyavd._cv.api.arista.workspace.v1.WorkspaceStreamRequest(
+            partial_eq_filter=[],
+            time=pyavd._cv.api.arista.time.TimeBounds(start=None, end=None)
+        )
+        client = pyavd._cv.api.arista.workspace.v1.WorkspaceServiceStub(c._channel)
+
+        try:
+            responses = client.get_all(request, metadata=c._metadata, timeout=10.0)
+            workspaces = [ response.value async for response in responses ]
+        except Exception as e:
+            raise Exception("eeror")
+
+        print(workspaces)
+        pass
+
+    async def unprovisionDevices(self, c, cvpRacClient, deviceInventory):
+        print(f"{config.currentPod} - unprovisionDevices")
+        #finishedCCID = "EdIgccX4e84nQanTqu731"
+        #finishedChangeControl = await c.get_change_control(change_control_id=finishedCCID)
+
+        with open("files/campusWorkshopDecomTemplate.txt", "r") as f:
+            newCC = f.read()
+
+        leaf1aStageUUID = str(uuid.uuid4())
+        leaf1a = self.findDeviceByName(deviceInventory, f"campus-pod{config.currentPod:0>2}-leaf1a")
+        leaf1bStageUUID = str(uuid.uuid4())
+        leaf1b = self.findDeviceByName(deviceInventory, f"campus-pod{config.currentPod:0>2}-leaf1b")
+        leaf1cStageUUID = str(uuid.uuid4())
+        leaf1c = self.findDeviceByName(deviceInventory, f"campus-pod{config.currentPod:0>2}-leaf1c")
+
+        ccID = str(uuid.uuid4())
+        vals = {
+            "ccID": ccID,
+            "rootID": str(uuid.uuid4()),
+            "leaf1aStage": str(uuid.uuid4()),
+            "leaf1bStage": str(uuid.uuid4()),
+            "leaf1cStage": str(uuid.uuid4()),
+            "leaf1aSN": leaf1a["sn"],
+            "leaf1bSN": leaf1b["sn"],
+            "leaf1cSN": leaf1c["sn"]
+        }
+        cc = json.loads(newCC.format(**vals))
+
+        url = f'{self.baseURL}/api/resources/changecontrol/v1/ChangeControlConfig'
+        resp = requests.post(url, json=cc, verify=False, timeout=300, headers={'Authorization': f'Bearer {self.tok}'})
+        resp.raise_for_status()
+
+        # from here on out, let's reconnect with the second token
+        #  this allows for us to complete even if four-eyes is set
+        c = pyavd._cv.client.CVClient(self.server, token=self.tok2)
+        c._connect()
+        print("executing the ztp change control")
+        await self.executeChangeControl(c, ccID, wait=False)
+
+        print("sleeping for 2m to hopefully give ztp time to kick in")
+        time.sleep(120)
+
+        devices = cvpRacClient.api.get_inventory(provisioned=False)
+        for device in devices:
+            print(f"decomming {device['hostname']}")
+            cvpRacClient.api.device_decommissioning(device["serialNumber"], str(uuid.uuid4()))
+
+    async def notificationReceiverCleanup(self, c):
+        print(f"{config.currentPod} - notificationReceiver")
+        request = pyavd._cv.api.arista.alert.v1.AlertConfigStreamRequest()
+        client = pyavd._cv.api.arista.alert.v1.AlertConfigServiceStub(c._channel)
+
+        try:
+            responses = await client.get_one(request, metadata=c._metadata, timeout=10.0)
+        except:
+            raise Exception("eeror")
+
+        newRequest = pyavd._cv.api.arista.alert.v1.AlertConfigSetRequest(
+            value=pyavd._cv.api.arista.alert.v1.AlertConfig(
+                settings=pyavd._cv.api.arista.alert.v1.Settings(
+                    slack=pyavd._cv.api.arista.alert.v1.SlackSettings(),
+                    gchat=pyavd._cv.api.arista.alert.v1.GoogleChatSettings()
+                ),
+                rules=pyavd._cv.api.arista.alert.v1.Rules(values=[]),
+                broadcast_groups=pyavd._cv.api.arista.alert.v1.BroadcastGroups(values={})
+            )
+        )
+        await client.set(newRequest, metadata=c._metadata, timeout=10.0)
+
+    async def deleteDevices(self, client):
+        return
+        print(f"{config.currentPod} - deleteDevices")
+        devices = client.api.get_inventory(provisioned=False)
+
+        for device in devices:
+            res = client.api.reset_device('cleanup', device)
+            print(device)
+            print(res)
+            for task in res.get('data', {}).get('taskIds', []):
+                res = client.api.execute_task(task)
+                print(res)
+            print("****")
+
+        time.sleep(60)
+        for device in devices:
+            client.api.device_decommissioning(device["serialNumber"], str(uuid.uuid4()))
+
+    async def createRootPath(self, client, path):
+        ccPtrs = getCcPath(client)
+        if path not in list(ccPtrs.keys()):
+            pathElts = ["changecontrol"]
+            ptrData = {path: Path(keys=["changecontrol", path])}
+            publish(client, 'cvp', pathEts, ptrData)
+        ccVersions = getCcPathVersions(client, path)
+        if ccVersions == {}:
+            pathElts = ["changecontrol", path]
+            ptrData = {"v1": Path(keys=["changecontrol", path, "v1"])}
+            publish(client, 'cvp', pathElts, ptrData)
+
+    async def doTemplates(self, client):
+        try:
+            f = open("files/campusWorkshop_ccTemplates.json", "r")
+            templates = yaml.safe_load(f.read())
+            f.close()
+        except:
+            return
+
+        await self.createRootPath(client, 'template')
+        for templateKey, templateData in templates.items():
+            pathElts = ["changecontrol", "template", "v1", templateKey]
+            update = {templateKey: templateData}
+            publish(client, 'cvp', pathElts, update)
+            ptrData = {templateKey: Path(keys=["changecontrol", "template", "v1", templateKey])}
+            publish(client, 'cvp', pathElts[:-1], ptrData)
+
+    async def doActionBundles(self, client):
+        print(f"{config.currentPod} - doActionBundles")
+        try:
+            f = open("files/campusWorkshop_actionBundles.json", "r")
+            bundles = yaml.safe_load(f.read())
+            f.close()
+        except:
+            return
+
+        await self.createRootPath(client, 'actionBundle')
+        for bundleKey, bundleData in bundles.items():
+            pathElts = ["changecontrol", "actionBundle", "v1", bundleKey]
+            update = {bundleKey: bundleData}
+            publish(client, 'cvp', pathElts, update)
+            ptrData = {bundleKey: Path(keys=["changecontrol", "actionBundle", "v1", bundleKey])}
+            publish(client, 'cvp', pathElts[:-1], ptrData)
+
+    async def doPackage(self, package):
+        print(f"{config.currentPod} - doPackage")
+        with open(package, "rb") as file:
+            url = f'{self.baseURL}/cvpservice/packaging/v1/packages?dry-run=false&force=true'
+            resp = requests.post(url, files={'file': file}, verify=False, timeout=300, headers={'Authorization': f"Bearer {self.tok}"})
+            resp.raise_for_status()
+
+    async def studios(self):
+        # first get all the devices in the inventory
+        deviceInventory = config.globalInventory[int(config.currentPod)]
+
+        cvpRacClient = CvpClient()
+        cvpRacClient.connect(nodes=[self.server], username='', password='', is_cvaas=True, api_token=self.tok)
+
+        c = pyavd._cv.client.CVClient(self.server, token=self.tok)
+        c._connect()
+
+        fp = tempfile.NamedTemporaryFile(mode="w")
+        fp.write(self.tok)
+        fp.flush()
+        grpcClient = GRPCClient(self.server, token=fp.name)
+        fp.close()
+
+        workToDo = False
+        expectCC = True
+
+        if config.args.test:
+            return
+
+        if config.args.addPackages:
+            await self.doPackage("files/sleep_1.0.0.tar")
+            #await self.doPackage("files/cv-workshop_1.0.0.tar")
+            return
+
+        if config.args.addCCStuff:
+            await self.doActionBundles(grpcClient)
+            await self.doTemplates(grpcClient)
+            return
+
+        if config.args.cleanupNotifiers:
+            await self.notificationReceiverCleanup(c)
+            return
+
+        if config.args.cvCleanup:
+            # start by creating a new workspace
+            workspaceID = str(uuid.uuid4())
+            workspace = await c.create_workspace(
+                workspace_id=workspaceID,
+                display_name="automation cleanup")
+
+            expectCC = False
+            workToDo = True
+
+            ###### cleanup steps
+            await self.tagsCleanup(c, workspaceID)
+            await self.scsCleanup(c, workspaceID)
+            await self.studioCleanup(c, workspaceID, "studio-avd-campus-fabric")
+            await self.studioCleanup(c, workspaceID, "studio-campus-access-interfaces")
+            await self.studioCleanup(c, workspaceID, "studio-software-management")
+            await self.inventoryCleanup(c, workspaceID)
+            await self.notificationReceiverCleanup(c)
+            #done below
+            #await self.buildAndSubmitWorkspace(c, workspaceID, expectCC=False)
+            #await self.unprovisionDevices(c, cvpRacClient, deviceInventory)
+
+            ######
+
+        if config.args.cvSetup:
+            # start by creating a new workspace
+            workspaceID = str(uuid.uuid4())
+            workspace = await c.create_workspace(
+                workspace_id=workspaceID,
+                display_name="automation setup")
+
+            workToDo = True
+
+            #### HERE
+            ###### setup steps
+            #await self.doActionBundles(grpcClient)
+            #await self.doTemplates(grpcClient)
+
+            #await self.doPackage("files/sleep_1.0.0.tar")
+            #await self.doPackage("files/cv-workshop_1.0.0.tar")
+
+            await self.onboardDevices(c, cvpRacClient, workspaceID, deviceInventory)
+            await self.assignTags(c, workspaceID, deviceInventory)
+            await self.scsSetup(c, workspaceID, deviceInventory)
+            await self.smsSetup(c, workspaceID, deviceInventory)
+            await self.campusStudioSetup(c, workspaceID, deviceInventory)
+
+        if workToDo:
+            ccID = await self.buildAndSubmitWorkspace(c, workspaceID, expectCC=expectCC)
+
+            # from here on out, let's reconnect with the second token
+            #  this allows for us to complete even if four-eyes is set
+            c = pyavd._cv.client.CVClient(self.server, token=self.tok2)
+            c._connect()
+
+            if expectCC:
+                await self.executeChangeControl(c, ccID, wait=False)
+
+            if config.args.cvCleanup:
+                #await self.deleteDevices(cvpRacClient)
+                await self.unprovisionDevices(c, cvpRacClient, deviceInventory)
+
+    async def execute(self):
+        await self.studios()

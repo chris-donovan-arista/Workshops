@@ -6,7 +6,7 @@
 
 This Lab Guide:
 
-https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Workshop/A-02/2026_Campus_A-02_Wired_Lab_Guide.md
+https://github.com/arista-rockies/Workshops/tree/main/Campus
 
 ---
 
@@ -57,7 +57,7 @@ You will now be logged into CloudVision
 
 This lab will help you create port profiles and apply them to interfaces in your ATD network.
 
-1. Click on the Provisioning”menu option, then choose Studios
+1. Click on the **Provisioning** menu option, then choose **Studios**
 
 ![Provisioning Studios](images/provisioning-studios.png)
 

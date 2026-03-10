@@ -24,7 +24,7 @@ POD Topology
 
 ## POD Topology
 
-![POD Topology](images/pod-topology.png)
+![POD Topology](images/pod-lab-topology.png)
 
 ---
 
@@ -39,7 +39,7 @@ In your Google Chrome browser, enter the following URL: https://www.arista.io/ t
 
 2. Click the Log in with Launchpad button and provide your assigned lab/Pod email address and password:
 
-![Organization Selection](images/launchpad_login.png)
+![Organization Selection](images/launchpad-login.png)
 
 3. You will now be logged into CloudVision
 

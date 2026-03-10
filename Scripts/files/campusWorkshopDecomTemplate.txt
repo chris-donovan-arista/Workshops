@@ -1,0 +1,53 @@
+  {{
+      "key": {{
+        "id": "{ccID}"
+      }},
+      "change": {{
+        "name": "finished",
+        "rootStageId": "{rootID}",
+        "stages": {{
+          "values": {{
+            "{rootID}": {{
+              "name": "Change 2024-08-09-13-25-12 Root",
+              "rows": {{
+                "values": [
+                  {{
+                    "values": [
+                      "{leaf1aStage}",
+                      "{leaf1bStage}"
+                    ]
+                  }}
+                ]
+              }}
+            }},
+            "{leaf1aStage}": {{
+              "name": "Enter ZTP",
+              "action": {{
+                "name": "enterZTP",
+                "timeout": 120,
+                "args": {{
+                  "values": {{
+                    "DeviceID": "{leaf1aSN}"
+                  }}
+                }}
+              }},
+              "rows": {{}}
+            }},
+            "{leaf1bStage}": {{
+              "name": "Enter ZTP",
+              "action": {{
+                "name": "enterZTP",
+                "timeout": 120,
+                "args": {{
+                  "values": {{
+                    "DeviceID": "{leaf1bSN}"
+                  }}
+                }}
+              }},
+              "rows": {{}}
+            }}
+          }}
+        }},
+        "notes": ""
+      }}
+    }}

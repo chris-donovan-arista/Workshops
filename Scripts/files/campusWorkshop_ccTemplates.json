@@ -1,0 +1,38 @@
+{
+    "090MQNjatsj8emqAp5w84": {
+        "ID": "090MQNjatsj8emqAp5w84",
+        "Name": "Member Leaf Provisioning",
+        "Rules": [
+            {
+                "id": "ZECM-8YFlJz__BpnkhXx2",
+                "args": {
+                    "DeviceID": {
+                        "value": "sw-",
+                        "filterType": "regexp"
+                    }
+                },
+                "name": "Provision New Member Leaf",
+                "arrange": {
+                    "execute": "parallel"
+                },
+                "actionBundleId": "bPl470jKOqABslNqt9mOq"
+            },
+            {
+                "id": "rBacQ0dAwHAckz8j8NFI_",
+                "args": {
+                    "DeviceID": {
+                        "value": "pod..-leaf1a",
+                        "filterType": "regexp"
+                    }
+                },
+                "name": "Wait 60 Seconds Then Apply Configuration",
+                "arrange": {
+                    "execute": "parallel"
+                },
+                "actionBundleId": "Ox3mG7AgqsLz-xl4wtbrG"
+            }
+        ],
+        "Execute": "parallel",
+        "Description": ""
+    }
+}

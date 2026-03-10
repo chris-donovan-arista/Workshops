@@ -1,0 +1,60 @@
+{
+    "bPl470jKOqABslNqt9mOq": {
+        "ID": "bPl470jKOqABslNqt9mOq",
+        "Name": "Set Configuration",
+        "Actions": [
+            {
+                "id": "9Css94aVw_UM51IM5xl6d",
+                "args": {
+                    "Source": "sourcePlaceholder",
+                    "DeviceID": "viaTemplateDeviceIdPlaceholder",
+                    "Timestamp": "timestampPlaceholder"
+                },
+                "name": "setConfig",
+                "displayName": "Set Configuration",
+                "requiredArgs": [
+                    "DeviceID",
+                    "Source",
+                    "Timestamp"
+                ]
+            }
+        ],
+        "Execute": "parallel",
+        "Description": ""
+    },
+    "Ox3mG7AgqsLz-xl4wtbrG": {
+        "ID": "Ox3mG7AgqsLz-xl4wtbrG",
+        "Name": "Sleep Action",
+        "Actions": [
+            {
+                "id": "QchEEEi4oenrD29hRrJhs",
+                "args": {
+                    "Duration": "30"
+                },
+                "name": "5dfGPLOWkVDDinnfuLChq",
+                "description": "",
+                "displayName": "Sleep",
+                "requiredArgs": [
+                    "Duration"
+                ]
+            },
+            {
+                "id": "nCEXFFFi0XJiQTRnd_6bw",
+                "args": {
+                    "Source": "sourcePlaceholder",
+                    "DeviceID": "viaTemplateDeviceIdPlaceholder",
+                    "Timestamp": "timestampPlaceholder"
+                },
+                "name": "setConfig",
+                "displayName": "Set Configuration",
+                "requiredArgs": [
+                    "DeviceID",
+                    "Source",
+                    "Timestamp"
+                ]
+            }
+        ],
+        "Execute": "series",
+        "Description": ""
+    }
+}

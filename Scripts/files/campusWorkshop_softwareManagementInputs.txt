@@ -1,0 +1,19 @@
+path: []
+inputs:
+  softwareResolver:
+    - inputs:
+        softwareGroup:
+          extensionsCollection: []
+          imageName: EOS-4.32.5.1M.swi
+          streamingAgentName: null
+      tags:
+        query: device:{leaf1}
+    - inputs:
+        softwareGroup:
+          extensionsCollection: []
+          imageName: EOS-4.32.5.1M.swi
+          streamingAgentName: null
+      tags:
+        query: device:{leaf2}
+  ztpSoftwareAssignment: []
+  ztpSoftwareConfig: {{}}

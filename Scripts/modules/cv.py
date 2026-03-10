@@ -31,13 +31,13 @@ class pgfCVClient():
     def configure():
         config.parser.add_argument('-cvCleanup', default=False, action='store_true', help='do cleanup steps')
         config.parser.add_argument('-cvSetup', default=False, action='store_true', help='do setup steps')
-        config.parser.add_argument('-i', default="2024CampusWorkshopHardware.csv", help="hardware inventory")
+        config.parser.add_argument('-i', default="2026CampusWorkshopHardware.csv", help="hardware inventory")
 
         config.parser.add_argument('-addPackages', default=False, action='store_true', help='this option is only required for alraedy provisioned pods and will add the required packages.  these steps are automatically done on pods as they are provisioned moving forward')
         config.parser.add_argument('-addCCStuff', default=False, action='store_true', help='this option is only required for already provisioned pods and will add actionBundles and ccTemplates only.  these steps are automatically done on pods as they are provisioned moving forward')
         config.parser.add_argument('-cleanupNotifiers', default=False, action='store_true', help='only cleanup the event system')
         config.parser.add_argument('-allCleanup', default=False, action='store_true', help='cleanup everything')
-        config.parser.add_argument('-thirdParty', default='d4:af:f7:92:85:3f,d4:af:f7:92:68:19', help='comma delimited list of 3rd party devices to configure')
+        config.parser.add_argument('-thirdParty', default='', help='comma delimited list of 3rd party devices to configure')
 
     def __init__(self, token):
         self.token = token
@@ -124,21 +124,28 @@ class pgfCVClient():
                 inputKeys.append(response.key)
 
     async def onboardDevices(self, c, cvpRacClient, workspaceID, deviceInventory):
+        # for this iteration of the workshop we are only onboarding leaf1a
         print(f"{config.currentPod} - onboardDevices")
         deviceList = {}
         devices = cvpRacClient.api.get_inventory()
 
-        leaf1a = self.findDeviceBySerial(deviceInventory
         for device in devices:
             d = self.findDeviceBySerial(deviceInventory, device["serialNumber"])
-            if not d:
-                #raise Exception(f"couldn't find {device}")
+            if d["hostname"] != f"campus-pod{config.currentPod:0>2}-leaf1a":
                 continue
 
             newDevice = pgf.pgfDevice(device["serialNumber"], device["modelName"], device["systemMacAddress"], d["hostname"], self.tok)
             newDevice.fetchInterfaces()
 
             deviceList[device["serialNumber"]] = newDevice
+
+            # because the topology api is currently broken, we need to hardcode the links
+            #   this is specific out our workshop layout an is hardcoded
+            #newDevice.addPeer("Ethernet1", "pimac", "eth0")
+            newDevice.addPeer("Ethernet13", "d4:e5:c9:06:2f:0b", "Ge1")
+            #newDevice.addPeer("Ethernet14",
+            #newDevice.addPeer("Ethernet15",
+            #newDevice.addPeer("Ethernet16",
 
         data = {
             "partialEqFilter": [
@@ -150,33 +157,32 @@ class pgfCVClient():
                 }
             ]
         }
-        url = f'{self.baseURL}/api/resources/topology/v1/Edge/all'
-        resp = requests.get(url, json=data, verify=False, timeout=300, headers={'Authorization': f'Bearer {self.tok}'})
 
-        edges = json_decoder(resp.text)
-        print(json.dumps(edges, indent=2))
-        for edge in edges:
-            left = deviceList.get(edge["result"]["value"]["key"]["from"], None)
-            right = deviceList.get(edge["result"]["value"]["key"]["to"], None)
-            if not (left and right):
-                continue
+        # because the topology api is currently broken, we need to hardcode all the links
+        if False:
+            url = f'{self.baseURL}/api/resources/topology/v1/Edge/all'
+            resp = requests.get(url, json=data, verify=False, timeout=300, headers={'Authorization': f'Bearer {self.tok}'})
 
-            for individualEdge in edge["result"]["value"]["lldpLinks"]["values"]:
-                lPort = individualEdge["key"]["srcPort"]
-                rPort = individualEdge["key"]["dstPort"]
-                if left:
-                    left.addPeer(lPort, edge["result"]["value"]["key"]["to"], rPort)
-                if right:
-                    right.addPeer(rPort, edge["result"]["value"]["key"]["from"], lPort)
-                                 
+            edges = json_decoder(resp.text)
+            for edge in edges:
+                print(f"**********\n{edge}\n*********")
+                left = deviceList.get(edge["result"]["value"]["key"]["from"], None)
+                right = deviceList.get(edge["result"]["value"]["key"]["to"], None)
+                for individualEdge in edge["result"]["value"].get("lldpLinks", {}).get("values", []):
+                    lPort = individualEdge["key"]["srcPort"]
+                    rPort = individualEdge["key"]["dstPort"]
+                    if left:
+                        left.addPeer(lPort, edge["result"]["value"]["key"]["to"], rPort)
+                    if right:
+                        right.addPeer(rPort, edge["result"]["value"]["key"]["from"], lPort)
 
         # now pull the current inputs from the studio
         request = pyavd._cv.api.arista.studio.v1.InputsConfigSetSomeRequest(values=[])
 
         topologyInventory = await c.get_studio_inputs(studio_id="TOPOLOGY", workspace_id=workspaceID)
-        for deviceIndex, device in enumerate(topologyInventory.get("devices", [])):
+        #for deviceIndex, device in enumerate(topologyInventory.get("devices", [])):
             #print(device)
-            pass
+            #pass
 
         idx = 0
         for deviceName, device in deviceList.items():
@@ -208,19 +214,15 @@ class pgfCVClient():
 
         tags = [
             ("Campus", f"Workshop"),
-            ("Campus-Pod", f"IT-Bldg"),
+            ("Campus-Pod", f"IT-BLDG"),
             ("Access-Pod", f"IDF1"),
             ("Role", "Leaf"),
         ]
         tagAssignments = [
             ("Campus", f"Workshop", leaf1a["sn"],  None),
-            ("Campus", f"Workshop", leaf1b["sn"], None),
-            ("Campus-Pod", f"IT-Bldg", leaf1a["sn"],  None),
-            ("Campus-Pod", f"IT-Bldg", leaf1b["sn"], None),
+            ("Campus-Pod", f"IT-BLDG", leaf1a["sn"],  None),
             ("Access-Pod", f"IDF1", leaf1a["sn"],  None),
-            ("Access-Pod", f"IDF1", leaf1b["sn"], None),
             ("Role", "Leaf", leaf1a["sn"],  None),
-            ("Role", "Leaf", leaf1b["sn"], None)
         ]
         # assign tags
         await c.set_tags(workspaceID, tags, "device", 300)
@@ -245,18 +247,6 @@ class pgfCVClient():
                 "configletName": f"Studios-campus-pod{config.currentPod}-global-config",
                 "container": "Device",
                 "query": "device: *",
-                "children": [leaf1a["hostname"], leaf1b["hostname"]]
-            },{
-                "filename": "Studios-campus-leaf1a-deviceconfig.txt",
-                "configletName": f"Studios-campus-pod{config.currentPod}-leaf1a-deviceconfig",
-                "container": leaf1a["hostname"],
-                "query": f"device:{leaf1a['sn']}",
-                "children": None
-            },{
-                "filename": "Studios-campus-leaf1b-deviceconfig.txt",
-                "configletName": f"Studios-campus-pod{config.currentPod}-leaf1b-deviceconfig",
-                "container": leaf1b["hostname"],
-                "query": f"device:{leaf1b['sn']}",
                 "children": None
             },{
                 "filename": "Studios-campus-radsec-config.txt",
@@ -322,6 +312,34 @@ class pgfCVClient():
 
         ###################### scs upload ####################
 
+    async def aicStudioSetup(self, c, workspaceID, deviceInventory):
+        print(f"{config.currentPod} - aicStudioSetup")
+
+        #### to make this work you need to
+        ####  replace {} as {{}}
+        ####  replace serial references
+        ####  replace pod number references in queries
+        ####  replace pod number references in vlan ids
+
+        leaf1a = self.findDeviceByName(deviceInventory, f"campus-pod{config.currentPod:0>2}-leaf1a")
+
+        if not leaf1a:
+            raise Exception("could not find leaf1a or leaf1b in deviceInventory")
+
+        vals = {
+            "podStr": config.currentPod,
+            "podInt": 100+int(config.currentPod),
+            "leaf1a": leaf1a["sn"],
+        }
+        f = open("files/campusWorkshop_aicInputs.txt", "r")
+        aicStudio = yaml.safe_load(f.read().format(**vals))
+
+        aicStudioID = "studio-campus-access-interfaces"
+        await c.set_studio_inputs(
+            studio_id=aicStudioID,
+            workspace_id=workspaceID,
+            inputs=aicStudio["inputs"])
+
     async def campusStudioSetup(self, c, workspaceID, deviceInventory):
         print(f"{config.currentPod} - campusStudioSetup")
         #with open("files/campusWorkshop_campusFabricInputs.yml", "r") as f:
@@ -379,8 +397,6 @@ class pgfCVClient():
         if buildResult.status != 1: # SUCCESS
             raise Exception(f"build failed for pod: {config.currentPod} {workspaceID}: {buildResult.status}")
 
-        # HERE
-        return
         result = await c.submit_workspace(workspaceID, force=True)
         print("submitting workspace")
         submitResult, workspace = await c.wait_for_workspace_response(workspaceID, result.request_params.request_id)
@@ -589,8 +605,8 @@ class pgfCVClient():
             return
 
         if config.args.addPackages:
-            await self.doPackage("files/sleep_1.0.0.tar")
-            #await self.doPackage("files/cv-workshop_1.0.0.tar")
+            await self.doPackage("files/sleep_0.2.0.tar")
+            await self.doPackage("files/cv-workshop_1.0.0.tar")
             return
 
         if config.args.addCCStuff:
@@ -635,18 +651,18 @@ class pgfCVClient():
 
             workToDo = True
 
-            #### HERE
             ###### setup steps
-            #await self.doActionBundles(grpcClient)
-            #await self.doTemplates(grpcClient)
+            await self.doActionBundles(grpcClient)
+            await self.doTemplates(grpcClient)
 
-            #await self.doPackage("files/sleep_1.0.0.tar")
-            #await self.doPackage("files/cv-workshop_1.0.0.tar")
+            await self.doPackage("files/sleep_0.2.0.tar")
+            await self.doPackage("files/cv-workshop_1.0.0.tar")
 
             await self.onboardDevices(c, cvpRacClient, workspaceID, deviceInventory)
             await self.assignTags(c, workspaceID, deviceInventory)
             await self.scsSetup(c, workspaceID, deviceInventory)
-            await self.smsSetup(c, workspaceID, deviceInventory)
+            #await self.smsSetup(c, workspaceID, deviceInventory)
+            await self.aicStudioSetup(c, workspaceID, deviceInventory)
             await self.campusStudioSetup(c, workspaceID, deviceInventory)
 
         if workToDo:

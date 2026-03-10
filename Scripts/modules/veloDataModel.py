@@ -188,6 +188,21 @@ class veloBaseRoutedInterface():
                     "list": False,
                     "display": True
                   }
+                },
+                {
+                  "value": [
+                    "100.64.0.1"
+                  ],
+                  "type": "ipv4",
+                  "option": 6,
+                  "metaData": {
+                    "option": 6,
+                    "name": "DNS Servers",
+                    "description": "List of DNS server addresses",
+                    "dataType": "ipv4",
+                    "list": True,
+                    "display": True
+                  }
                 }
               ],
               "numDhcpAddr": net.num_addresses-3,

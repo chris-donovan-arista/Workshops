@@ -1,0 +1,84 @@
+path: []
+inputs:
+  campus:
+    - inputs:
+        campusDetails:
+          campusPod:
+            - inputs:
+                campusPodFacts:
+                  accessPodDefaults:
+                    routerIdPool: 172.16.0.0/24
+                    uplinkInterfaceDetails:
+                      leafPortChannelUplinksEosCli: switchport trunk native vlan {podInt}
+                      leafUplinksEosCli: null
+                    uplinkIpv4Pool: 172.15.0.0/24
+                    vtepLoopbackIPv4Pool: 172.16.1.0/24
+                  accessPods:
+                    - inputs:
+                        accessPodFacts:
+                          leafs:
+                            - inputs:
+                                leafsInfo:
+                                  nodeId: 2
+                              tags:
+                                query: device:{leaf1}
+                          memberLeafMlagPairs: []
+                          memberLeafs: []
+                          nodeGroupAttributesList: []
+                      tags:
+                        query: Access-Pod:IDF1
+                  advancedFabricSettings: {{}}
+                  campusPodRoutingProtocols: {{}}
+                  design:
+                    campusType: L2
+                    vxlanOverlay: false
+                  egressConnectivity: {{}}
+                  fabricConfigurations: 
+                    inbandManagementDetails:
+                      accessPods: []
+                      inbandManagementGateway: 10.0.{podInt}.1
+                      inbandManagementSubnet: 10.0.{podInt}.0/24
+                      inbandManagementVlan: {podInt}
+                  nodeTypeProperties: {{}}
+                  spineDefaults: {{}}
+                  spines: []
+                  thirdPartyDevices:
+                    - hostname: Velo
+                      identifier: d4:e5:c9:06:2f:0b
+                      nodeId: 1
+                      role: spine
+              tags:
+                query: Campus-Pod:IT-BLDG
+      tags:
+        query: Campus:Workshop
+  campusServices:
+    - inputs:
+        campusServicesGroup:
+          campusPodsServices:
+            - inputs:
+                services:
+                  campusType: L2
+                  svis:
+                    - addressLocking: {{}}
+                      devices:
+                        - enabled: null
+                          ipVirtualRouterSubnet: null
+                          tagQuery:
+                            tags:
+                              query: Access-Pod:IDF1
+                      dhcpHelpers: []
+                      enabled: null
+                      eosCli: null
+                      id: {podInt}
+                      ipVirtualRouterSubnet: null
+                      multicast: {{}}
+                      name: test
+                      nodes: []
+                      ospf: {{}}
+                      privateVlan: {{}}
+                      routed: false
+                      vrf: null
+              tags:
+                query: Campus-Pod:IT-BLDG
+      tags:
+        query: Campus:Workshop

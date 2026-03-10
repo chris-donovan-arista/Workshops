@@ -1,0 +1,34 @@
+path: []
+inputs:
+  campus:
+    - inputs:
+        campusPod:
+          - inputs:
+              accessPod:
+                - inputs:
+                    interfaces:
+                      - inputs:
+                          adapterDetails:
+                            description: tmp
+                            enabled: 'Yes'
+                            mode: access
+                            vlans:
+                              vlans: '{podInt}'
+                        tags:
+                          query: interface:Ethernet15@{leaf1a}
+                      - inputs:
+                          adapterDetails:
+                            description: tmp
+                            enabled: 'Yes'
+                            mode: access
+                            vlans:
+                              vlans: '{podInt}'
+                        tags:
+                          query: interface:Ethernet16@{leaf1a}
+                  tags:
+                    query: Access-Pod:IDF1
+            tags:
+              query: Campus-Pod:IT-BLDG
+      tags:
+        query: Campus:Workshop
+  spineCampus: []

@@ -1,0 +1,64 @@
+{
+  "type": "folderlocation",
+  "id": {
+    "type": "locallocationid",
+    "id": 0
+  },
+  "name": "Locations",
+  "accessibleToUser": true,
+  "defaultLocation": false,
+  "timezoneId": "America/Denver",
+  "locationTag": null,
+  "venueId": null,
+  "sandboxLocation": false,
+  "geoInfo": null,
+  "children": [
+    {
+      "type": "folderlocation",
+      "id": {
+        "type": "locallocationid",
+        "id": 13
+      },
+      "name": "Corp",
+      "accessibleToUser": true,
+      "defaultLocation": false,
+      "timezoneId": "America/Denver",
+      "locationTag": null,
+      "venueId": null,
+      "sandboxLocation": false,
+      "geoInfo": null,
+      "children": [
+        {
+          "type": "floorlocation",
+          "id": {
+            "type": "locallocationid",
+            "id": 14
+          },
+          "name": "1st Floor",
+          "accessibleToUser": true,
+          "defaultLocation": false,
+          "timezoneId": "America/Denver",
+          "locationTag": null,
+          "venueId": null,
+          "sandboxLocation": false,
+          "geoInfo": null
+        },
+        {
+          "type": "floorlocation",
+          "id": {
+            "type": "locallocationid",
+            "id": 15
+          },
+          "name": "2nd Floor",
+          "accessibleToUser": true,
+          "defaultLocation": false,
+          "timezoneId": "America/Denver",
+          "locationTag": null,
+          "venueId": null,
+          "sandboxLocation": false,
+          "geoInfo": null
+        }
+      ]
+    }
+  ]
+}

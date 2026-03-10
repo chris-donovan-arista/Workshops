@@ -1,0 +1,16 @@
+management security
+   ssl profile agni-server
+      certificate 710p.pem key 710p.key
+      trust certificate radsec_ca_certificate.pem
+!
+radius-server host radsec.beta.agni.arista.io tls ssl-profile agni-server timeout 10 retransmit 3
+!
+aaa group server radius agni-server-group
+   server radsec.beta.agni.arista.io tls
+!
+aaa authentication dot1x default group radius
+aaa accounting dot1x default start-stop group radius
+!
+dot1x dynamic-authorization
+dot1x system-auth-control
+dot1x protocol lldp bypass

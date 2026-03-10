@@ -5,14 +5,15 @@
 
 This Lab Guide:
 
-[https://github.com/arista-rockies/Workshops/tree/main/Campus](https://github.com/arista-rockies/Workshops/tree/main/Campus)
+Campus/2026_Campus_Workshop/C-03/Rockies Campus C-03 AGNI Lab Guide - Wireless Guest Captive Portal
 
 ---
 
 ## Table of Contents
 
 Full Lab Topology  
-POD Topology  
+POD Topology
+
 NAC Lab #3 - Configuring Guest Captive Portal  
 1. Create a Guest Portal in AGNI  
 2. Create a Network in AGNI  
@@ -33,9 +34,9 @@ NAC Lab #3 - Configuring Guest Captive Portal
 
 ---
 
-## NAC Lab \#3 \- Configuring Guest Captive Portal {#nac-lab-#3---configuring-guest-captive-portal}
+## NAC Lab #3 - Configuring Guest Captive Portal
 
-## 1\. Create a Guest Portal in AGNI {#1.-create-a-guest-portal-in-agni}
+## 1. Create a Guest Portal in AGNI
 
 Return to the LaunchPad tab and Log into AGNI [https://launchpad.wifi.arista.com/](https://launchpad.wifi.arista.com/), or access the AGNI tab in your browser.
 

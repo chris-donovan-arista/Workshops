@@ -1,38 +1,39 @@
-Campus C-03 AGNI Lab Guide  
-Wireless Guest Captive Portal
+# Campus C-03 AGNI Lab Guide - Wireless Guest Captive Portal
 
-![https://lh5.googleusercontent.com/TuE\_1X5at4VjzVhbTsRrQDC3NE6PyS6N\_XjvzKXMFqyjDoEXMoi10DIW2eMeLzUIPfMJTD5fKEq8ShDJed\_ubWGNmU7\_Rq5E4XNt2vlDeZf6PMLcYIktpJ6QRkv2uCPmouTReMoBURk][image1]![][image2]      
+![image1](images/CVCUE_logo.png) 
+![image2](images/AGNI.png)
 
-This Lab Guide:  
+This Lab Guide:
+
 [https://github.com/arista-rockies/Workshops/tree/main/Campus](https://github.com/arista-rockies/Workshops/tree/main/Campus)
 
-**Table of Contents**
+---
 
-[**Full Lab Topology	2**](#full-lab-topology)
+## Table of Contents
 
-[**POD Topology	3**](#pod-topology)
+Full Lab Topology  
+POD Topology  
+NAC Lab #3 - Configuring Guest Captive Portal  
+1. Create a Guest Portal in AGNI  
+2. Create a Network in AGNI  
+3. Create a Role Profile in CV-CUE  
+4. Create a SSID in CV-CUE  
 
-[**NAC Lab \#3 \- Configuring Guest Captive Portal	4**](#nac-lab-#3---configuring-guest-captive-portal)
+---
 
-[1\. Create a Guest Portal in AGNI	4](#1.-create-a-guest-portal-in-agni)
+## Full Lab Topology
 
-[2\. Create a Network in AGNI	7](#2.-create-a-network-in-agni)
+![Full Lab Topology](images/full-lab-topology.png)
 
-[3\. Create a Role Profile in CV-CUE	9](#3.-create-a-role-profile-in-cv-cue)
+---
 
-[4\. Create a SSID in CV-CUE	12](#4.-create-a-ssid-in-cv-cue)
+## POD Topology
 
-# 
+![POD Topology](images/pod-lab-topology.png)
 
-# Full Lab Topology  {#full-lab-topology}
+---
 
-![][image3]
-
-# POD Topology {#pod-topology}
-
-![][image4]
-
-# NAC Lab \#3 \- Configuring Guest Captive Portal {#nac-lab-#3---configuring-guest-captive-portal}
+## NAC Lab \#3 \- Configuring Guest Captive Portal {#nac-lab-#3---configuring-guest-captive-portal}
 
 ## 1\. Create a Guest Portal in AGNI {#1.-create-a-guest-portal-in-agni}
 

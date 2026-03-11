@@ -1,7 +1,7 @@
 # Campus C-02 AGNI Lab Guide UPSK Wireless Policy
 
-![image1](images/image1.png)
-![image2](images/image2.png)
+![image1](images/CVCUE_logo.png)
+![image2](images/AGNI_logo.png)
 ---
 
 This Lab Guide:
@@ -13,7 +13,8 @@ https://github.com/arista-rockies/Workshops/tree/main/Campus
 ## Table of Contents
 
 Full Lab Topology  
-POD Topology  
+POD Topology
+
 NAC Lab #2 - Create UPSK Wireless Policy  
 1. Create Identity UPSK SSID:  
 2. Create UPSK Network and Segment:  
@@ -24,14 +25,14 @@ NAC Lab #2 - Create UPSK Wireless Policy
 
 ## Full Lab Topology
 
-![image3](images/image3.png)
+![image3](images/full-lab-topology.png)
 
 ---
 
 ## POD Topology
 
 
-![image4](images/image4.png)
+![image4](images/pod-lab-topology.png)
 ---
 
 ## NAC Lab #2 - Create UPSK Wireless Policy

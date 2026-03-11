@@ -4,9 +4,12 @@
 # TODO:  unhardcode the vco address
 # TODO:  async'ify
 # TODO: need to move some things to the datamodel to clean this up a bit
-import requests, json, time, ipaddress, uuid
+import requests, json, time, ipaddress, uuid, nmcli, time, paramiko
 from modules import config
 from modules import veloDataModel
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from nmcli._exception import NotExistException
 
 # *very* basic velo client
 class VeloClient():
@@ -25,8 +28,8 @@ class VeloClient():
         self.serialNumber = d["sn"]
         self.pod = d["podNum"]
 
-        self.token = token
-        self.baseURL = t["url"]
+        self.token = t
+        self.baseURL = f'https://{t["url"]}'
         self._connected = False
         self.headers = {"Content-Type": "application/json", "Authorization": f"Token {t['key']}"}
         self.edge = {}
@@ -375,6 +378,79 @@ class VeloClient():
         self._debug = False
         self._doAction(method='configuration/updateConfigurationModule', params=data)
         self._debug = False
+
+        if not config.args.veloReconfigure:
+            self.activate(activationKey["activationKey"])
+
+    def activate(self, activationKey):
+        print(f"{config.currentPod} - activating edge")
+        ssid = f"velocloud-{self.serialNumber[-3:]}"
+        url = f'http://192.168.2.1/?activation_key={activationKey}&custom_vco={self.token["url"]}'
+        print("  connecting")
+        connected = False
+        while not connected:
+            try:
+                nmcli.connection.down(ssid)
+                nmcli.connection.delete(ssid)
+            except NotExistException:
+                print(f"  we don't appear to have a wifi nic.  exiting without activating.  hit the following url in a browser: {url}")
+                # we don't have a wifi nic.  just exit
+                return
+            except:
+                # i'm not really interested on if there is a problem
+                #  and trying to resolve something
+                pass
+
+            try:
+                nmcli.device.wifi_connect(ssid, 'vcsecret')
+                connected = True
+                print("", flush=True, end="\n")
+            except:
+                time.sleep(1)
+                print(".", flush=True, end="")
+
+        # now that we are connected, let's do the activate
+        opts = webdriver.FirefoxOptions()
+        opts.add_argument("--headless")
+        driver = webdriver.Firefox(options=opts)
+        driver.get(url)
+
+        success = driver.find_element(By.ID, 'success-dialog')
+        update = driver.find_element(By.ID, 'activation-requires-download')
+
+        print("  waiting for the activation to complete")
+        while success.value_of_css_property("display") == "none" and update.value_of_css_property("display") == "none":
+            print('.', flush=True, end="")
+            time.sleep(1)
+
+            success = driver.find_element(By.ID, 'success-dialog')
+            update = driver.find_element(By.ID, 'activation-requires-download')
+
+        print("", flush=True, end="\n")
+        nmcli.connection.down(ssid)
+        nmcli.connection.delete(ssid)
+
+        sshUser = "root"
+        sshPassword = self.token["sshPassword"].format(self.serialNumber[-3:])
+
+        pmClient = paramiko.SSHClient()
+        pmClient.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        connected = False
+        while not connected:
+            try:
+                pmClient.connect(f'10.{self["podNum"]}.113.2', 22, sshUser, sshPassword)
+                connected = True
+                print("", flush=True, end="\n")
+            except:
+                print(".", flush=True, end="")
+                time.sleep(1)
+
+        print("  installing lldp")
+        scp = pmClient.open_sftp()
+        scp.put('files/lldpd_1.0.18-r3_x86_64.ipk', '/root/lldpd_1.0.18-r3_x86_64.ipk')
+
+        pmClient.exec_command("opkg install lldpd_1.0.18-r3_x86_64.ipk")
+        print("  done")
 
     def setup(self):
         self._getEdgeBySerial()

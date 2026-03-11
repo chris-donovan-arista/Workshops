@@ -18,6 +18,7 @@ NAC Lab #1 - Create EAP-TLS Wireless Policy
 2. Create an EAP-TLS SSID  
 3. CloudVision AGNI Access  
 4. Create AGNI Networks & Segments for the EAP-TLS Wireless Policy  
+
 Additional Information  
 A. Setting up RadSec with a TPM AP Certificate  
 B. Setting up RadSec with a Custom AP Certificate  
@@ -246,8 +247,7 @@ If you don’t see any new sessions within 2 minutes AGNI, power cycle the Raspb
 
 ![image42](images/image42.png)
 
-
-
+## End of EAP-TLS Wireless Policy Lab
 ---
 
 ## Additional Information

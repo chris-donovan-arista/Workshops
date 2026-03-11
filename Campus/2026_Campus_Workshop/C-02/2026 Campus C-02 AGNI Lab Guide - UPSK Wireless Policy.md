@@ -6,7 +6,7 @@
 
 This Lab Guide:
 
-https://github.com/arista-rockies/Workshops/tree/main/Campus
+Campus/2026_Campus_Workshop/C-02/Rockies Campus C-02 AGNI Lab Guide - UPSK Wireless Policy
 
 ---
 

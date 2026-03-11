@@ -2,14 +2,9 @@
 
 ## This Lab Guide: ##
 
-![image1](images/image1.png)
+![image1](images/CVCUE_logo.png) ![image2](images/AGNI_logo.png) ![image3](images/image3.png)
 
-![image2](images/image2.png)
-
-![image3](images/image3.png)
-
-https://github.com/arista-rockies/Workshops/tree/main/Campus
-
+Campus/2026_Campus_Workshop/C-04/Rockies Campus C-04 AGNI Lab Guide - EAP-TLS Wired Policy
 
 ---
 
@@ -32,12 +27,12 @@ C. Adding Access Control Lists for Wired Users
 
 ## Full Lab Topology
 
-![image4](images/image4.png)
+![image4](images/full-lab-topology.png)
 ---
 
 ## POD Topology
 
-![image5](images/image5.png)
+![image5](images/pod-lab-topology.png)
 
 ---
 

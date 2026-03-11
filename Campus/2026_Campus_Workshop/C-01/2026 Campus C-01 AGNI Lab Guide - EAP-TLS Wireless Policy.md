@@ -387,4 +387,4 @@ RadSec Tunnel with Arista AP using Custom certificate (non-TPM chip AP's)
 ![image70](images/image70.png)
 ---
 
-END OF LAB GUIDE
+NAC LAB #1 COMPLETE

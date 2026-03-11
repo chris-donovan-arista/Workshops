@@ -114,13 +114,15 @@ Return to the LaunchPad tab and Log into CV-CUE [https://launchpad.wifi.arista.c
 
 In **CV-CUE**, navigate to **Configure \> Network Profiles \> Role Profile.**
 
-**Add a** Role Profile.
+**Add** Role Profile.
 
 Add the Role Name as **ATD-\#\#-Portal-Role.**
 
 Enable the **Redirection** check box and select **Static Redirection.**
 
 In the **Redirect URL** field, add the portal URL \- copied from AGNI.
+
+**NOTE:** Role Profiles are case sensitive.
 
 ![image16](images/CVCUE_Role_Profile.png)
 

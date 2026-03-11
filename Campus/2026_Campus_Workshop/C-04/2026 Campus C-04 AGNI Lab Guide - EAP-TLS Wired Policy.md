@@ -2,7 +2,7 @@
 
 ## This Lab Guide: ##
 
-![image1](images/CVCUE_logo.png) ![image2](images/AGNI_logo.png) ![image3](images/image3.png)
+![image1](images/CVCUE_logo.png) ![image2](images/AGNI_logo.png) ![image3](images/CVP_logo.png)
 
 Campus/2026_Campus_Workshop/C-04/Rockies Campus C-04 AGNI Lab Guide - EAP-TLS Wired Policy
 

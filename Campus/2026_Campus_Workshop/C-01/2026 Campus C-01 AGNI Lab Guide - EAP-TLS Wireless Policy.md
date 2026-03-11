@@ -4,7 +4,7 @@
 
 This Lab Guide:
 
-https://github.com/arista-rockies/Workshops/tree/main/Campus
+Campus/2026_Campus_Workshop/C-01/Rockies Campus C-01 AGNI Lab Guide - EAP-TLS Wireless Policy
 
 ---
 

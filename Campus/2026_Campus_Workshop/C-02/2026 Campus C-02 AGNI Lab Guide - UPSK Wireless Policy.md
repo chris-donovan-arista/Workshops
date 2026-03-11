@@ -1,4 +1,4 @@
-# Campus C-02 AGNI Lab Guide UPSK Wireless Policy
+# Campus C-02 AGNI Lab Guide - UPSK Wireless Policy
 
 ![image1](images/CVCUE_logo.png)
 ![image2](images/AGNI_logo.png)
@@ -55,6 +55,7 @@ Next, click on the 3 Dots and select Create a Copy on the SSID ATD-##-PSK where 
 
 ![image7](images/image7.png)
 ![image8](images/image8.png)
+
 Select - Currently Selected Folders and then Continue.
 
 ![image9](images/image9.png)
@@ -86,6 +87,7 @@ Confirm the Username and Password, Called Station, COA information.
 
 ![image15](images/image15.png)
 ![image16](images/image16.png)
+
 Finally, Save and turn on the SSID.
 
 ![image17](images/image17.png)
@@ -94,8 +96,6 @@ Finally, Save and turn on the SSID.
 Please Read!
 
 Only select the “5 GHz” option on the next screen (uncheck the 2.4 GHz box if it’s checked), then click “Turn SSID On”.
-
-
 
 ---
 
@@ -139,8 +139,6 @@ Click on + Add Condition
 
 ![image26](images/image26.png)
 
-
-
 Conditions: Network:Authentication Type is UPSK
 
 *Note: Conditions are always Matches ALL.
@@ -161,8 +159,6 @@ Actions: Allow Access
 ![image35](images/image35.png)
 
 Finally, click on Add Segment.
-
-
 
 You should now see Wireless-UPSK in the list of segments.
 

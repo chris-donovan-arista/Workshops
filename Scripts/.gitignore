@@ -1,6 +1,8 @@
 __pycache__
 tmp
 old
+*.txt
+*.bak
 *.swi
 *.swp
 *.tok

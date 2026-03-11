@@ -42,7 +42,7 @@ apiToken:
         "key": "velokey"
         "url": "https://veloVCO.com"
 """
-import os, argparse, yaml, asyncio, csv, requests
+import os, argparse, yaml, asyncio, csv, requests, json
 
 from modules import config
 config.parser = argparse.ArgumentParser()
@@ -84,21 +84,25 @@ async def main():
         config.apiTokens[pod] = tokens[pod]
 
     with open(config.args.i, "r") as f:
-        tmp = csv.reader(f)
-        for device in tmp:
-            if device[0][0] != 'A':
+        for device in csv.DictReader(f):
+            if device['Model'][0] not in ['A', 'V']:
                 continue
 
-            podNum = int(device[4][-2:])
 
-            if podNum not in config.globalInventory:
-                config.globalInventory[podNum] = []
+            # rather than rewrite the code, i'm taking the lazy path
+            device["sn"] = device["Serial Number"]
+            device["mac"] = device["Mac address"]
+            device["hostname"] = device["Hostname"]
 
-            config.globalInventory[podNum].append({
-                    "sn": device[1],
-                    "mac": device[2],
-                    "hostname": device[5]
-            })
+            if device['Model'][0] == 'A':
+                podNum = int(device["CVaaS and CV-CUE Pod Assignment"][-2:])
+                p = config.globalInventory.setdefault(podNum, [])
+                p.append(device)
+            elif device['Model'][0] == 'V':
+                podNum = device["CVaaS and CV-CUE Pod Assignment"]
+                device["podNum"] = podNum
+
+                p = config.globalInventory.setdefault('velo', {})[podNum] = device
 
     requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 

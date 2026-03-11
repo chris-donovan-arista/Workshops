@@ -20,17 +20,21 @@ class VeloClient():
         if not (t:=token.get("velo", None)):
             raise Exception("invalid token")
 
+        # let's pull some information out of the global inventory
+        d = config.globalInventory['velo'][config.currentPod]
+        self.serialNumber = d["sn"]
+        self.pod = d["podNum"]
+
         self.token = token
         self.baseURL = t["url"]
         self._connected = False
         self.headers = {"Content-Type": "application/json", "Authorization": f"Token {t['key']}"}
-        self.pod = token['name']
         self.edge = {}
         self._actionCounter = 0
         self._debug = False
 
         self._authenticate()
-        self._getEdge()
+        self._getEdgeBySerial()
 
         if not self._connected:
             raise Exception("authentication to velo failed")
@@ -94,7 +98,15 @@ class VeloClient():
             print(f' ----------------------------')
         return resp.json()
 
-    def _getEdge(self):
+    def _getEdgeBySerial(self):
+        # get edge doesn't support filtering by serial so we have to do this the dumb way
+        allEdges = self._doPortal(method='/enterprise/getEnterpriseEdgeList')
+        for edge in allEdges:
+            if edge['serialNumber'] == self.serialNumber:
+                self.edge = edge
+                return
+
+    def _getEdgeByName(self):
         self.edge = self._doPortal(method='/edge/getEdge', data={"name": self.pod})
 
     def _getLicenses(self):
@@ -155,7 +167,7 @@ class VeloClient():
         # i cannot delete a connected edge, i must wait for it to disconnect
         if wait:
             while timeout>0:
-                self._getEdge()
+                self._getEdgeBySerial()
                 if not self.edge["edgeState"] in ["OFFLINE", "DEGRADED", "NEVER_ACTIVATED"]:
                     print(f'.', flush=True, end='')
                     #print(f'.{self.edge["edgeState"]}', flush=True, end='')
@@ -265,7 +277,7 @@ class VeloClient():
         if not config.args.veloReconfigure:
             activationKey = self._doPortal('/edge/edgeProvision', data=data)
 
-        self._getEdge()
+        self._getEdgeBySerial()
 
         self._debug = config.args.veloDump
         segments = self._doPortal(method='/enterprise/getEnterpriseNetworkSegments')
@@ -365,7 +377,7 @@ class VeloClient():
         self._debug = False
 
     def setup(self):
-        self._getEdge()
+        self._getEdgeBySerial()
 
         if "id" in self.edge:
             print(f"{config.currentPod} - skipping provision, device already there")
@@ -375,9 +387,8 @@ class VeloClient():
 
     def execute(self):
         if config.args.veloDump:
-            self._getEdge()
+            self._getEdgeBySerial()
             print(f'{self.edge}')
-            self.provisionEdge()
             return
 
         if config.args.veloCleanup:

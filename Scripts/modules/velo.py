@@ -386,16 +386,16 @@ class VeloClient():
         print(f"{config.currentPod} - activating edge")
         ssid = f"velocloud-{self.serialNumber[-3:]}"
         url = f'http://192.168.2.1/?activation_key={activationKey}&custom_vco={self.token["url"]}'
-        print("  connecting")
+        print(f"  connecting to ssid: {ssid}")
         connected = False
         while not connected:
             try:
                 nmcli.connection.down(ssid)
                 nmcli.connection.delete(ssid)
-            except NotExistException:
-                print(f"  we don't appear to have a wifi nic.  exiting without activating.  hit the following url in a browser: {url}")
-                # we don't have a wifi nic.  just exit
-                return
+            #except NotExistException:
+                #print(f"  we don't appear to have a wifi nic.  exiting without activating.  hit the following url in a browser: {url}")
+                ## we don't have a wifi nic.  just exit
+                #return
             except:
                 # i'm not really interested on if there is a problem
                 #  and trying to resolve something
@@ -404,7 +404,7 @@ class VeloClient():
             try:
                 nmcli.device.wifi_connect(ssid, 'vcsecret')
                 connected = True
-                print("", flush=True, end="\n")
+                print("   connected\n   starting activation", flush=True, end="\n")
             except:
                 time.sleep(1)
                 print(".", flush=True, end="")
@@ -426,10 +426,12 @@ class VeloClient():
             success = driver.find_element(By.ID, 'success-dialog')
             update = driver.find_element(By.ID, 'activation-requires-download')
 
-        print("", flush=True, end="\n")
+        print("   completed", flush=True, end="\n")
         nmcli.connection.down(ssid)
         nmcli.connection.delete(ssid)
 
+        sshServer = f'10.1.{100+int(config.currentPod)}.2'
+        print(f"   connecting to {sshServer} via ssh")
         sshUser = "root"
         sshPassword = self.token["sshPassword"].format(self.serialNumber[-3:])
 
@@ -438,9 +440,9 @@ class VeloClient():
         connected = False
         while not connected:
             try:
-                pmClient.connect(f'10.{self["podNum"]}.113.2', 22, sshUser, sshPassword)
+                pmClient.connect(sshServer, 22, sshUser, sshPassword)
                 connected = True
-                print("", flush=True, end="\n")
+                print("   connected", flush=True, end="\n")
             except:
                 print(".", flush=True, end="")
                 time.sleep(1)

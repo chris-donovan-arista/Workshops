@@ -11,7 +11,8 @@ Campus/2026_Campus_Workshop/C-04/Rockies Campus C-04 AGNI Lab Guide - EAP-TLS Wi
 ## Table of Contents
 
 Full Lab Topology  
-POD Topology  
+POD Topology
+
 NAC Lab #4 - Create EAP-TLS Wired Policy  
 1. Access CloudVision as a Service  
 2. Enable RadSec on campus-pod<xx>-leaf1c  

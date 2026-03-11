@@ -1,6 +1,6 @@
 # Campus C-01 AGNI Lab Guide EAP-TLS Wireless Policy
-![image1](images/image1.png) 
-![image2](images/image2.png)
+![image1](images/CVCUE_logo.png) 
+![image2](images/AGNI_logo.png)
 
 This Lab Guide:
 
@@ -12,6 +12,7 @@ https://github.com/arista-rockies/Workshops/tree/main/Campus
 
 Full Lab Topology  
 POD Topology  
+
 NAC Lab #1 - Create EAP-TLS Wireless Policy  
 1. CloudVision Cognitive Unified Edge CV-CUE Access  
 2. Create an EAP-TLS SSID  
@@ -26,14 +27,14 @@ C. Create an AGNI Guest Captive Portal
 
 ## Full Lab Topology
 
-![image3](images/image3.png)
+![image3](images/full-lab-topology.png)
 
 ---
 
 ## POD Topology
 
 
-![image4](images/image4.png)
+![image4](images/pod-lab-topology.png)
 ---
 
 ## NAC Lab #1 - Create EAP-TLS Wireless Policy

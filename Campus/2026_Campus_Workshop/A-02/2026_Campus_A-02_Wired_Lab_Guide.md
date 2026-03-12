@@ -32,12 +32,12 @@ https://github.com/arista-rockies/Workshops/tree/main/Campus
 
 ---
 
-## 1. Accessing CloudVision as a Service
+## Accessing CloudVision as a Service
 
 In your Google Chrome browser, enter the following URL:  
 https://www.arista.io/ to access CloudVision as a Service (CVaaS).
 
-1. in the “Organization” box enter the Organization name “rockies-training-##” where ## is a 2 digit character between 01-20 that was assigned to your lab/Pod, then click “Enter”.
+1. In the **Organization** box enter the Organization name “rockies-training-<span style="color: red;">##</span>” where <span style="color: red;">##</span> is a 2 digit character between 01-20 that was assigned to your lab/Pod, then click **Enter**.
 
 ![CVaaS Login Page](images/cvaas-login.png)
 

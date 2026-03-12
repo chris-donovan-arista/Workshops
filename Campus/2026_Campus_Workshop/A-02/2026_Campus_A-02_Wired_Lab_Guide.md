@@ -66,9 +66,9 @@ This lab will help you create port profiles and apply them to interfaces in your
 ![Create Workspace](images/create-workspace.png)
 
 3. Disable the Active Studios toggle to display all available CloudVision Studios (which when enabled will only show used/active Studios).  
-*Note:- the toggle may already be in the disabled position.
+*Note:- the toggle may already be in the disabled position.*
 
-![Disable Active Studios](images/disable-active-studios.png)
+![Disable Active Studios](images/show-active-studios.png)
 
 4. Create two port profiles using the Access Interface Configuration studio that will be used to provision connected hosts.
 
@@ -89,18 +89,42 @@ This lab will help you create port profiles and apply them to interfaces in your
 
 - Mode: Access  
 - VLANs: “1##” where ## is a 2 digit character between 01-20 that was assigned to your lab/Pod. e.g Pod01 is VLAN101, Pod13 is VLAN113  
+
+
+![Add Port Profile Wireless3](images/add-port-profile-wireless3.png)
+
+- Port-Channel:
+  - Port-Channel: Yes
+  - Description: Wireless Access Point Port-Channel
+  - Mode: Active
+  - Enabled: Yes
+  - MLAG: Yes
+  - Select LACP Fallback
+
+*The Wireless Access Point has the capability to run a port channel but is not currently configured as such. We will use LACP fallback so we may provision the Access Point with its current configuration*
+
+![Add Port Profile Wireless4](images/add-port-profile-wireless4.png)
+
+- LACP Fallback
+  - Mode: Individual
+
+![Add Port Profile Wireless5](images/add-port-profile-wireless5.png)
+
+
 - POE:  
     - Reboot Action: Maintain  
     - Link Down Action: Maintain  
     - Shutdown Action: Maintain  
 
-![Add Port Profile Wireless3](images/add-port-profile-wireless3.png)
+![Add Port Profile Wireless6](images/add-port-profile-wireless6.png)
+
 
 d. Navigate back to Access interface Configuration by clicking on the top
 
+
 ![Interface Studio Navigate](images/interface-studio-navigate.png)
 
-e. Click Add Port Profile, name it “Wired-RasPI”, and click the arrow on the right
+e. Click Add Port Profile, name it “Wired-RasPi”, and click the arrow on the right
 
 ![Add Port Profile Wired](images/add-port-profile-wired1.png)
 
@@ -112,39 +136,47 @@ f. Enter the following values on this configuration page
 
   - Mode: Access  
   - VLANs: “1##” where ## is a 2 digit character between 01-20 that was assigned to your lab/Pod. e.g Pod01 is VLAN101, Pod13 is VLAN113  
+  - Spanning Tree
+    - Portfast: edge
+    - BPDU Guard: enabled
+
+
+![Add Port Profile Wired 3](images/add-port-profile-wired3.png)
+
   - 802.1X: Enabled = Yes  
   - Click MAC Based Authentication
 
-![Add Port Profile Wired 3](images/add-port-profile-wired3.png)
+![Add Port Profile Wired 4](images/add-port-profile-wired4.png)
 
   - Set Enabled:Yes
     - Navigate back to the previous page
 
-![Add Port Profile Wired 4](images/add-port-profile-wired4.png)
+![Add Port Profile Wired 5](images/add-port-profile-wired5.png)
+
 
   - POE:  
      - Reboot Action: Maintain   
      - Link Down Action: Maintain  
      - Shutdown Action: Maintain  
 
-![Add Port Profile Wired 5](images/add-port-profile-wired5.png)
+![Add Port Profile Wired 6](images/add-port-profile-wired6.png)
 
 5. Review and Submit the Workspace
 
-   a. Click Review Workspace
+  - Click Review Workspace
 
 ![Review Workspace](images/review-workspace.png)
 
 *Note that none of the device configurations have been changed after submitting this workspace*
+   
+  - Click Submit Workspace
+
 ![Review Workspace2](images/review-workspace2.png)
 
-   b. Click Submit Workspace
-
-![Submit Workspace](images/submit-workspace.png)
 
 c. Click Close
 
-![Close Workspace Pop up](images/submit-workspace2.png)
+![Close Workspace Pop up](images/submit-workspace.png)
 
 ---
 
@@ -160,30 +192,37 @@ c. Click Close
 
 ![Quick Actions Access Interface Configuration](images/quick-actions-access-interface.png)
 
-  - Select the Campus (Workshop), Campus Pod (IT-Bldg), and Access Pod(IDF1)  
-*Note: there is only one option for each drop-down.
+  - Device Type: **Access Pod**
+  - Campus: **Workshop**
+  - Campus Pod: **IT-Bldg**
+  - Access Pod: **IDF1**
+
+*Note: These should be the only one options for each drop-down.*
 
 ![Quick Action Select Device](images/quick-action1.png)
 
-  - Select to highlight port Ethernet1 on bottom switch: campus-pod<##>-leaf1c  
-*Note: you will may see the bottom device with a hostname format: sw-<IP> Example: sw-10.0.113.40
-  - Choose the Port Profile of Wireless-Access-Point
-  - Click Yes radio button under Enabled 
-  - Click Submit
+  - **Select** to highlight port **Ethernet1** on switch labeled **campus-pod{$POD#}-leaf1b**
+  - Port Profile: **Wired-RasPi**
+  - Enabled: **Yes** 
+  - Click **Submit**
 
 ![Submit Wireless Port Profile](images/quick-action2.png)
 
-  - Once the Change Control has been executed, click Configure Additional Inputs to configure another access port
+  - Once the Change Control has been executed, click **Configure Additional Inputs** to configure another access port
 
 ![Configure Additional Inputs](images/configure-additional-inputs.png)
 
-  - Again, select the Campus (Workshop), Campus Pod (IT-Bldg), and Access Pod(IDF1)
-  - Select to highlight port Ethernet2 on campus-pod<##>-leaf1c (hostname may not match)
-  - Choose the Port Profile of “Wired-RasPI”
-  - Click Yes radio button under Enabled
-  - Click Submit
+  - Device Type: **Access Pod**
+  - Campus: **Workshop**
+  - Campus Pod: **IT-Bldg**
+  - Access Pod: **IDF1**
+  - **Select** to highlight port **Ethernet14** on switches labeled **campus-pod{$POD#}-leaf1a and b**
+  - Port Profile: **Wireless-Access-Point**
+  - Enabled: **Yes** 
+  - Click **Submit**
 
-![Select Ethernet2](images/select-ethernet2.png)
+![Quick Actions 3](images/quick-action3.png)
+
 
   - Once the Change Control has been executed, click Finish
 

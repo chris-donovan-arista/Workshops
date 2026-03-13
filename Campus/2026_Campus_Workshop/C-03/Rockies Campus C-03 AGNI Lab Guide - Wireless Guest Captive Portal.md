@@ -3,9 +3,10 @@
 ![image1](images/CVCUE_logo.png) 
 ![image2](images/AGNI_logo.png)
 
-This Lab Guide:
 
+#### This Lab Guide:
 Campus/2026_Campus_Workshop/C-03/Rockies Campus C-03 AGNI Lab Guide - Wireless Guest Captive Portal
+
 
 ---
 

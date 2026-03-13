@@ -82,7 +82,7 @@ Select CV-CUE (CloudVision WiFi)
 
 The “Configure” section of CV-CUE is broken into several parts, including “WiFi”, “Alerts”,“WIPS”, etc.  “Alerts” is where syslog and other alert related settings are configured, and “WIPS” is where the policies are configured for the WIPS sensor.
 
-In this lab, we will be working in the “WiFi” configuration area. Create an SSID (WPA2 802.1X) with your ATD-##-EAP as the name (where ## is a 2 digit character between 01-20 that was assigned to your lab/Pod).
+In this lab, we will be working in the “WiFi” configuration area. Create an SSID (WPA3 Transition Mode - WPA3 Enterprise) with your ATD-##-EAP as the name (where ## is a 2 digit character between 01-20 that was assigned to your lab/Pod).
 
 Hover your cursor over the “Configure” menu option on the left side of the screen, then click “WiFi”.
 
@@ -113,9 +113,9 @@ Since this is our corporate SSID, leave the “Select SSID Type” set to “Pri
 
 ![image12](images/image12.png)
 
-In the “Security” sub-category, select WPA2 and change the association type to “802.1X”.
+In the “Security” sub-category, select WPA3 Transition Mode and change the association type to “WPA3 Enterprise”.
 
-![image13](images/image13.png)
+![image13](images/image13a.png)
 
 Next, under RADIUS Settings check RadSec and select AGNI in the drop down box under Authentication and Accounting Server
 

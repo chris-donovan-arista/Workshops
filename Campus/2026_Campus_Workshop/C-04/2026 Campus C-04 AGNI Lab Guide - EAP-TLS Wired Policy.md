@@ -328,13 +328,13 @@ First navigate to Access Control - > ACLs  and  + Add ACL in the upper right cor
 
 Next fill in the Name and Description fields with Guest Access and ACL Field with the below config then select Add ACL
 
-#permit servers
-permit in ip from any to 192.168.125.11
-#deny network access
-deny in ip from any to 192.168.0.0/16
-deny in ip from any to 10.0.0.0/8
-#Allow internet access
-permit in ip from any to any
+#permit servers  
+permit in ip from any to 192.168.125.11  
+#deny network access  
+deny in ip from any to 192.168.0.0/16  
+deny in ip from any to 10.0.0.0/8  
+#Allow internet access  
+permit in ip from any to any  
 
 ![image48](images/image48.png)
 
@@ -361,7 +361,7 @@ At the top of the session details page select the Disconnect button to disconnec
 
 Next you will then see a new session come up as the client re-authenticates you can validate the acl being applied by selecting the Eye next to this new session and viewing the details 
  
-![image55](images/image55.png) 
+![image55](images/image55.png)   
 ![image56](images/image56.png) 
 
 Next we can validate on the switch by issuing Show dot1x host command  

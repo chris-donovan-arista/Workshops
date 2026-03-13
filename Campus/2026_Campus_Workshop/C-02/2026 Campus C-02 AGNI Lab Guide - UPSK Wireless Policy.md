@@ -68,9 +68,9 @@ On the Basic Tab rename the SSID to ATD-##-UPSK, and copy the SSID Name and past
 
 ![image11](images/image11.png)
 
-Next, click on the Security Tab and change the WPA2 Security from PSK to UPSK
+Next, click on the Security Tab and set the Security Level for Associations to WPA3 Transition Mode and UPSK
 
-![image12](images/image12.png)
+![image12](images/image12a.png)
 
 Next, select UPSK Identity Lookup
 

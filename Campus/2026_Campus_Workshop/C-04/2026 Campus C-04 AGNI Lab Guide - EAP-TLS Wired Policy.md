@@ -294,7 +294,7 @@ For more information please refer to the TOI.  802.1X on Arista Switches
 
 Before authentication is successful the switchport is in unauthorized mode and all traffic is blocked, but after authentication has succeeded, normal data can then flow through the switchport. 
 
-Description 
+### Description 
 
 802.1X port security controls who can send traffic through and receive traffic from individual switch ports. A supplicant needs to authenticate itself using “Extensible Authentication Protocol over Lan” (EAPoL) packets with the switch before it gains full access to the port. Arista switches act as an authenticator, passing the messages from 802.1X supplicants through to the RADIUS server and vice versa. 802.1X can operate in three different modes:  
 
@@ -304,10 +304,8 @@ Description
 
 Single Host and Multi Host modes allow only one 802.1X supplicant to be authenticated for one port. Once it is successfully authenticated, no other 802.1X supplicant can be authenticated unless the current one logs off, but Multi-Host authenticated Mode allows multiple 802.1X supplicants simultaneously to be authenticated and provided access to the network. From release 4.28.2F, one supplicant can replace another supplicant’s session in single-host mode.  
 
-For more details on the session replace configuration, please see here  
-
 Apart from 802.1X authentication, Arista switches also support MAC-Based Authentication (MBA) which allows devices not speaking 802.1X to have access to the network. By default the authenticator uses the non delimited MAC address( i.e. 001c73ff9b11) of such devices as the username/password in its RADIUS request packets. Depending on the MAC-Based Authentication configuration on the RADIUS server, it decides whether to authenticate the supplicant or not. Unlike 802.1X supplicants, multiple MBA supplicants can be allowed on a single port (irrespective of 802.1X mode). The MBA configuration is independent of the 802.1X host modes. MBA supplicants will not be considered to allow or reject unauthenticated traffic based on the host mode.  
-Note: From release 4.25.1F MBA supplicants can be controlled by Dot1x Host modes, for more details please refer here.  
+Note: From release 4.25.1F MBA supplicants can be controlled by Dot1x Host modes.
 
 Arista switches also support Dynamic VLAN assignment, which allows the RADIUS server to indicate the desired VLAN for the supplicant using the tunnel attributes with the Access-Accept message ( “Tunnel-Private-Group-ID” in https://tools.ietf.org/html/rfc2868). Both 802.1X and MBA supplicants can be assigned a VLAN via the RADIUS server using this feature. It should be noted that only one VLAN per port is supported for platforms that do not support “MAC based VLAN assignment”. On these platforms when the first host authenticates, the authenticator port is put in the respective VLAN (via dynamic VLAN assignment) and subsequently, all other hosts must belong to that VLAN as well. For details about which platforms support “MAC Based VLAN Assignment”, please refer to the table in the “Platform Compatibility” paragraph.  
 
@@ -319,9 +317,8 @@ By default, traffic from any unauthenticated device on an 802.1X enabled port is
 
 Reference the following article to Configure the RadSec profile in EOS: 
 
-https://arista.my.site.com/AristaCommunity/s/article/Configuring-RadSec-profile-in-EOS
+[Configuring-RadSec-profile-in-EOS](https://arista.my.site.com/AristaCommunity/s/article/Configuring-RadSec-profile-in-EOS)
 
- 
 ## C. Adding Access Control Lists for Wired Users
 In this section we will add an acl to AGNI which we can push to the switch. 
 
@@ -356,28 +353,28 @@ Next under the actions section Select Add Action and choose Apply ACL from the d
 From here navigate back to the Sessions screen and find the client session for the raspberry pi select the eye on the right hand side to view details. 
 
 ![image52](images/image52.png) 
-![image53](images/image53.png)
+![image52-2](images/image52-2.png)
  
 At the top of the session details page select the Disconnect button to disconnect and re-authenticate the session. 
 
-![image54](images/image54.png)
+![image53](images/image53.png)
 
 Next you will then see a new session come up as the client re-authenticates you can validate the acl being applied by selecting the Eye next to this new session and viewing the details 
  
+![image54](images/image54.png) 
 ![image55](images/image55.png) 
-![image56](images/image56.png) 
 
 Next we can validate on the switch by issuing Show dot1x host command  
 
-![image57](images/image57.png) 
+![image56](images/image56.png) 
 
 Take this mac address and issue the command  show dot1x host mac  <mac from above> detail here we will see the Access list applied in the Nas-Filter-Rule
  
-![image58](images/image58.png) 
+![image57](images/image57.png) 
 
 Lastly issue the show ip access-lists command to view the dynamic access list applied 
 
-![image59](images/image59.png)    
+![image58](images/image58.png)    
 
 You can try pinging the device ip from your laptop to confirm acl functionality. 
 

@@ -352,29 +352,29 @@ Next under the actions section Select Add Action and choose Apply ACL from the d
 
 From here navigate back to the Sessions screen and find the client session for the raspberry pi select the eye on the right hand side to view details. 
 
-![image52](images/image52.png) 
-![image52-2](images/image52-2.png)
+![image52](images/image52.png)  
+![image53](images/image53.png)
  
 At the top of the session details page select the Disconnect button to disconnect and re-authenticate the session. 
 
-![image53](images/image53.png)
+![image54](images/image54.png)
 
 Next you will then see a new session come up as the client re-authenticates you can validate the acl being applied by selecting the Eye next to this new session and viewing the details 
  
-![image54](images/image54.png) 
 ![image55](images/image55.png) 
+![image56](images/image56.png) 
 
 Next we can validate on the switch by issuing Show dot1x host command  
 
-![image56](images/image56.png) 
+![image57](images/image57.png) 
 
 Take this mac address and issue the command  show dot1x host mac  <mac from above> detail here we will see the Access list applied in the Nas-Filter-Rule
  
-![image57](images/image57.png) 
+![image58](images/image58.png) 
 
 Lastly issue the show ip access-lists command to view the dynamic access list applied 
 
-![image58](images/image58.png)    
+![image59](images/image59.png)    
 
 You can try pinging the device ip from your laptop to confirm acl functionality. 
 

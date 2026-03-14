@@ -1,10 +1,14 @@
 from modules import config
 import requests, json, re
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
 #TODO: need to move the url to the token file
 
 class AgniClient():
     def configure():
         config.parser.add_argument('-agniCleanup', default=False, action='store_true', help='do agni cleanup steps')
+        config.parser.add_argument('-agniTest', default=False, action='store_true', help='test new agni code')
 
     def __init__(self, token):
         self.token = token
@@ -125,6 +129,17 @@ class AgniClient():
 
 
     def execute(self):
+        if config.args.agniTest:
+            nadGroup = self._getNadGroup("Switches")
+            node = self.onboardSwitch("tst", nadGroup)
+            print(json.dumps(node, indent=2))
+
+            nadList = self._getNadList()
+            print(json.dumps(nadList, indent=2))
+
+            self._doDeleteNad(node["nadID"])
+            return
+
         if config.args.agniCleanup:
             self.cleanup()
 
@@ -134,6 +149,89 @@ class AgniClient():
         self._doDeleteClientGroups()
         self._doDeleteSegments()
         self._doDeleteNetworks()
+        self._doDeleteNads()
         return
 
+    def _doGetNad(self, nadID):
+        data = {
+            "id": nadID
+        }
+        return self._doReq(subsystem='config.nad.get', data=data).get("data", None)
 
+    def _doDeleteNad(self, nadID):
+        data = {
+            "id": nadID
+        }
+        self._doReq(subsystem='config.nad.delete', data=data)
+        pass
+
+    def _doDeleteNads(self):
+        nadList = self.getNadList()
+        data = {
+            "deleteAll": True,
+            "nadIDList": nadList,
+            "zoneID": 0
+        }
+        self._doReq(subsystem='config.nad.deleteBulk', data=data)
+
+    def _getNadByMac(self, nadMAC):
+        # the silly api can't handle the colons in the mac.  we need to strip them
+        data = {
+                "mac": nadMAC.replace(":", "")
+        }
+        nad = self._doReq(subsystem='config.nad.get', data=data)
+        return nad.get('data', {})
+
+    def _getNadList(self):
+        data = {"zoneID": 0}
+        nadList = self._doReq(subsystem='config.nad.list', data=data)
+        result = []
+        for nad in nadList.get("data", {}).get("nads", []):
+            result.append(nad["id"])
+
+        return result
+
+    def _getNadGroup(self, nadGroupName):
+        # TODO: if the group isn't there we should create it
+        # group "Switches"
+        data = {
+            #"id": 0,
+            "name": nadGroupName,
+            "zoneID": 0
+        }
+        nadGroup = self._doReq(subsystem='config.nadGroup.get', data=data)
+
+        return nadGroup.get("data", {}).get("id", None)
+
+    def onboardSwitch(self, switch, nadGroupID):
+        data = {
+                "ipAddress": switch['ip'],
+                "mac": switch['mac'],
+                "nadGroupID": nadGroupID,
+                "name": switch['hostname'],
+                "serialNumber": switch['sn'],
+                "vendor": "arista-switch",
+                "zoneID": 0
+        }
+        nad = self._doReq(subsystem='config.nad.add', data=data)
+        nadID = nad.get("data", {}).get("id", None)
+
+        return nadID
+
+    def _generateRadsecCert(self, nadID):
+        data = {
+            "nadID": nadID,
+            "password": "temp",
+            "dnsNames": []
+        }
+        certificateData = self._doReq(subsystem='config.cert.radsec.client.enroll', data=data)
+
+        return certificateData.get("data", {})
+        """
+{
+  "data": {
+    "pkcs12Certificate": "<CERTDATA base64 encoded pkcs12 string>"
+  },
+  "error": ""
+}
+        """

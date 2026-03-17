@@ -37,58 +37,58 @@ https://github.com/arista-rockies/Workshops/tree/main/Campus
 In your Google Chrome browser, enter the following URL:  
 https://www.arista.io/ to access CloudVision as a Service (CVaaS).
 
-1. In the **Organization** box enter the Organization name “rockies-training-<span style="color: red;">##</span>” where <span style="color: red;">##</span> is a 2 digit character between 01-20 that was assigned to your lab/Pod, then click **Enter**.
+* In the **Organization** box enter the Organization name “rockies-training-<span style="color: red;">##</span>” where <span style="color: red;">##</span> is a 2 digit character between 01-20 that was assigned to your lab/Pod, then click **Enter**.
 
 ![CVaaS Login Page](images/cvaas-login.png)
 
-2. Click the Log in with Launchpad button and provide your assigned lab/Pod email address and password:
+* Click the Log in with Launchpad button and provide your assigned lab/Pod email address and password:
 
 ![Launchpad Login](images/launchpad-login.png)
 
 
 
-You will now be logged into CloudVision
+*You will now be logged into CloudVision*
 
 ![CloudVision Dashboard](images/cloudvision-dashboard.png)
 
 ---
 
-## 2. Creating Port Profiles
+## Creating Port Profiles
 
 This lab will help you create port profiles and apply them to interfaces in your ATD network.
 
-1. Click on the **Provisioning** menu option, then choose **Studios**
+* Click on the **Provisioning** menu option, then choose **Studios**
 
 ![Provisioning Studios](images/provisioning-studios.png)
 
-2. Click Create Workspace and name it Create Port Profiles then select Create. A workspace acts as a sandbox where you can stage your configuration changes before deploying them
+* Click Create Workspace and name it Create Port Profiles then select Create. A workspace acts as a sandbox where you can stage your configuration changes before deploying them
 
 ![Create Workspace](images/create-workspace.png)
 
-3. Disable the Active Studios toggle to display all available CloudVision Studios (which when enabled will only show used/active Studios).  
+* Disable the Active Studios toggle to display all available CloudVision Studios (which when enabled will only show used/active Studios).  
 *Note:- the toggle may already be in the disabled position.*
 
 ![Disable Active Studios](images/show-active-studios.png)
 
-4. Create two port profiles using the Access Interface Configuration studio that will be used to provision connected hosts.
+* Create two port profiles using the Access Interface Configuration studio that will be used to provision connected hosts.
 
-   a. Launch the Access Interface Configuration
+   * Launch the Access Interface Configuration
   
 ![Access Interface Configuration Studio](images/access-interface-configuration.png)
 
-   b. Click Add Port Profile, name it “Wireless-Access-Point”, and click the arrow on the right
+   * Click Add Port Profile, name it “Wireless-Access-Point”, and click the arrow on the right
 
 ![Add Port Profile Wireless1](images/add-port-profile-wireless1.png)
 
-   c. Enter the following values on this configuration page
+  * Enter the following values on this configuration page
 
- - Description: “Wireless-Access-Point”  
- - Enabled: Yes  
+    * Description: “Wireless-Access-Point”  
+    * Enabled: Yes  
 
 ![Add Port Profile Wireless2](images/add-port-profile-wireless2.png)
 
-- Mode: Access  
-- VLANs: “1##” where ## is a 2 digit character between 01-20 that was assigned to your lab/Pod. e.g Pod01 is VLAN101, Pod13 is VLAN113  
+* Mode: Access  
+* VLANs: “1##” where ## is a 2 digit character between 01-20 that was assigned to your lab/Pod. e.g Pod01 is VLAN101, Pod13 is VLAN113  
 
 
 ![Add Port Profile Wireless3](images/add-port-profile-wireless3.png)
@@ -119,16 +119,16 @@ This lab will help you create port profiles and apply them to interfaces in your
 ![Add Port Profile Wireless6](images/add-port-profile-wireless6.png)
 
 
-d. Navigate back to Access interface Configuration by clicking on the top
+* Navigate back to Access interface Configuration by clicking on the top
 
 
 ![Interface Studio Navigate](images/interface-studio-navigate.png)
 
-e. Click Add Port Profile, name it “Wired-RasPi”, and click the arrow on the right
+* Click Add Port Profile, name it “Wired-RasPi”, and click the arrow on the right
 
 ![Add Port Profile Wired](images/add-port-profile-wired1.png)
 
-f. Enter the following values on this configuration page
+* Enter the following values on this configuration page
   - Description: “Wired-RasPI”  
   - Enabled: Yes  
 
@@ -161,28 +161,28 @@ f. Enter the following values on this configuration page
 
 ![Add Port Profile Wired 6](images/add-port-profile-wired6.png)
 
-5. Review and Submit the Workspace
+* Review and Submit the Workspace
 
-  - Click Review Workspace
+  - Click **Review Workspace**
 
 ![Review Workspace](images/review-workspace.png)
 
 *Note that none of the device configurations have been changed after submitting this workspace*
    
-  - Click Submit Workspace
+  - Click **Submit Workspace**
 
 ![Review Workspace2](images/review-workspace2.png)
 
 
-c. Click Close
+* Click **Close**
 
 ![Close Workspace Pop up](images/submit-workspace.png)
 
 ---
 
-## 3. Assigning Port Profiles for AP and RPI
+## Assigning Port Profiles for AP and RPI
 
-1. Assign the configured port profiles to the switches access ports
+* Assign the configured port profiles to the switches access ports
 
   - Click Overview option on the navigation bar
 

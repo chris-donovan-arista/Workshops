@@ -293,14 +293,12 @@ class pgfCVClient():
         print(f"{config.currentPod} - smsStudioSetup")
 
         leaf1a = self.findDeviceByName(deviceInventory, f"campus-pod{config.currentPod:0>2}-leaf1a")
-        leaf1b = self.findDeviceByName(deviceInventory, f"campus-pod{config.currentPod:0>2}-leaf1b")
 
-        if not leaf1a or not leaf1b:
+        if not leaf1a:
             raise Exception("could not find leaf1a or leaf1b in deviceInventory")
 
         vals = {
             "leaf1": leaf1a["sn"],
-            "leaf2": leaf1b["sn"],
         }
         f = open("files/campusWorkshop_softwareManagementInputs.txt", "r")
         smsStudio = yaml.safe_load(f.read().format(**vals))
@@ -661,7 +659,7 @@ class pgfCVClient():
             await self.onboardDevices(c, cvpRacClient, workspaceID, deviceInventory)
             await self.assignTags(c, workspaceID, deviceInventory)
             await self.scsSetup(c, workspaceID, deviceInventory)
-            #await self.smsSetup(c, workspaceID, deviceInventory)
+            await self.smsSetup(c, workspaceID, deviceInventory)
             await self.aicStudioSetup(c, workspaceID, deviceInventory)
             await self.campusStudioSetup(c, workspaceID, deviceInventory)
 

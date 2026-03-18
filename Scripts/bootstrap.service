@@ -1,0 +1,17 @@
+[Unit]
+Description=Arista Bootstrap Server
+After=network.target
+StartLimitInterval=300s
+StartLimitBurst=8
+
+[Service]
+Type=simple
+ExecStart=/home/admin/Projects/Workshops/Scripts/venv/bin/uvicorn bootstrap:app --reload --host 0.0.0.0 --reload-exclude "tmp/*" --port 8000
+WorkingDirectory=/home/admin/Projects/Workshops/Scripts/
+User=admin
+SyslogIdentifier=bootstrap
+Restart=always
+RestartSec=30s
+
+[Install]
+WantedBy=default.target

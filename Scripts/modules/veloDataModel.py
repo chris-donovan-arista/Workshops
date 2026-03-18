@@ -177,7 +177,7 @@ class veloBaseRoutedInterface():
               "baseDhcpAddr": firstAddress,
               "options": [
                 {
-                  "value": f"http://10.0.96.20/bootstrap-{100+int(config.currentPod)}.py",
+                  "value": f"http://10.0.96.20:8000/bootstrap.py",
                   "type": "text",
                   "option": 67,
                   "metaData": {

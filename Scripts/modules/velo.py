@@ -26,7 +26,7 @@ class VeloClient():
         # let's pull some information out of the global inventory
         d = config.globalInventory['velo'][config.currentPod]
         self.serialNumber = d["sn"]
-        self.pod = d["podNum"]
+        self.pod = d["Hostname"] #d["podNum"]
 
         self.token = t
         self.baseURL = f'https://{t["url"]}'

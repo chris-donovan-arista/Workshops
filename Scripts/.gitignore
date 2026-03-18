@@ -1,7 +1,8 @@
 __pycache__
 tmp
+*.pem
 old
-*.txt
+*.swi
 *.bak
 *.swi
 *.swp

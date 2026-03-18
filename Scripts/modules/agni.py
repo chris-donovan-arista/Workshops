@@ -166,7 +166,7 @@ class AgniClient():
         pass
 
     def _doDeleteNads(self):
-        nadList = self.getNadList()
+        nadList = self._getNadList()
         data = {
             "deleteAll": True,
             "nadIDList": nadList,

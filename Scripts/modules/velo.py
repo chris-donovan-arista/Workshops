@@ -270,7 +270,7 @@ class VeloClient():
             "haEnabled": False,
             "modelNumber": "edge710",
             "name": self.pod,
-            "serialNumber": "VC07102540026865",
+            "serialNumber": self.serialNumber,
             "site": {
                 "contactEmail": "pfelt@arista.com",
                 "contactName": "pfelt@arista.com",

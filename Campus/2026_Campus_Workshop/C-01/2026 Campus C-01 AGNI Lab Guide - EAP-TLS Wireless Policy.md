@@ -88,17 +88,17 @@ In this lab, we will be working in the **WiFi** configuration area. Create an SS
 2. At the top of the screen, you will see where you are in the location hierarchy. If you aren’t on **Corp**, click on the three lines (hamburger icon) next to **Locations** to expand the hierarchy and choose/highlight the **Corp** folder.  
 3. Now click the “Add SSID” button on the right hand side of the screen.
 
-With the hierarchy menu collapsed:
+- With the hierarchy menu collapsed:
 
 ![image8](images/image8.png)
 
-Or, with the hierarchy menu expanded:
+- Or, with the hierarchy menu expanded:
 
 ![image9](images/image9.png)
 
-Once on the **SSID** page, configuration sub-category menu options will appear across the top of the page related to WiFi (the defaults are **Basic**, **Security**, and **Network**). You can click on these sub-category names to change configuration items related to that area of the configuration.
+- Once on the **SSID** page, configuration sub-category menu options will appear across the top of the page related to WiFi (the defaults are **Basic**, **Security**, and **Network**). You can click on these sub-category names to change configuration items related to that area of the configuration.
 
-To make additional categories visible, click on the 3 dots next to **Network** and you can see the other categories that are available to configure (i.e. **Analytics**, **Captive Portal**, etc.).
+- To make additional categories visible, click on the 3 dots next to **Network** and you can see the other categories that are available to configure (i.e. **Analytics**, **Captive Portal**, etc.).
 
 ![image10](images/image10.png)
 
@@ -240,7 +240,7 @@ To make additional categories visible, click on the 3 dots next to **Network** a
 
 **Note**: The Client Certificate has already been applied to the Raspberry Pi and is configured to connect to the SSID **ATD-##-EAP**. 
 
-If you don’t see any new sessions within 2 minutes AGNI, power cycle the Raspberry Pi.
+- If you don’t see any new sessions within 2 minutes AGNI, power cycle the Raspberry Pi.
 
 ![image42](images/image42.png)
 

@@ -192,4 +192,6 @@ Finally, Click on **Save & Turn SSID On,** then **Customize**.
 
 **Using your Laptop or Cellphone, connect to the ATD-\#\#-GUEST Captive Portal network.**
 
+**Next, Go to Monitoring - Sessions in AGNI and select your Captive Portal session to see your client session details.**
+
 NAC LAB #3 COMPLETE

@@ -12,7 +12,7 @@ Campus/2026_Campus_Workshop/C-02/Rockies Campus C-02 AGNI Lab Guide - UPSK Wirel
 
 ## Table of Contents
 
-Full Lab Topology  
+**Full Lab Topology**
 POD Topology
 
 NAC Lab #2 - Create UPSK Wireless Policy  

@@ -251,7 +251,7 @@ You will also need to click the message at the bottom of the screen to enable mo
 
 Then click “**Continue**” to confirm.
 
-Set the following parameters under the **WiFi Radios** tab, **5GHz frequency**, make sure you have the “Corp” level selected/highlighted in the tree:
+Set the following parameters under the **WiFi Radios** tab, **5GHz frequency**, make sure you have the “Corp” level selected/highlighted in the tree (details below):
 
 * Channel Settings: **Manual \- type or select channel ID \#\#\# assigned to your pod**   
 * Channel Width: **20MHz**  
@@ -268,7 +268,18 @@ Under Transmit Power Selection, select **Manual and set EIRP to 4**
 
 Click “**Save**” at the bottom of the page then click “**Continue**” to confirm.
 
+**Important:**  
+**The following steps activate the second wired connections from the AP to switch 1b.  This will be required for later labs.**
 
+Next we will set parameters under the LAN Ports tab, still in the “Corp” level from the previous configuration (details below).
+
+Set the following parameters:
+* Link Aggregation 
+  * Layer 2 (MAC) 
+
+![](images/wirelessagg.png)
+
+Click “Save” at the bottom of the page then click “Continue” to confirm.
 
 ### Move AP to destination folder 
 

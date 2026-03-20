@@ -42,21 +42,19 @@ Campus/2026_Campus_Workshop/C-04/Rockies Campus C-04 AGNI Lab Guide - EAP-TLS Wi
 ## NAC Lab #4 - Create EAP-TLS Wired Policy
 
 
-### 1. Access CloudVision as a Service
+### 1. Access CloudVision as a Service <span style="color: red;">UPDATE IGNITION LOG IN PROCESS AND SCREENSHOTS BELOW 3/20/26</span>
 
-1. In your browser, enter the following URL: https://www.arista.io/ to access CloudVision as a Service (CVaaS).
+1. In your browser, enter the following URL: https://www.arista.io/ to access CloudVision as a Service (CVaaS). 
 
 2. Enter the Organization name **<rockies-training-##>** in the **Organization** box, then click **Enter** (where **##** is a 2 digit character between 01-20 that was assigned to your lab/Pod).
 
-![image5](images/image6.png)
+![image5](images/image5.png)
 
-3. Click the **Log in with Ignition** button and provide your assigned lab email address and password:
-
-- Email address format: **aristarockies##+pod##@gmail.com**
-
-![image6](images/image6.png)
+3. Click the **Log in with Ignition** button and provide your assigned lab Access Code.
 
 You will now be logged into CloudVision.
+
+<span style="color: red;">UPDATE CAMPUS HEALTH OVERVIEW SCREENSHOT BELOW 3/20/26</span>
 
 ![image7](images/image7.png)
 
@@ -64,7 +62,7 @@ You will now be logged into CloudVision.
 
 ### 2. Enable RadSec on campus-pod<xx>-leaf1b
 
-**In this lab you will be configuring RadSec on the campus-podXX-leaf1c switches by adding the RadSec configuration to the leaf1c switches via the Static Configuration Studio.**
+**In this lab you will be configuring RadSec on the campus-podXX-leaf1b switch by adding the RadSec configuration to the  switch via the Static Configuration Studio.**
 
 1. Login to CloudVision, then click on the **Provisioning** menu option, then choose **Studios**.
 
@@ -78,60 +76,53 @@ Create a workspace to propose changes to the Network Infrastructure. A workspace
 ![image10](images/image10.png)
 ![image11](images/image11.png)
 
-3. **Apply the static configuration** to the **campus-podXX-leaf1b** switch using **Static Configuration Studio**
-
-5. 4. Click on **Studios** at the Top OR Left side navigation pane
-
-![image12](images/image12.png)
-![image13](images/image13.png)
-
-6. Launch the **Static Configuration Studios**
+3. Launch the **Static Configuration Studios**
 
 ![image14](images/image14.png)
 
-7. Expand the Device Container Tree and select the **Three Dots** and select **Add Device**.
+4. In the **Container Tree** window, to the right of **Static Configuration**, select **+ Add** and select **Device**.
 
 ![image15](images/image15.png)
 
-8. Select the radial button next to **campus-pod<xx>-leaf1b** and select **Add**
+5. Select the radial button next to **campus-pod<xx>-leaf1b** and select **Add**
 
 ![image16](images/image16.png)
 
-9. In the Device Container window, click on **+ Configlet** followed by **Configlet Library**.
+6. Under **Device Container**, **Device: campus-pod##-lead1b** will be selected, click on **+ Configlet** followed by **Configlet Library**.
 
 ![image17](images/image17.png)
 
-10. Select the Configlet named **Studios-campus-pod<xx>-radsec-config** and click **Assign** to add the configlet to the **campus-pod<xx>-leaf1b** switch.
+7. Select the Configlet named **Studios-campus-pod<xx>-radsec-config** and click **Assign** to assign the configlet to the **campus-pod<xx>-leaf1b** switch.
 
 ![image18](images/image18.png)
 
-11. Click **Review Workspace** to review all the changes proposed to the CloudVision Studio
+8. Click **Review Workspace** to review all the changes proposed to the CloudVision Studio
 
 ![image19](images/image19.png)
 
-12. **Review and Submit the Workspace**
+9. **Review** and **Submit the Workspace**
 
-13. Review the workspace details showing the summary of modified studios, the build status, and the proposed configuration changes for each device.
+10. Review the workspace details showing the **Summary** of modified studios, the **Build Status**, and the **Proposed Configuration Changes** for each device.
 
-14. Click **Submit Workspace**
+11. Click **Submit Workspace**
 
 ![image20](images/image20.png)
 
-15. Click **View Change Control**
+13. Click **View Change Control**
 
 ![image21](images/image21.png)
 
-16. **Review, Approve and Execute** the Change Control to apply the configuration changes
+**Review and Approve**, then **Approve and Execute** the Change Control to apply the configuration changes
 
-17. Click **Review and Approve**
+14. Click **Review and Approve**
 
 ![image22](images/image22.png)
 
-18. Select **Execute immediately** and click **Approve and Execute**
+15. Select **Execute immediately** and click **Approve and Execute**
 
 ![image23](images/image23.png)
 
-The change control will execute and apply all the RadSec configuration changes to the device. This will enable RadSec connectivity between the campus-pod<xx>-leaf1b switch and AGNI.
+**The change control will execute and apply all the RadSec configuration changes to the device. This will enable RadSec connectivity between the campus-podXX-leaf1b switch and AGNI.**
 
 **Note: The switch device certificate and the AGNI RadSec root certificate have already been provisioned on the switch.**
 
@@ -146,15 +137,18 @@ The change control will execute and apply all the RadSec configuration changes t
 1. Click on **Access Devices - Devices** to confirm the RadSec connection is up.
 
 ![image25](images/image25.png)
+
+2. Verify the **campus-pod##-leaf1b** switch **RadSec Status** is **Green**.  
+
 ![image26](images/image26.png)
 
 ---
 
 ### 4. Create Wired EAP-TLS Network and Segment
 
-**In this section we will create a Network and Segment in Cloudvision AGNI to utilize a certificate based TLS authentication method on a wired connection with a Raspberry Pi.**
+**In this section we will create a Network and Segment in AGNI to utilize a certificate based EAP-TLS authentication method on a wired connection with a Raspberry Pi.**
 
-1. Click on **Networks** and select **+ Add Network**
+1. Click on **Networks** and select **+ Add**
 
 ![image27](images/image27.png)
 ![image28](images/image28.png)
@@ -165,8 +159,13 @@ The change control will execute and apply all the RadSec configuration changes t
 - Connection Type: **Wired** 
 - Access Device Group: **Switches**  
 - Status: **Enabled**  
-- Authentication type: **Client Certificate (Eap-TLS)**  
-- Fallback to mac Authentication: **Enabled**  
+**Authentication**
+- Authentication type: **802.1X EAP** 
+- EAP Method: **EAP-TLS**  
+**EAP-TLS Authentication Settings**
+- Trust External Certificates: **Enabled** 
+- User Identity Binding: **Optional**
+- Fallback to MAC Authentication: **Enabled**  
 - MAC Authentication Type: **Allow Registered Clients Only**  
 - Onboarding: **Enabled** 
 - Authorized User Groups: **Employees**
@@ -178,7 +177,7 @@ The change control will execute and apply all the RadSec configuration changes t
 
 ![image31](images/image31.png)
 
-4. Next, click on **Segments** and then **+ Add Segment**
+4. Next, click on **Segments** and then **+ Add**
 
 ![image32](images/image32.png)
 ![image33](images/image33.png)
@@ -192,16 +191,16 @@ The change control will execute and apply all the RadSec configuration changes t
 
 ![image35](images/image35.png)
 
-7. Select, **Network, Name, Is, Wired-EAP-TLS** from the drop down lists.
+7. Select, **Network: Name, Is, Wired-EAP-TLS** from the drop down lists.
 
 ![image36](images/image36.png)
 
 
 8. Let’s add one more condition.
 
-![image37](images/image37.png)
+![image35](images/image35.png)
 
-9. Select, **Network, Authentication Type, Is, Client Certificate (EAP-TLS)** from the drop down lists.
+9. Select, **Network: Authentication Type, Is, EAP-TLS** from the drop down lists.
 
 ![image38](images/image38.png)
 
@@ -225,13 +224,13 @@ Your Conditions should now look like this.
 
 ![image43](images/image43.png)
 
-14. Next, **unplug and plug your raspberry Pi into port 1** on the switch and click on **Sessions** to see if your ATD Raspberry Pi has a connection via the Wired connection.  
+14. Next, **unplug and plug your Raspberry Pi into port 1** on the switch and click on **Sessions** to see if your ATD Raspberry Pi has a connection via the Wired connection.  
 
 **Note: The Client Certificate has already been applied to the Raspberry Pi.**
 
 ---
 
-### 5. Validate and Verify Wired EAP-TLS Device
+### 5. Validate and Verify Wired EAP-TLS Device - <span style="color: red;">UPDATE SCREENSHOTS BELOW 3/20/26</span>
 
 1. Click on the **Eye icon** to the right of your client session to view the **Session Details**.
 

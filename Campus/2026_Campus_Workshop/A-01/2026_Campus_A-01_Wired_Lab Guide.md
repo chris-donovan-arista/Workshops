@@ -3,20 +3,19 @@
 
 This Lab Guide:
 
-Campus/2026_Campus_Workshop/A-01/2026_Campus_A-01_Wired_Lab Guide.md
+https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Workshop/A-01/2026_Campus_A-01_Wired_Lab%20Guide.md
 
 ---
 
 ## Table of Contents
-
-Full Lab Topology  
-POD Topology  
-1. Accessing CloudVision as a Service  
-2. Onboarding a new device into CVaaS  
+1. [Full Lab Topology](#full-lab-topology)
+2. [POD Topology](#pod-topology)
+3. [Accessing CloudVision as a Serivce](#accessing-cloudvision-as-a-service)
+4. [Onbaording a new device into CVaaS](#onboarding-a-new-device-into-cvaas)
 
 ---
 
-## Full Lab Topology
+# Full Lab Topology
 
 ![Full Lab Topology](images/full-lab-topology.png)
 
@@ -28,7 +27,7 @@ POD Topology
 
 ---
 
-## 1.Accessing CloudVision as a Service
+## Accessing CloudVision as a Service
 
 1. In your Google Chrome browser, enter the following URL: https://www.arista.io/ to access CloudVision as a Service (CVaaS).
    - In the **“Organization”** box enter the Organization name **rockies-training-##** where **##** is a 2 digit character between 01-20 that was assigned to your lab/Pod, then click **Enter**.
@@ -46,7 +45,7 @@ POD Topology
 
 ---
 
-## 2.Onboarding a new device into CVaaS
+## Onboarding a new device into CVaaS
 
 In this lab you will be configuring the switches through CloudVision. Today you will be adding a second Leaf Switch to an existing Campus Fabric/POD using Cloud Vision’s guided workflow.
 

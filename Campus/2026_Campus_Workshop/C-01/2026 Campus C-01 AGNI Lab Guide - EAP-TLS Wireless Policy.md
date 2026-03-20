@@ -10,18 +10,18 @@ Campus/2026_Campus_Workshop/C-01/Rockies Campus C-01 AGNI Lab Guide - EAP-TLS Wi
 
 ## Table of Contents
 
-**Full Lab Topology**  
-**POD Topology**  
+**[Full Lab Topology](#full-lab-topology)**  
+**[POD Topology](#pod-topology)**  
 
 **NAC Lab #1 - Create EAP-TLS Wireless Policy**  
-1. CloudVision Cognitive Unified Edge CV-CUE Access  
-2. Create an EAP-TLS SSID  
-3. CloudVision AGNI Access  
-4. Create AGNI Networks & Segments for the EAP-TLS Wireless Policy  
+1. [CloudVision Cognitive Unified Edge CV-CUE Access](#1-cloudvision-cognitive-unified-edge-cv-cue-access)  
+2. [Create an EAP-TLS SSID](#2-create-an-eap-tls-ssid)  
+3. [CloudVision AGNI Access](#3-cloudvision-agni-access)  
+4. [Create AGNI Networks & Segments for the EAP-TLS Wireless Policy](#4-create-agni-networks--segments-for-the-eap-tls-wireless-policy) 
 
 **Additional Information**  
-1. Setting up RadSec with a TPM AP Certificate  
-2. Setting up RadSec with a Custom AP Certificate  
+1. [Setting up RadSec with a TPM AP Certificate](#1-setting-up-radsec-with-a-tpm-ap-certificate)  
+2. [Setting up RadSec with a Custom AP Certificate](#2-setting-up-radsec-with-a-custom-ap-certificate)  
 
 ---
 
@@ -43,15 +43,14 @@ Campus/2026_Campus_Workshop/C-01/Rockies Campus C-01 AGNI Lab Guide - EAP-TLS Wi
 
 ### 1. CloudVision Cognitive Unified Edge CV-CUE Access
 
-1. Go to the Arista GUI via: https://launchpad.wifi.arista.com/
-
+1. Go to the Arista GUI via: https://launchpad.wifi.arista.com/ 
 - User Login is: [Provided by event staff]  
 - User Passwords are: [Provided by event staff]
 
 ![image5](images/image5.png)
 
 
-2. Click Sign In
+2. Click **Sign In**
 
 
 
@@ -77,9 +76,9 @@ Campus/2026_Campus_Workshop/C-01/Rockies Campus C-01 AGNI Lab Guide - EAP-TLS Wi
 
 ### 2. Create an EAP-TLS SSID
 
-The **Configure** section of CV-CUE is broken into several parts, including **WiFi**, **Alerts**,**WIPS**, etc.  **Alerts** is where syslog and other alert related settings are configured, and **WIPS** is where the policies are configured for the WIPS sensor.
+- The **Configure** section of CV-CUE is broken into several parts, including **WiFi**, **Alerts**,**WIPS**, etc.  **Alerts** is where syslog and other alert related settings are configured, and **WIPS** is where the policies are configured for the WIPS sensor.
 
-In this lab, we will be working in the **WiFi** configuration area. Create an SSID (WPA3 Transition Mode - WPA3 Enterprise) with your **ATD-##-EAP** as the name (where **##** is a 2 digit character between 01-20 that was assigned to your lab/Pod).
+- In this lab, we will be working in the **WiFi** configuration area. Create an SSID (WPA3 Transition Mode - WPA3 Enterprise) with your **ATD-##-EAP** as the name (where **##** is a 2 digit character between 01-20 that was assigned to your lab/Pod).
 
 1. Hover your cursor over the **Configure** menu option on the left side of the screen, then click **WiFi**.
 
@@ -387,4 +386,4 @@ https://www.youtube.com/watch?v=kFJ24zRHYJ8&t=75s
 
 ---
 
-NAC LAB #1 COMPLETE
+**NAC LAB #1 COMPLETE**

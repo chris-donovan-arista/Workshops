@@ -10,18 +10,18 @@ Campus/2026_Campus_Workshop/C-01/Rockies Campus C-01 AGNI Lab Guide - EAP-TLS Wi
 
 ## Table of Contents
 
-**Full Lab Topology**  
-**POD Topology**  
+**[Full Lab Topology](#full-lab-topology)**  
+**[POD Topology](#pod-topology)**  
 
 **NAC Lab #1 - Create EAP-TLS Wireless Policy**  
-1. CloudVision Cognitive Unified Edge CV-CUE Access  
-2. Create an EAP-TLS SSID  
-3. CloudVision AGNI Access  
-4. Create AGNI Networks & Segments for the EAP-TLS Wireless Policy  
+1. [CloudVision Cognitive Unified Edge CV-CUE Access](#1-cloudvision-cognitive-unified-edge-cv-cue-access)  
+2. [Create an EAP-TLS SSID](#2-create-an-eap-tls-ssid)  
+3. [CloudVision AGNI Access](#3-cloudvision-agni-access)  
+4. [Create AGNI Networks & Segments for the EAP-TLS Wireless Policy](#4-create-agni-networks--segments-for-the-eap-tls-wireless-policy) 
 
 **Additional Information**  
-1. Setting up RadSec with a TPM AP Certificate  
-2. Setting up RadSec with a Custom AP Certificate  
+1. [Setting up RadSec with a TPM AP Certificate](#1-setting-up-radsec-with-a-tpm-ap-certificate)  
+2. [Setting up RadSec with a Custom AP Certificate](#2-setting-up-radsec-with-a-custom-ap-certificate)  
 
 ---
 

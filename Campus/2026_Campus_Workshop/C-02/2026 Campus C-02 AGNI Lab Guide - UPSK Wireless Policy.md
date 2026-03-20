@@ -12,14 +12,14 @@ Campus/2026_Campus_Workshop/C-02/Rockies Campus C-02 AGNI Lab Guide - UPSK Wirel
 
 ## Table of Contents
 
-**Full Lab Topology**  
-**POD Topology**
+**[Full Lab Topology](#full-lab-topology)**  
+**[POD Topology](#pod-topology)**  
 
 **NAC Lab #2 - Create UPSK Wireless Policy**
-1. Create Identity UPSK SSID:  
-2. Create UPSK Network and Segment:  
-3. Create an AGNI Local User and Enroll Personal Device  
-4. Create an AGNI Client Group  
+1. [Create Identity UPSK SSID](#1-create-identity-upsk-ssid)  
+2. [Create UPSK Network and Segment](#2-create-upsk-network-and-segment)  
+3. [Create an AGNI Local User and Enroll Personal Device](#3-create-an-agni-local-user-and-enroll-personal-device)  
+4. [Create an AGNI Client Group](#4-create-an-agni-client-group)  
 
 ---
 

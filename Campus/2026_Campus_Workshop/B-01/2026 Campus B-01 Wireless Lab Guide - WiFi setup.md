@@ -105,22 +105,22 @@ And click the toggle to the right of **Wireless Manager** to enable this service
 * **Select the default top level locations**
 
 **![](images/image9.png)**  
-**Click Save** to save the user permissions ![](images/image10]
+**Click Save** to save the user permissions ![](images/image10.png)
 
 Click **Users** to return to the list of all users.
 
-Click the ![](images/image11]3-dots icon next to the newly created example user and click Lock / Unlock to toggle whether this user is allowed to log in  
-![](images/image12]
+Click the ![](images/image11.png)3-dots icon next to the newly created example user and click Lock / Unlock to toggle whether this user is allowed to log in  
+![](images/image12.png)
 
 Delete the example user by selecting the 3-dots again
 
-![](images/image13]
+![](images/image13.png)
 
 Click **Yes** to confirm the prompt  
-![](images/image14]
+![](images/image14.png)
 
 Click **Settings** to view additional authentication configuration options such as 2-Factor Authentication and password policies:  
-![](images/image15]
+![](images/image15.png)
 
 Do not make any further changes in the Settings menu.
 
@@ -410,7 +410,7 @@ Next, connect your device to the AP and type in the wrong PSK.  Hover your curso
 ![](images/image63.png)
 
 Select on the three dots next to the device name and select “**Start Live Client Debugging”.**
-.png)]
+(images/images64.png)
 
 Select “**30 Minutes”** in the **“Time Duration”** drop down box, select the “**Discard Logs” radio button,** then click “**Start”**.
 
@@ -458,8 +458,8 @@ You can also download the trace and view it with WireShark if you have it instal
 
 Click on “**Time View”** and “**Frames”** to look through the data and at the trace to see how Arista can help you troubleshoot.
 
-Next, click on the back arrow icon to look at the “**Analyze”** feature**.**
-.png)]
+Next, click on the back arrow icon to look at the “**Analyze”** feature.
+![](images/image78.png)
 
 Explore the “**Analyze**” feature by clicking on the various menu options and reviewing the data.
 

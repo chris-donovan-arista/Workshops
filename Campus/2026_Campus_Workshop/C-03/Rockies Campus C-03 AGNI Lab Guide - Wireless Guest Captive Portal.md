@@ -41,11 +41,11 @@ NAC Lab #3 - Configuring Guest Captive Portal
 
 1. Return to the LaunchPad tab and Log into AGNI [https://launchpad.wifi.arista.com/](https://launchpad.wifi.arista.com/), or access the AGNI tab in your browser.
 
-![image5](images/LaunchPad1.png)
+![image5](images/image5.png)
 
 2. Navigate to **Identity \> Guest \> Portals**.
 
-![image6](images/Portals.png)
+![image6](images/image6.png)
 
 In **Guest Portals**, the **Default** portal is always present. Let’s create a new guest portal.
 
@@ -59,7 +59,7 @@ In **Guest Portals**, the **Default** portal is always present. Let’s create a
 
 4. Then select **Customization**
 
-![image7](images/AddWebPortal.png)
+![image7](images/image7.png)
 
 5. The available Theme templates are **Default** or **Split Screen**. Select **Default**.
 
@@ -71,13 +71,15 @@ In **Guest Portals**, the **Default** portal is always present. Let’s create a
 * **Logo**  
 * **Guest Login Submit Button**
 
-![image8](images/WebPortalCustom.png)
+![image8](images/image8.png)
 
 7. When done, click **Add Web Portal.** 
 
+![image8a](images/image8a.png)
+
 8. Click **\<-- Back** to see the new Guest Portal listing.
 
-![image9](images/GuestPortals.png)
+![image9](images/image9.png)
 
 ## 2. Create a Network in AGNI
 
@@ -85,7 +87,7 @@ In **Guest Portals**, the **Default** portal is always present. Let’s create a
 
 2. Click on **Networks** and then **\+ Add**.
 
-![image10](images/AGNI_Networks.png)                ![image11](images/AGNI_Add.png)                     
+![image10](images/image10.png)                ![image11](images/image11.png)                     
 
 3. Add the following:
 
@@ -99,11 +101,13 @@ In **Guest Portals**, the **Default** portal is always present. Let’s create a
 **Captive Portal**  
 - Initial Role for Portal Authentication: **ATD-\#\#-Portal-Role**  
 4. Click **Add Network**	  
-![image12](images/AGNI_Add_Network.png)  
-![image13](images/AGNI_Add_CP_Network.png) 
 
-5. **Copy** the **portal URL** at the bottom of the page.  
-![image14](images/AGNI_CP_Domains.png)
+![image12](images/image12.png) 
+![image13](images/image13.png) 
+
+5. **Copy** the **portal URL** at the bottom of the page
+
+![image14](images/image14.png)
 
 **Keep the browser tab for AGNI open.** We’ll return to get the Domains allowlist for the Role Profile in CV-CUE.
 
@@ -111,7 +115,7 @@ In **Guest Portals**, the **Default** portal is always present. Let’s create a
 
 1. Return to the LaunchPad tab and Log into CV-CUE [https://launchpad.wifi.arista.com/](https://launchpad.wifi.arista.com/), or access the CV-CUE tab in your browser. 
 
-![image15](images/LaunchPad2.png)
+![image15](images/image15.png)
 
 2. In **CV-CUE**, navigate to **Configure \> Network Profiles \> Role Profile.**
 
@@ -125,20 +129,21 @@ In **Guest Portals**, the **Default** portal is always present. Let’s create a
 
 **NOTE:** Role Profiles are case sensitive.
 
-![image16](images/CVCUE_Role_Profile.png)
+![image16](images/image16.png)
+![image16a](images/image16a.png)
 
 **Keep the browser tab for CV-CUE open.**
 
-4. Return to the **AGNI tab.** From the **Guest Captive Portal** network in **AGNI**, click on **Show Domains**, click on **Copy** to copy the Domains allowlist.
+4. Return to the **AGNI tab.** From the **Guest Captive Portal** network in **AGNI**, click on **Show Domains**, click on **Copy** to copy the Domains that must be allowlisted.
 
-![image17](images/AGNI_CP_Domains.png)
+![image17](images/image17.png)
 
 5. Return to the **CV-CUE Role Profile** tab
 - enable the **HTTPS Redirection** check box.
 
 - In the **Websites That Can Be Accessed Before Authentication** field, paste the Domains allowlist you copied from AGNI.
 
-![image18](images/AGNI_HTTPS_Redirection.png)
+![image18](images/image18.png)
 
 6. Click **Save** to save the **Role Profile**.
 
@@ -150,13 +155,13 @@ In **Guest Portals**, the **Default** portal is always present. Let’s create a
 
 - Provide the SSID Name — **ATD-\#\#-GUEST.**
 
-![image19](images/CVCUE_CP_SSID1.png)
+![image19](images/image19.png)
 
 3. Next, Click on **Security**, then select **OWE Transition Mode.**
 
-![image20](images/CVCUE_CP_SSID2.png)
+![image20](images/image20.png)
 
-[Opportunistic Wireless Encryption (OWE) Transition Mode](#full-lab-topology) Opportunistic Wireless Encryption (OWE) Transition Mode enables a seamless, secure migration from open, unencrypted Wi-Fi to encrypted Wi-Fi (Enhanced Open) without requiring manual network changes by users. It allows OWE-capable devices to use encryption while legacy devices still connect via traditional open methods.
+**Opportunistic Wireless Encryption (OWE) Transition Mode**  enables a seamless, secure migration from open, unencrypted Wi-Fi to encrypted Wi-Fi (Enhanced Open) without requiring manual network changes by users. It allows OWE-capable devices to use encryption while legacy devices still connect via traditional open methods.
 
 4. Next, Click on the **3 Blue Dots** next to the Network tab.  
 
@@ -170,7 +175,7 @@ In **Guest Portals**, the **Default** portal is always present. Let’s create a
 
 - Select **Send DHCP Options and HTTP User Agent**.
 
-![image21](images/CVCUE_CP_SSID3.png) 
+![image21](images/image21.png) 
 
 - Select the **Role Based Control** checkbox and configure the following settings: 
 
@@ -180,13 +185,13 @@ In **Guest Portals**, the **Default** portal is always present. Let’s create a
 
 * Select the **Client Isolation** checkbox.
 
-![image22](images/CVCUE_CP_SSID4.png) 
+![image22](images/image22.png) 
 
-6. Finally, Click on **Save & Turn SSID On,** then **Customize**.
+6. Finally, Click on **Save & Turn SSID On**.
 
-![image23](images/CVCUE_TurnOn_SSID.png)
+![image23](images/image23.png)
 
-![image24](images/CVCUE_SSID_Customize.png)  
+![image24](images/image24.png)  
 
 **NOTE - Please Read\!**  
 

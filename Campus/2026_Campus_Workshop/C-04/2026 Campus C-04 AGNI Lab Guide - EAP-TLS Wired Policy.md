@@ -54,8 +54,6 @@ Campus/2026_Campus_Workshop/C-04/Rockies Campus C-04 AGNI Lab Guide - EAP-TLS Wi
 
 You will now be logged into CloudVision.
 
-<span style="color: red;">UPDATE CAMPUS HEALTH OVERVIEW SCREENSHOT BELOW 3/20/26</span>
-
 ![image7](images/image7.png)
 
 ---
@@ -164,7 +162,7 @@ Create a workspace to propose changes to the Network Infrastructure. A workspace
 - EAP Method: **EAP-TLS**  
 **EAP-TLS Authentication Settings**
 - Trust External Certificates: **Enabled** 
-- User Identity Binding: **Optional**
+- User Identity Binding: **Required**
 - Fallback to MAC Authentication: **Enabled**  
 - MAC Authentication Type: **Allow Registered Clients Only**  
 - Onboarding: **Enabled** 
@@ -230,9 +228,9 @@ Your Conditions should now look like this.
 
 ---
 
-### 5. Validate and Verify Wired EAP-TLS Device - <span style="color: red;">UPDATE SCREENSHOTS BELOW 3/20/26</span>
+### 5. Validate and Verify Wired EAP-TLS Device 
 
-1. Click on the **Eye icon** to the right of your client session to view the **Session Details**.
+1. Click anywhere in the Row for your client session to view the **Session Details**.
 
 ![image44](images/image44.png)
 
@@ -240,7 +238,11 @@ Your Conditions should now look like this.
 
 ![image45](images/image45.png)
 
-3. You can also validate the session on the switch by issuing the following commands in the switch CLI.
+3. Explore the information availabe in the **Input and Output Request Attributes** drop downs, and look in the **Show Logs** to see debug level information from the client session logs.
+
+- See if you can find the client EAPIdentity information in the session logs and the number of days until the clients certificate expires.
+
+4. You can also validate the client session on the switch by issuing the following commands in the switch CLI.
 
 ```
 

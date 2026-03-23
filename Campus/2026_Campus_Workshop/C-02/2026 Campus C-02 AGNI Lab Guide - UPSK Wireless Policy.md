@@ -54,13 +54,14 @@ Campus/2026_Campus_Workshop/C-02/Rockies Campus C-02 AGNI Lab Guide - UPSK Wirel
 4. Next, click on the 3 Dots and select **Create a Copy** on the SSID **ATD-##-PSK** where **##** is a 2 digit character between 01-20 that was assigned to your lab/Pod
 
 ![image7](images/image7.png)
-![image8](images/image8.png)
 
 5. **Select - Currently Selected Folders** and then **Continue**.
 
 ![image9](images/image9.png)
 
-6. Click on the new SSID and select **Edit**.
+6. Click on the **Pencil icon** in the new copied SSID to **Edit** the SSID.  
+
+**NOTE**: The Profile Name will show **Copy of**
 
 ![image10](images/image10.png)
 
@@ -68,33 +69,28 @@ Campus/2026_Campus_Workshop/C-02/Rockies Campus C-02 AGNI Lab Guide - UPSK Wirel
 
 ![image11](images/image11.png)
 
-8. Next, click on the Security Tab and change the WPA2 Security from PSK to **UPSK**
+8. Next, click on the Security Tab and change the Security Level to **WPA3 Transition Mode** - **USPK**
 
 ![image12](images/image12.png)
 
-9. Next, select **UPSK Identity Lookup**
+**NOTE**: For more information on UPSK click here: https://arista.my.site.com/AristaCommunity/s/article/Unique-PSKs
 
-![image13](images/image13.png)
-
-
-- For more information on UPSK click here: https://arista.my.site.com/AristaCommunity/s/article/Unique-PSKs
-
-10. Next, Click on the **Access Control** tab.  Under **RADIUS Settings**, select **RadSec** and then **AGNI** for the Authentication and Accounting Servers, and select **Send DHCP Options and HTTP User Agent**.
+9. Next, Click on the **Access Control** tab.  Under **RADIUS Settings**, select **RadSec** and then **AGNI** for the Authentication and Accounting Servers, and select **Send DHCP Options and HTTP User Agent**.
 
 ![image14](images/image14.png)
 
-11. Confirm the **Username and Password, Called Station, COA information**.
+10. Confirm the **Username and Password, Called Station, COA information**.
 
 ![image15](images/image15.png)
 ![image16](images/image16.png)
 
-12. Click **Save**.
+11. Click **Save**.
 
 ![image17](images/image17.png). 
 
 **Please Read!**
 
-13. **Only select the “5 GHz” option** on the next screen (**uncheck** the 2.4 GHz box if it’s checked), then click **Turn SSID On**.
+12. **Only select the “5 GHz” option** on the next screen (**uncheck** the 2.4 GHz box if it’s checked), then click **Turn SSID On**.
 
 ![image18](images/image18.png)  
 
@@ -181,7 +177,7 @@ In this section you will create a local user and enroll the MAC of your device.
 
 3. **Disable** - User must change password at next login:
 
-![image39](images/image39.png)
+
 ![image40](images/image40.png)
 
 4. Click **Add User**
@@ -213,7 +209,9 @@ In this section you will create a local user and enroll the MAC of your device.
 
 In this section, you will simulate your device as an IoT device.
 
-1. **Disable and forget previously saved lab networks so your wireless connection on your test device does not auto connect.  Under your user client list, delete your device.**
+1. **Disable and forget previously saved lab networks** so your wireless connection on your test device does not auto connect.  
+
+2. Under your user client list, **Delete** your device.
 
 ![image47](images/image47.png)
 ![image48](images/image48.png)

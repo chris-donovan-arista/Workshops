@@ -170,72 +170,87 @@ Campus/2026_Campus_Workshop/C-01/Rockies Campus C-01 AGNI Lab Guide - EAP-TLS Wi
 ![image25](images/image25.png)
 
 
-2. Type in the name **Wireless-EAP-TLS**
+2. Type in the **Name** - **Wireless-EAP-TLS**
 
-3. Select Connection Type: **Wireless**
+3. Select **Connection Type**: **Wireless**
 
-4. SSID needs to match what you created in CV-CUE type **ATD-##-EAP**
+4. **SSID** needs to match what you created in CV-CUE type **ATD-##-EAP**
 
 ![image26](images/image26.png)
 
-5. For Authentication select **Client Certificate (EAP-TLS)**
+5. Under **Authentication**, select **Authentication Type - 802.1X EAP**
+
+6. And **EAP Methods - EAP-TLS**
 
 ![image27](images/image27.png)
 
-6. Click on **Add Network** at the bottom of the screen.
+7. Under **EAP-TLS Authenticaiton Settings**, **Enabled** Trust External Certificates
+8. And Select **Required** for User Identity Binding
+
+**NOTE:** The Raspberry Pi's are using External Certificates that are Trusted by AGNI.
+
+**User Identity Binding**
+- **Required** - When set, the certificate has a valid query-able user identity for
+request authorizations.
+- **Optional** - When set, the certificate contains any identity that is optionally bound or not bound
+to the user. For example, this option can be set to honor appliance authentication where the
+certificates are not bound to any user but set to machine identity.  
+
+![image27-2](images/image27-2.png)  
+
+9. Click on **Add Network** at the bottom of the screen.
 
 ![image28](images/image28.png)
 
-7. Next, click on **Segments** and then **+ Add**
+10. Next, click on **Segments** and then **+ Add**
 
 ![image29](images/image29.png)
-![image30](images/image30.png)
-![image31](images/image31.png)
+![image30](images/image30.png)  
 
-8. Next, type in the name: **Wireless - EAP-TLS** and the Description as well.
+11. Next, type in the name: **Wireless-EAP-TLS** and the Description as well.
 
 ![image32](images/image32.png)
 
-9. Next, let’s **Add Conditions**.  
+12. Next, let’s **Add Conditions**.  
 
 **Note:** Adding more than one condition means **MATCH ALL**
 
 ![image33](images/image33.png)
 
-10. Select, **Network, Name, Is, Wireless-EAP-TLS** from the drop down lists.
+13. Select, **Network, Name, Is, Wireless-EAP-TLS** from the drop down lists.
 
 ![image34](images/image34.png)
 
-11. Let’s add one more condition.
+14. Let’s add one more condition.
 
 ![image35](images/image35.png)
 
-12. Select, **Network, Authentication Type, Is, Client Certificate (EAP-TLS)** from the drop down lists.
+15. Select, **Network, Authentication Type, Is, Client Certificate (EAP-TLS)** from the drop down lists.
 
 ![image36](images/image36.png)
 
-13. Your Conditions should now look like this.
+16. Your Conditions should now look like this.
 
 ![image37](images/image37.png)
 
-14. Under Actions select **Add Action**.
+17. Under Actions select **Add Action**.
 
 ![image38](images/image38.png)
 
-15. Select **Allow Access**.
+18. Select **Allow Access**.
 
 ![image39](images/image39.png)
 
 
-15. Finally, select **Add Segment** at the bottom of the page.
+19. Finally, select **Add Segment** at the bottom of the page.
 
 ![image40](images/image40.png)
 
-16. You should now be able to expand and review your segment.
+20. You should now be able to expand and review your segment.
 
 ![image41](images/image41.png)
 
-17. Next, click on **Sessions** to see if your **ATD Raspberry Pi** has a connection via the Wireless connection.  
+21. Next, click on **Sessions** to see if your **ATD Raspberry Pi** has a connection via the Wireless connection.  
 
 **Note**: The Client Certificate has already been applied to the Raspberry Pi and is configured to connect to the SSID **ATD-##-EAP**. 
 

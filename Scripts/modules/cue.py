@@ -93,9 +93,10 @@ class CueClient():
         for ap in aps.get("managedDevices", []):
             data = {
                 "name": f'Arista_{ap["macaddress"][-8:]}',
+                "locationId": { "type": "locallocationid", "id": -1}
             }
             params = {
-                "fields": [ "name" ],
+                "fields": [ "name", "locationId" ],
             }
             self._doReq(reqType='PUT', subsystem=f'manageddevices/aps/{ap["macaddress"]}', params=params, data=data)
 
@@ -147,9 +148,9 @@ class CueClient():
 
     def cleanup(self):
         self._doDeleteEvents()
+        self._doRenameAPs()
         self._doDeleteLocations()
         self._doDeleteRogueAPs()
-        self._doRenameAPs()
         self._doDeleteSSIDs()
 
         return

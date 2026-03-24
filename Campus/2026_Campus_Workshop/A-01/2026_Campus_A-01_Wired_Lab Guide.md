@@ -28,16 +28,15 @@ https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Worksho
 ---
 
 ## 3. Accessing CloudVision as a Service
+1. Go to the Arista Ignition GUI via: https://ignition.campus-atd.net/ 
+- Enter the 6 digit Access Code found on the Pod Handout Worksheet 
+- Click.  ![Submit Passcode](images/ignition_submit.png)
 
-1. In your Google Chrome browser, enter the following URL: https://www.arista.io/ to access CloudVision as a Service (CVaaS).
-   - In the **“Organization”** box enter the Organization name **rockies-training-##** where **##** is a 2 digit character between 01-20 that was assigned to your lab/Pod, then click **Enter**.
+![image5](images/Ignition1.png)
 
-![CVaaS Login Page](images/cvaas-login.png)
+2. Click the **CVaaS** tile
 
-
-2. Click the Log in with Launchpad button and provide your assigned lab/Pod email address and password:
-
-![Organization Selection](images/launchpad-login.png)
+![image5a](images/Ignition_cvaas.png)
 
 3. You will now be logged into CloudVision
 
@@ -49,7 +48,7 @@ https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Worksho
 
 In this lab you will be configuring the switches through CloudVision. Today you will be adding a second Leaf Switch to an existing Campus Fabric/POD using Cloud Vision’s guided workflow.
 
-1. Login to CloudVision, then click on the Network Hierarchy menu option.
+1. Login to CloudVision, then click on the **Network Hierarchy** menu option.
 
 ![Network Hierarchy Menu](images/network-hierarchy-menu.png)
 
@@ -67,13 +66,13 @@ In this lab you will be configuring the switches through CloudVision. Today you 
    -  Campus: **Workshop**  
    -  Campus-Pod: **IT-Bldg**  
    -   Access-Pod: **IDF1**  
-   -   Under **Select Available Devices** select the **check box**de with a hostname of **sw-10.#.#.#**
+   -   Under **Select Available Devices** select the **check box** with a hostname of **sw-10.#.#.#**
    -  Select **Continue**
 
 ![Deployment Details](images/deployment-details.png)
 
 
-5. Locate the new device being added under Role Assignment. 
+5. Locate the new device being added under **Role Assignment**. 
 
    -  Update the hostname from **sw-[IP_ADDRESS]** to **campus-pod[POD#]-leaf1b**  
    -   Under Role select **Leaf** 
@@ -82,9 +81,9 @@ In this lab you will be configuring the switches through CloudVision. Today you 
 
 ![Role Assignment](images/role-assignment.png)
 
-6. Select **Continue**
+*(Although not part of the lab today, this next section of the workflow allows us to set the leaf we are currently provisioning to also provide Zero Touch Provisioning workflow to switches that are downstream from this new Leaf.)*
 
-*(Although not part of the lab today, this section of the workflow allows us to set the leaf we are currently provisioning to also provide Zero Touch Provisioning workflow to switches that are downstream from this new Leaf.)*
+6. Select **Continue**
 
 ![Continue](images/hierarchy-deploy-ztp-option.png)
 
@@ -130,7 +129,7 @@ In this lab you will be configuring the switches through CloudVision. Today you 
 
 ![Change Control Template](images/change-control-template2.png)
 
-13. The template selected will update the Change Control Stages into 2 sections. The first section will begin the configuration on the new Leaf immediately. The second section will delay pushing the configuration changes for 60 seconds, then configure leaf1a. You can expand all change control stages by selecting the 2 arros facing away from each
+13. The template selected will update the Change Control Stages into 2 sections. The first section will begin the configuration on the new Leaf immediately. The second section will delay pushing the configuration changes for 60 seconds, then configure leaf1a. You can expand all change control stages by selecting the 2 arrows facing away from each
 
 ![Change Control Stages](images/change-control-stages.png)
 

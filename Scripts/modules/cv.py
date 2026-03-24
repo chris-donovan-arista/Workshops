@@ -214,13 +214,13 @@ class pgfCVClient():
 
         tags = [
             ("Campus", f"Workshop"),
-            ("Campus-Pod", f"IT-BLDG"),
+            ("Campus-Pod", f"IT-Bldg"),
             ("Access-Pod", f"IDF1"),
             ("Role", "Leaf"),
         ]
         tagAssignments = [
             ("Campus", f"Workshop", leaf1a["sn"],  None),
-            ("Campus-Pod", f"IT-BLDG", leaf1a["sn"],  None),
+            ("Campus-Pod", f"IT-Bldg", leaf1a["sn"],  None),
             ("Access-Pod", f"IDF1", leaf1a["sn"],  None),
             ("Role", "Leaf", leaf1a["sn"],  None),
         ]

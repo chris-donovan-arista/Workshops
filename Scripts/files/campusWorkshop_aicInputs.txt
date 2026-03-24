@@ -28,7 +28,7 @@ inputs:
                   tags:
                     query: Access-Pod:IDF1
             tags:
-              query: Campus-Pod:IT-BLDG
+              query: Campus-Pod:IT-Bldg
       tags:
         query: Campus:Workshop
   spineCampus: []

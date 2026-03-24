@@ -48,7 +48,7 @@ inputs:
                       nodeId: 1
                       role: spine
               tags:
-                query: Campus-Pod:IT-BLDG
+                query: Campus-Pod:IT-Bldg
       tags:
         query: Campus:Workshop
   campusServices:
@@ -79,6 +79,6 @@ inputs:
                       routed: false
                       vrf: null
               tags:
-                query: Campus-Pod:IT-BLDG
+                query: Campus-Pod:IT-Bldg
       tags:
         query: Campus:Workshop

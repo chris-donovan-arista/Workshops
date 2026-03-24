@@ -118,6 +118,8 @@ Campus/2026_Campus_Workshop/C-01/Rockies Campus C-01 AGNI Lab Guide - EAP-TLS Wi
 
 7. Next, under **RADIUS Settings** check **RadSec** and select **AGNI** in the drop down box under Authentication and Accounting Server
 
+- This step ties the **preconfigured RADIUS Profile** to the SSID so the **Authentication Requests** and **Accounting Messages** are forwarded to **AGNI**.
+
 ![image14](images/image14.png)
 
 8. Select **Next** at the bottom of the screen.
@@ -176,20 +178,23 @@ Campus/2026_Campus_Workshop/C-01/Rockies Campus C-01 AGNI Lab Guide - EAP-TLS Wi
 
 3. Select **Connection Type**: **Wireless**
 
-4. **SSID** needs to match what you created in CV-CUE type **ATD-##-EAP**
+4. **SSID** needs to match what you created in CV-CUE, Type **ATD-##-EAP**
 
-![image26](images/image26.png)
+![image26](images/image26.png)  
 
-5. Under **Authentication**, select **Authentication Type - 802.1X EAP**
+Under **Authentication**
 
-6. And **EAP Methods - EAP-TLS**
+5. Select **Authentication Type**: **802.1X EAP**
+
+6. Select **EAP Methods**: **EAP-TLS**
 
 ![image27](images/image27.png)
 
-7. Under **EAP-TLS Authenticaiton Settings**, **Enabled** Trust External Certificates
-8. And Select **Required** for User Identity Binding
+Under **EAP-TLS Authentication Settings**
 
-**NOTE:** The Raspberry Pi's are using External Certificates that are Trusted by AGNI.
+7. Select **Trust External Certificates**: **Enabled** 
+
+8. Select **User Identity Binding**: **Required** 
 
 **User Identity Binding**
 - **Required** - When set, the certificate has a valid query-able user identity for
@@ -197,6 +202,8 @@ request authorizations.
 - **Optional** - When set, the certificate contains any identity that is optionally bound or not bound
 to the user. For example, this option can be set to honor appliance authentication where the
 certificates are not bound to any user but set to machine identity.  
+
+**NOTE:** The Raspberry Pi's are using External Certificates that are Trusted by AGNI.  
 
 ![image27-2](images/image27-2.png)  
 
@@ -215,11 +222,11 @@ certificates are not bound to any user but set to machine identity.
 
 12. Next, let’s **Add Conditions**.  
 
-**Note:** Adding more than one condition means **MATCH ALL**
+**NOTE:** Adding more than one condition means **MATCH ALL**
 
 ![image33](images/image33.png)
 
-13. Select, **Network, Name, Is, Wireless-EAP-TLS** from the drop down lists.
+13. Select, **Network:Name is Wireless-EAP-TLS** from the drop down lists.
 
 ![image34](images/image34.png)
 
@@ -227,34 +234,30 @@ certificates are not bound to any user but set to machine identity.
 
 ![image35](images/image35.png)
 
-15. Select, **Network, Authentication Type, Is, Client Certificate (EAP-TLS)** from the drop down lists.
+15. Select, **Network:Authentication Type is EAP-TLS** from the drop down lists.
 
 ![image36](images/image36.png)
 
-16. Your Conditions should now look like this.
-
-![image37](images/image37.png)
-
-17. Under Actions select **Add Action**.
+16. Under Actions select **Add Action**.
 
 ![image38](images/image38.png)
 
-18. Select **Allow Access**.
+17. Select **Allow Access**.
 
 ![image39](images/image39.png)
 
 
-19. Finally, select **Add Segment** at the bottom of the page.
+18. Finally, select **Add Segment** at the bottom of the page.
 
 ![image40](images/image40.png)
 
-20. You should now be able to expand and review your segment.
+19. You should now be able to expand and review your segment.
 
 ![image41](images/image41.png)
 
-21. Next, click on **Sessions** to see if your **ATD Raspberry Pi** has a connection via the Wireless connection.  
+20. Next, click on **Sessions** to see if your **ATD Raspberry Pi** has a connection via the Wireless connection.  
 
-**Note**: The Client Certificate has already been applied to the Raspberry Pi and is configured to connect to the SSID **ATD-##-EAP**. 
+**NOTE**: The Client Certificate has already been applied to the Raspberry Pi and is configured to connect to the SSID **ATD-##-EAP**. 
 
 - If you don’t see any new sessions within 2 minutes AGNI, power cycle the Raspberry Pi.
 

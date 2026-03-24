@@ -12,8 +12,8 @@ Campus/2026_Campus_Workshop/C-03/Rockies Campus C-03 AGNI Lab Guide - Wireless G
 
 ## Table of Contents
 
-**[Full Lab Topology](#full-lab-topology)**  
-**[POD Topology](#pod-topology)**  
+[Full Lab Topology](#full-lab-topology)  
+[POD Topology](#pod-topology)  
 
 NAC Lab #3 - Configuring Guest Captive Portal  
 1. [Create a Guest Portal in AGNI](#1-create-a-guest-portal-in-agni)  

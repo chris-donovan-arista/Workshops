@@ -15,8 +15,8 @@ Campus/2026_Campus_Workshop/C-02/Rockies Campus C-02 AGNI Lab Guide - UPSK Wirel
 [Full Lab Topology](#full-lab-topology)  
 [POD Topology](#pod-topology)  
 
-**NAC Lab #2 - Create UPSK Wireless Policy**
-1. [Create Identity UPSK SSID](#1-create-identity-upsk-ssid)  
+**NAC Lab #2 - Create Unique Pre-Shared Key (UPSK) Wireless Policy**
+1. [Create UPSK SSID](#1-create-upsk-ssid)  
 2. [Create UPSK Network and Segment](#2-create-upsk-network-and-segment)  
 3. [Create an AGNI Local User and Enroll Personal Device](#3-create-an-agni-local-user-and-enroll-personal-device)  
 4. [Create an AGNI Client Group](#4-create-an-agni-client-group)  
@@ -39,7 +39,7 @@ Campus/2026_Campus_Workshop/C-02/Rockies Campus C-02 AGNI Lab Guide - UPSK Wirel
 
 ---
 
-### 1. Create Identity UPSK SSID:
+### 1. Create UPSK SSID:
 
 1. Return to the **LaunchPad**, and select the **CV-CUE** tile, or go to your **CV-CUE** tab in your browser.
 
@@ -61,7 +61,7 @@ Campus/2026_Campus_Workshop/C-02/Rockies Campus C-02 AGNI Lab Guide - UPSK Wirel
 
 6. Click on the **Pencil icon** in the new copied SSID to **Edit** the SSID.  
 
-**NOTE**: The Profile Name will show **Copy of**
+**NOTE**: The Copied SSIDs Profile Name will show **Copy of**
 
 ![image10](images/image10.png)
 
@@ -138,7 +138,7 @@ Campus/2026_Campus_Workshop/C-02/Rockies Campus C-02 AGNI Lab Guide - UPSK Wirel
 
 - Conditions: **Network:Authentication Type is UPSK**
 
-**Note:** Conditions are always **MATCHES ALL**.
+**NOTE:** Conditions are always **MATCHES ALL**.
 
 ![image27](images/image27.png)
 ![image28](images/image28.png)
@@ -188,7 +188,7 @@ In this section you will create a local user and enroll the MAC of your device.
 
 ![image41](images/image41.png)
 
-6. Next, connect your client to **ATD-##-UPSK**using your **UPSK Passphrase**.
+6. Next, connect your client to **ATD-##-UPSK** using your **UPSK Passphrase**.
 
 7. Click on **Monitoring - Sessions** and validate your device connection.
 

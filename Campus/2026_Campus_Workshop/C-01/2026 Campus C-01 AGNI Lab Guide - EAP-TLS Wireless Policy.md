@@ -43,20 +43,22 @@ Campus/2026_Campus_Workshop/C-01/Rockies Campus C-01 AGNI Lab Guide - EAP-TLS Wi
 
 ### 1. CloudVision Cognitive Unified Edge CV-CUE Access
 
-1. Go to the Arista GUI via: https://launchpad.wifi.arista.com/ 
-- User Login is: [Provided by event staff]  
-- User Passwords are: [Provided by event staff]
+1. Go to the Arista Ignition GUI via: https://ignition.campus-atd.net/ 
+- Enter the 6 digit Access Code found on the Pod Handout Worksheet 
 
-![image5](images/image5.png)
-
-
-2. Click **Sign In**
+- Click ![image4a](images/image4a.png)
 
 
+![image5](images/Ignition1.png)
+
+
+2. Click the **CV-CUE and AGNI Launchpad** tile
+
+![image5a](images/Ignition_launchpad.png)
 
 **Launchpad**
 
-- When you open the launcher, you are presented with multiple applications. Each of these applications, with the exception of CloudVision and AGNI, are included with the CV-CUE subscription. CloudVision and AGNI are available from the LaunchPad with their respective subscriptions.
+- When you open the Launchpad, you are presented with multiple applications. Each of these applications, with the exception of CloudVision and AGNI, are included with the CV-CUE subscription. CloudVision and AGNI are available from the LaunchPad with their respective subscriptions.
 
 **Dashboard tab**
 
@@ -70,7 +72,7 @@ Campus/2026_Campus_Workshop/C-01/Rockies Campus C-01 AGNI Lab Guide - EAP-TLS Wi
 - WiFi Device Registration is the process for importing APs onto your account  
 - AGNI - Beta Arista Guardian for Network Identity (Network Access Control)
 
-3. Select CV-CUE (CloudVision WiFi)
+3. Select **CV-CUE (CloudVision WiFi)**
 
 ---
 
@@ -156,7 +158,7 @@ Campus/2026_Campus_Workshop/C-01/Rockies Campus C-01 AGNI Lab Guide - EAP-TLS Wi
 
 ### 3. CloudVision AGNI Access
 #### Launchpad ####
-1. Go back to the **LaunchPad**, and select the **AGNI - Beta** tile.
+1. Return to the **LaunchPad**, and select the **AGNI - Trial** tile.
 
 ![image22](images/image22.png)  
 

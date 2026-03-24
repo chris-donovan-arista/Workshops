@@ -240,7 +240,7 @@ Your Conditions should now look like this.
 
 3. Explore the information availabe in the **Input and Output Request Attributes** drop downs, and look in the **Show Logs** to see debug level information from the client session logs.
 
-- See if you can find the client EAPIdentity information in the session logs and the number of days until the clients certificate expires.
+- See if you can find the client **EAPIdentity** information in the session logs and the **number of days until the clients certificate expires**.
 
 4. You can also validate the client session on the switch by issuing the following commands in the switch CLI.
 

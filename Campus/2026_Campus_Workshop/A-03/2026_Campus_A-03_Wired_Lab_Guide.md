@@ -62,7 +62,7 @@ to access CloudVision as a Service (CVaaS).
 
 Adding a VLAN is a common provisioning task. Let’s use the existing Campus Fabric Studio to add an incremental configuration (add a VLAN). This VLAN will be specific to your pod and not routable outside.
 
-1. Select Provisioning, then Studios
+1. Select **Provisioning**, then **Studios**
 
 ![Provisioning Studios](images/provisioning-studios.png)
 
@@ -77,7 +77,7 @@ Adding a VLAN is a common provisioning task. Let’s use the existing Campus Fab
 
 ![Create Workspace](images/create-workspace.png)
 
-3. Once the workspace is created, open the existing Campus Fabric (L2/L3/EVPN) studio. 
+3. Once the workspace is created, select **Campus Fabric (L2/L3/EVPN)** studio. 
 *If the Studios main page is not present you may have to select the blue Studios breadcrumb towards the top left of the page*
 
 ![Campus Fabric Studio](images/campus-fabric-studio.png)
@@ -86,36 +86,44 @@ Adding a VLAN is a common provisioning task. Let’s use the existing Campus Fab
 
 ![Device Selection All Devices](images/device-selection-all.png)
 
-5. Within the Campus Services (Non-VXLAN) select the Campus:Workshop expand arrow button on the right
+5. Within the **Campus Services (Non-VXLAN)** select the **Campus:Workshop expand arrow** on the right
 
 ![Campus Services Expand](images/campus-services-expand.png)
 
-6. Add new VLAN and add to the “IT-Bldg” Campus POD.
+6. Add new VLAN and add to the **IT-Bldg** Campus POD.
 
-     -  Within the Campus: Workshop section, click the Campus-Pod: IT-Bldg name or the right arrow Expand button
+     -  Within the Campus: Workshop section, click the Campus-Pod: **IT-Bldg name** or the **expand arrow** on the right
 
 ![Campus Pod Expand](images/campus-pod-expand.png)
 
 
-7. click the Add VLAN button
+7. click the **+ Add VLAN** 
 
 ![Add VLAN Button](images/add-vlan-button.png)
 
-8. Once an entry is added for VLAN <2##>, click the right arrow Expand button
+8. In the newly created section under **VLAN ID** input VLAN number **200+POD#**, click the **arrow expand** on the right
 
 ![Expand New VLAN](images/expand-new-vlan.png)
 
-9. Customize the new VLAN by giving it a name
+9. Createing a new VLAN
+     * For the purpose of this lab we will create an L2 VLAN. Select **L2 Only** 
+     * Add a **name** for your VLAN with **no spaces** 
+
+*Notice the avaialble inputs change based on L2 Only and Routed selections*
 
 ![Customize VLAN Name](images/customize-vlan-name.png)
 
-10. Add the VLAN to the Access-Pod by clicking Add Pod and selecting IDF1
+10. Assigning VLANs to devices
+    * Select **+ Add Pod**
+    * Select the **dropdown** from the new line that was created
+    * Select **IDF1**
+
 
 ![Add Pod IDF1](images/add-pod-idf1.png)
 
-You can skip entries for all of the remaining sections.
+You can skip entries for all of the remaining vlan configuration sections.
 
-11. Click “Review Workspace” to submit the staged changes.
+11. Click **Review Workspace** to submit the staged changes.
 
 ![Review Workspace](images/review-workspace.png)
 
@@ -123,41 +131,41 @@ You can skip entries for all of the remaining sections.
 
 ![Review Workspace2](images/review-workspace2.png)
 
-13. Once you review the changes, click Submit Workspace
+13. Once you review the changes, click **Submit Workspace**
 
 ![Submit Workspace](images/submit-workspace.png)
 
-14. Click View Change Control
+14. Click **View Change Control**
 
 ![View Change Control](images/view-change-control.png)
 
-15. Review the Change Control and select “Review and Approve”
+15. Review the Change Control and select **Review and Approve**
 
 ![Review and Approve](images/review-and-approve.png)
 
-16. If necessary toggle the Execute Immediately button and select Approve and Execute
+16. If necessary toggle the Execute Immediately button and select **Approve and Execute**
 
 ![Approve and Execute](images/approve-and-execute.png)
 
 
 17. Verify the VLAN has been added to the device configuration by using the Devices Comparison function.
 
-     - Select Devices then Comparison menu
+     - Select ***Devices** and then **Comparison** menu
   
  ![Navigate Comparison](images/navigate-comparison.png) 
 
 18. Time Comparison
-    - Select a Time Comparison
+    - Select a **Time Comparison**
     - Choose a device from the list. example leaf1a
-    - Select a time period, for example 30 minutes ago 
-    - Click the Compare button 
+    - Select a **time period**, for example 30 minutes ago 
+    - Click the **Compare** button 
 
 ![Devices Comparison](images/devices-comparison.png)
 
 
 19. Time Comparison (Continued)
     - The first screen presented shows the overview:
-    - Select the Configuration section
+    - Select the **Configuration** section
 
 ![Comparison Overview](images/comparison-overview.png)
 
@@ -180,15 +188,15 @@ CloudVision change controls allow this flexibility for granular change managemen
 
 Let’s roll back the change control we used to add a VLAN via Studios.
 
-1. First go to Provisioning then Change Control menu. Select the change control corresponding to your VLAN addition
+1. First go to **Provisioning** then **Change Control** menu. Select the **completed change control corresponding to your VLAN addition**
 
 ![Select Change Control](images/select-change-control.png)
 
-2. Click the Rollback button
+2. Click the **Rollback** button
 
 ![Rollback Button](images/rollback-button.png)
 
-3. In the next screen, select the top list check mark to select all the devices and click Create Rollback Change Control
+3. In the next screen, **select all the devices** and click **Create Rollback Change Control**
 
 ![Create Rollback Change Control](images/create-rollback-cc.png)
 
@@ -259,6 +267,7 @@ Dashboards are an important way to visualize commonly requested information. Thi
 1. Click the New Dashboard button.
 
 ![New Dashboard](images/new-dashboard.png)
+
 2. New Dashboard
     - Select the pencil next to Untitled dashboard
     - Provide a useful name for the Dashboard, such as “Workshop Dashboard” 

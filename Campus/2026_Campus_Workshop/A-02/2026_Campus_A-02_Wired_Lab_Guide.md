@@ -52,128 +52,131 @@ https://github.com/arista-rockies/Workshops/tree/main/Campus
 
 ## 4. Creating Port Profiles
 
-This lab will help you create port profiles and apply them to interfaces in your ATD network.
+This lab will help you create 2 port profiles and apply them to interfaces in your Lab network.
 
 1. Click on the **Provisioning** menu option, then choose **Studios**
 
 ![Provisioning Studios](images/provisioning-studios.png)
 
-2. Click Create Workspace and name it Create Port Profiles then select Create. A workspace acts as a sandbox where you can stage your configuration changes before deploying them
+In order to make any changes within the Studios framework, you need to create a Workspace.
+
+2. Click **Create Workspace** 
+    - name it **Create Port Profiles** 
+    - Select **Create**. 
+    
+*A workspace acts as a sandbox where you can stage your configuration changes before deploying them*
 
 ![Create Workspace](images/create-workspace.png)
 
-3. Disable the Active Studios toggle to display all available CloudVision Studios (which when enabled will only show used/active Studios).  
-*Note:- the toggle may already be in the disabled position.*
-
-![Disable Active Studios](images/show-active-studios.png)
-
-4. Create two port profiles using the Access Interface Configuration studio that will be used to provision connected hosts.
-
-    - Launch the Access Interface Configuration
+3. Select the **Access Interface Configuration Studio**
   
 ![Access Interface Configuration Studio](images/access-interface-configuration.png)
 
-5. Click Add Port Profile, name it “Wireless-Access-Point”, and click the arrow on the right
+4. Click **Add Port Profile**, 
+    - name it “Wireless-Access-Point”
+    - Click the **expand arrow** on the right of the new profile name
 
 ![Add Port Profile Wireless1](images/add-port-profile-wireless1.png)
 
-6. Enter the following values on this configuration page
+5. Enter the following values on this configuration page
 
-    - Description: “Wireless-Access-Point”  
-    - Enabled: Yes  
+    - Description: **Wireless-Access-Point**
+    - Enabled: **Yes** 
 
 ![Add Port Profile Wireless2](images/add-port-profile-wireless2.png)
 
-7. Configure the VLAN and Mod
-    - Mode: Access  
-    - VLANs: “1##” where ## is a 2 digit character between 01-20 that was assigned to your lab/Pod. e.g Pod01 is VLAN101, Pod13 is VLAN113  
+6. Configure the VLAN and Mod
+    - Mode: **Access**  
+    - VLANs: **1##** where **##** is a 2 digit character assigned to your lab/Pod. e.g Pod01 is VLAN101, Pod13 is VLAN113  
 
 
 ![Add Port Profile Wireless3](images/add-port-profile-wireless3.png)
 
-8. Port-Channel:
-    - Port-Channel: Yes
-    - Description: Wireless Access Point Port-Channel
-    - Mode: Active
-    - Enabled: Yes
-    - MLAG: Yes
-    - Select LACP Fallback
+7. Port-Channel:
+    - Port-Channel: **Yes**
+    - Description: **Wireless Access Point Port-Channel**
+    - Mode: **Active**
+    - Enabled: **Yes**
+    - MLAG: **Yes**
+    - Select **LACP Fallback**
 
 *The Wireless Access Point has the capability to run a port channel but is not currently configured as such. We will use LACP fallback so we may provision the Access Point with its current configuration*
 
 ![Add Port Profile Wireless4](images/add-port-profile-wireless4.png)
 
-9. LACP Fallback
-    - Mode: Individual
+8. LACP Fallback
+    - Mode: **Individual**
 
 ![Add Port Profile Wireless5](images/add-port-profile-wireless5.png)
 
 
-10. POE:  
-    - Reboot Action: Maintain  
-    - Link Down Action: Maintain  
-    - Shutdown Action: Maintain  
+9. POE:  
+    - Reboot Action: **Maintain**
+    - Link Down Action: **Maintain**  
+    - Shutdown Action: **Maintain** 
 
 ![Add Port Profile Wireless6](images/add-port-profile-wireless6.png)
 
 
-11. Navigate back to Access interface Configuration by clicking on the top
+10. Navigate back to the Access interface Configuration Studio landing page by clicking the breakdrumb labeled **Access Interface Configuration** toward top of your window
 
 
 ![Interface Studio Navigate](images/interface-studio-navigate.png)
 
-12. Click Add Port Profile, name it “Wired-RasPi”, and click the arrow on the right
+11. Click Add Port Profile 
+    - Name the profile **Wired-RasPi** 
+    - Click the **expand arrow** on the right of the new profile name
 
 ![Add Port Profile Wired](images/add-port-profile-wired1.png)
 
-13. Enter the following values on this configuration page
-    - Description: “Wired-RasPI”  
-    - Enabled: Yes  
+12. Enter the following values on this configuration page
+    - Description: **Wired-RasPi**
+    - Enabled: **Yes**  
 
 ![Add Port Profile Wired 2](images/add-port-profile-wired2.png)
 
-14. Mode, VLAN and Spanning-tree:
-    - Mode: Access  
-    - VLANs: “1##” where ## is a 2 digit character between 01-20 that was assigned to your lab/Pod. e.g Pod01 is VLAN101, Pod13 is VLAN113  
+13. Mode, VLAN and Spanning-tree:
+    - Mode: **Access**  
+    - VLANs: **1##** where **##** is a 2 digit character assigned to your lab/Pod. e.g Pod01 is VLAN101, Pod13 is VLAN113  
     - Spanning Tree
-      - Portfast: edge
-      - BPDU Guard: enabled
+      - Portfast: **edge**
+      - BPDU Guard: **enabled**
 
 
 ![Add Port Profile Wired 3](images/add-port-profile-wired3.png)
 
-15. Dot1x:
-    - 802.1X: Enabled = Yes  
-    - Click MAC Based Authentication
+14. 802.1X:
+    - Enabled: **Yes**  
+    - Click **MAC Based Authentication**
 
 ![Add Port Profile Wired 4](images/add-port-profile-wired4.png)
 
-16. Mac Based Authentication:
-    - Set Enabled:Yes
-    - Navigate back to the previous page
+15. Mac Based Authentication:
+    - Set Enabled: **Yes**
+    - Navigate back to the previous page by clicking the breadcrump labeled **Wired-RasPi**
 
 ![Add Port Profile Wired 5](images/add-port-profile-wired5.png)
 
 
-17. POE:  
-     - Reboot Action: Maintain   
-     - Link Down Action: Maintain  
-     - Shutdown Action: Maintain  
+16. POE:  
+     - Reboot Action: **Maintain**   
+     - Link Down Action: **Maintain** 
+     - Shutdown Action: **Maintain** 
 
 ![Add Port Profile Wired 6](images/add-port-profile-wired6.png)
 
-18. Select **Review Workspace**
+17. Select **Review Workspace**
 
 ![Review Workspace](images/review-workspace.png)
 
 *Note that none of the device configurations have been changed after submitting this workspace*
    
-19. Select **Submit Workspace**
+18. Select **Submit Workspace**
 
 ![Review Workspace2](images/review-workspace2.png)
 
 
-20. Click **Close**
+19. Click **Close**
 
 ![Close Workspace Pop up](images/submit-workspace.png)
 

@@ -10,8 +10,8 @@ Campus/2026_Campus_Workshop/C-01/Rockies Campus C-01 AGNI Lab Guide - EAP-TLS Wi
 
 ## Table of Contents
 
-**[Full Lab Topology](#full-lab-topology)**  
-**[POD Topology](#pod-topology)**  
+[Full Lab Topology](#full-lab-topology)  
+[POD Topology](#pod-topology) 
 
 **NAC Lab #1 - Create EAP-TLS Wireless Policy**  
 1. [CloudVision Cognitive Unified Edge CV-CUE Access](#1-cloudvision-cognitive-unified-edge-cv-cue-access)  

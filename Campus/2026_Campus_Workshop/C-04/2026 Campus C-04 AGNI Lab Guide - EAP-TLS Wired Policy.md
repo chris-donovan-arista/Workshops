@@ -16,7 +16,7 @@ Campus/2026_Campus_Workshop/C-04/Rockies Campus C-04 AGNI Lab Guide - EAP-TLS Wi
 
 ## NAC Lab #4 - Create EAP-TLS Wired Policy  
 1. [Access CloudVision as a Service](#1-access-cloudvision-as-a-service)  
-2. [Enable RadSec on campus-pod<xx>-leaf1b](#2-enable-radsec-on-campus-pod-leaf1c)  
+2. [Enable RadSec on campus-pod<xx>-leaf1b](#2-enable-radsec-on-campus-pod-leaf1b)  
 3. [Access AGNI from the LaunchPad](#3-access-agni-from-the-launchpad)  
 4. [Create Wired EAP-TLS Network and Segment](#4-create-wired-eap-tls-network-and-segment)  
 5. [Validate and Verify Wired EAP-TLS Device](#5-validate-and-verify-wired-eap-tls-device)
@@ -42,17 +42,21 @@ Campus/2026_Campus_Workshop/C-04/Rockies Campus C-04 AGNI Lab Guide - EAP-TLS Wi
 ## NAC Lab #4 - Create EAP-TLS Wired Policy
 
 
-### 1. Access CloudVision as a Service <span style="color: red;">UPDATE IGNITION LOG IN PROCESS AND SCREENSHOTS BELOW 3/20/26</span>
+### 1. Access CloudVision as a Service
 
-1. In your browser, enter the following URL: https://www.arista.io/ to access CloudVision as a Service (CVaaS). 
+1. Go to the Arista Ignition GUI via: https://ignition.campus-atd.net/ 
+- Enter the 6 digit Access Code found on the Pod Handout Worksheet 
 
-2. Enter the Organization name **<rockies-training-##>** in the **Organization** box, then click **Enter** (where **##** is a 2 digit character between 01-20 that was assigned to your lab/Pod).
+- Click ![image5a](images/image4a.png)
 
-![image5](images/image5.png)
+![image6](images/Ignition1.png)
 
-3. Click the **Log in with Ignition** button and provide your assigned lab Access Code.
 
-You will now be logged into CloudVision.
+2. Click the **CVaaS** tile
+
+![image6b](images/Ignition_cvaas.png)
+
+3. You will now be logged into CloudVision.
 
 ![image7](images/image7.png)
 
@@ -62,7 +66,7 @@ You will now be logged into CloudVision.
 
 **In this lab you will be configuring RadSec on the campus-podXX-leaf1b switch by adding the RadSec configuration to the  switch via the Static Configuration Studio.**
 
-1. Login to CloudVision, then click on the **Provisioning** menu option, then choose **Studios**.
+1. In CloudVision, click on the **Provisioning** menu option, then choose **Studios**.
 
 ![image8](images/image8.png)
 ![image9](images/image9.png)
@@ -106,17 +110,17 @@ Create a workspace to propose changes to the Network Infrastructure. A workspace
 
 ![image20](images/image20.png)
 
-13. Click **View Change Control**
+12. Click **View Change Control**
 
 ![image21](images/image21.png)
 
 **Review and Approve**, then **Approve and Execute** the Change Control to apply the configuration changes
 
-14. Click **Review and Approve**
+13. Click **Review and Approve**
 
 ![image22](images/image22.png)
 
-15. Select **Execute immediately** and click **Approve and Execute**
+14. Select **Execute immediately** and click **Approve and Execute**
 
 ![image23](images/image23.png)
 
@@ -124,19 +128,21 @@ Create a workspace to propose changes to the Network Infrastructure. A workspace
 
 **Note: The switch device certificate and the AGNI RadSec root certificate have already been provisioned on the switch.**
 
-**See Section 2. [Configuring RadSec profile in EOS](#nac-lab-4---create-eap-tls-wired-policy) for additional information.**
+See **Section 2. [Configuring RadSec profile in EOS](#nac-lab-4---create-eap-tls-wired-policy)** for additional information.
 
 ---
 
-### 3. Access AGNI from the LaunchPad.
+### 3. Access AGNI from the LaunchPad
+
+1. Return to the **LaunchPad**, and select the **AGNI - Trial** tile or go to your **AGNI** tab in your browser.
 
 ![image24](images/image24.png)
 
-1. Click on **Access Devices - Devices** to confirm the RadSec connection is up.
+2. Click on **Access Devices - Devices** to confirm the RadSec connection is up.
 
 ![image25](images/image25.png)
 
-2. Verify the **campus-pod##-leaf1b** switch **RadSec Status** is **Green**.  
+3. Verify the **campus-pod##-leaf1b** switch **RadSec Status** is **Green**.  
 
 ![image26](images/image26.png)
 

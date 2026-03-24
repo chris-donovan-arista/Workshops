@@ -28,16 +28,15 @@ https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Worksho
 ---
 
 ## 3. Accessing CloudVision as a Service
+1. Go to the Arista Ignition GUI via: https://ignition.campus-atd.net/ 
+- Enter the 6 digit Access Code found on the Pod Handout Worksheet 
+- Click.  ![Submit Passcode](images/ignition_submit.png)
 
-1. In your Google Chrome browser, enter the following URL: https://www.arista.io/ to access CloudVision as a Service (CVaaS).
-   - In the **“Organization”** box enter the Organization name **rockies-training-##** where **##** is a 2 digit character between 01-20 that was assigned to your lab/Pod, then click **Enter**.
+![image5](images/Ignition1.png)
 
-![CVaaS Login Page](images/cvaas-login.png)
+2. Click the **CVaaS** tile
 
-
-2. Click the Log in with Launchpad button and provide your assigned lab/Pod email address and password:
-
-![Organization Selection](images/launchpad-login.png)
+![image5a](images/Ignition_cvaas.png)
 
 3. You will now be logged into CloudVision
 

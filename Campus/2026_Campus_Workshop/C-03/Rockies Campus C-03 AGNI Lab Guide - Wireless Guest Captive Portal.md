@@ -39,7 +39,7 @@ NAC Lab #3 - Configuring Guest Captive Portal
 
 ## 1. Create a Guest Portal in AGNI
 
-1. Return to the **LaunchPad**, and select the **AGNI - Trial** tile or go to your **AGNI** tab in your browser.
+1. Return to the **LaunchPad**, and select the **AGNI - Trial** tile, or go to your **AGNI** tab in your browser.
 
 ![image5](images/image5.png)
 
@@ -193,7 +193,7 @@ In **Guest Portals**, the **Default** portal is always present. Let’s create a
 
 ![image24](images/image24.png)  
 
-**NOTE - Please Read\!**  
+**NOTE - Please Read!**  
 
 7. **Only select the “5 GHz” option** on the next screen (**uncheck** the 2.4 & 6GHz boxes), then click “**Turn SSID On**”.
 
@@ -201,4 +201,4 @@ In **Guest Portals**, the **Default** portal is always present. Let’s create a
 
 9. **Next, Go to Monitoring - Sessions in AGNI and select your Captive Portal session to see your client session details.**
 
-NAC LAB #3 COMPLETE
+**NAC LAB #3 COMPLETE**

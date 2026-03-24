@@ -106,9 +106,9 @@ In order to make any changes within the Studios framework, you need to create a 
 
 8. LACP Fallback
     - Mode: **Individual**
+    - Navigate back to the previous page by clicking the breadcrump labeled **Wireless-Access-Point**
 
 ![Add Port Profile Wireless5](images/add-port-profile-wireless5.png)
-
 
 9. POE:  
     - Reboot Action: **Maintain**
@@ -169,7 +169,7 @@ In order to make any changes within the Studios framework, you need to create a 
 
 ![Review Workspace](images/review-workspace.png)
 
-*Note that none of the device configurations have been changed after submitting this workspace*
+*Note that no device configurations changes are being proposed. We have simply created the **template** we will use to assign configuration to an interface*
    
 18. Select **Submit Workspace**
 
@@ -180,7 +180,8 @@ In order to make any changes within the Studios framework, you need to create a 
 
 ![Close Workspace Pop up](images/submit-workspace.png)
 
-*You have succesfully created both port profiles. In the next section, we will assign the configuration to interfaces*
+
+**Lab Section Complete!**
 
 ---
 
@@ -188,53 +189,53 @@ In order to make any changes within the Studios framework, you need to create a 
 
 1. Assign the configured port profiles to the switches access ports
 
-    - Click Overview option on the navigation bar
+    - Navigate to **Network Hierarchy**
+    - Navigate through 
+      - **Network**  
+      - **Workshops** 
+      - **IT-Bldg**  
+      - **IDF1**
 
-![Overview Navigation](images/overview-navigation.png)
+![Hierarchy Navigation](images/hierarchy-navigation.png)
 
-2. Locate the Quick Actions panel on the lower left of the screen and Click Access Interface Configuration
+2. Select the **Front Panel** tab
 
-![Quick Actions Access Interface Configuration](images/quick-actions-access-interface.png)
+![Hierarchy Front Panel](images/quick-action1.png)
 
-3. Access Interface Configuration Fields:
-    - Device Type: **Access Pod**
-    - Campus: **Workshop**
-    - Campus Pod: **IT-Bldg**
-    - Access Pod: **IDF1**
+3. Select **Ethernet1** on **leaf1b**
+    - Select **Configure**
 
-*Note: There should be the only one options for each drop-down.*
+![Quick Action Select Interface](images/quick-action2.png)
 
-![Quick Action Select Device](images/quick-action1.png)
-
-4. Interface Selection:
-    - **Select** to highlight port **Ethernet1** on switch labeled **campus-pod{$POD#}-leaf1b**
+4. All Fields should be pre-populated except the below
     - Port Profile: **Wired-RasPi**
-    - Enabled: **Yes** 
-    - Click **Submit**
+    - Enabled: **Yes**
+    - Select **Submit**
 
-![Submit Wireless Port Profile](images/quick-action2.png)
+![Submit Wired Profile](images/quick-action3.png)
 
-5. Once the Change Control has been executed, click **Configure Additional Inputs** to configure another access port
+5. Once the Change Control has been executed, click **Close** 
 
-![Configure Additional Inputs](images/configure-additional-inputs.png)
+![Quick Action Close](images/quick-action4.png)
 
-6. AP Interface Configuration:
-  - Device Type: **Access Pod**
-  - Campus: **Workshop**
-  - Campus Pod: **IT-Bldg**
-  - Access Pod: **IDF1**
-  - **Select** to highlight port **Ethernet14** on switches labeled **campus-pod{$POD#}-leaf1a and b**
-  - Port Profile: **Wireless-Access-Point**
-  - Enabled: **Yes** 
-  - Click **Submit**
+6. AP Interface Configuration
+  - Select **Ethernet14** on both **leaf1a** and **leaf1b**
+  - Select **Configure**
+  
 
-![Quick Actions 3](images/quick-action3.png)
+![Quick Actions 3](images/quick-action5.png)
 
 
-7. Once the Change Control has been executed, click Finish
+7. All Fields should be pre-populated except the below
+    - Port Profile: **Wireless-Access-Point**
+    - Enabled: **Yes**
+    - Select **Submit**
 
-![Finish Configuration](images/finish-configuration.png)
+![Finish Configuration](images/quick-action6.png)
 
+8. Select **Close**
+
+![Quick Action Close](images/quick-action4.png)
 ---
 
-LAB GUIDE COMPLETE
+**LAB GUIDE COMPLETE!**

@@ -174,12 +174,14 @@ You can skip entries for all of the remaining vlan configuration sections.
 
 ![Config Comparison](images/config-comparison.png)
 
-Lab section completed!
+
+
+---
+**LAB SECTION COMPLETED!**
 
  In the next lab section you will see how to roll back a previous change control
 
 ---
-
 ## 5. Rollback a Change Control
 
 A common operational task is to roll back a specific configuration and restore back to previous state. You may need to do this for all devices affected by a change, or only a subset of devices under troubleshooting.
@@ -200,17 +202,21 @@ Let’s roll back the change control we used to add a VLAN via Studios.
 
 ![Create Rollback Change Control](images/create-rollback-cc.png)
 
-4. Verify the Configuration Changes section by clicking “View Diff”  Once you have reviewed the change, click the Review and Approve button
+4. Verify the Configuration Changes section by clicking **View Diff**  Once you have reviewed the change, click the **Review and Approve** button
 
 ![View Diff](images/view-diff.png)
 
-5. You’ll be presented with one more opportunity to review the changes. Select Execute Immediately if not already toggled on and Approve and Execute
+5. You’ll be presented with one more opportunity to review the changes. Select **Execute Immediately** if not already toggled on and then click **Approve and Execute**
 
 ![Execute Rollback](images/execute-rollback.png)
 
 6. Monitor the change control for completion to ensure the added VLAN is cleaned up on all three switches.
 
 ![Rollback Completed](images/rollback-completed.png)
+
+
+---
+**LAB SECTION COMPLETED!**
 
 You have now successfully added a VLAN through Studios and then rolled back that change across all switches.
 
@@ -222,11 +228,11 @@ Dashboards are an important way to visualize commonly requested information. Thi
 
 ### Built in Dashboard: “Campus Health Overview”
 
-1. Open the Dashboards Section to arrive at the Dashboards landing page.
+1. Navigate to **Dashboards** to arrive at the Dashboards landing page.
 
 ![Dashboards Landing Page](images/dashboards-landing.png)
 
-2. Select the built-in Campus Health Overview dashboard
+2. Select the built-in **Campus Health Overview dashboard**
 
 ![Campus Health Overview](images/campus-health-overview1.png)
 
@@ -235,13 +241,13 @@ Dashboards are an important way to visualize commonly requested information. Thi
 ![Campus Health Overview](images/campus-health-overview2.png)
 *Note: We will explore the Quick Actions interactive functions of this dashboard in another lab section.* 
 
-4. Feel free to explore the Campus Health dashboard briefly and then navigate back to the Dashboards landing page by selecting Dashboards in the upper left.
+4. Feel free to explore the Campus Health dashboard briefly and then navigate back to the Dashboards landing page by selecting **Dashboards** in the upper left.
 
 ![Explore Dashboards](images/explore-dashboards.png)
 
 ### Built in Dashboard: “Device Hardware”
 
-1. Next, Select the Device Hardware dashboard
+1. Next, Select the **Device Hardware** dashboard
 
 ![Device Hardware Dashboard](images/device-hardware-dashboard.png)
 
@@ -249,7 +255,7 @@ Dashboards are an important way to visualize commonly requested information. Thi
   
   ![Device Hardware Dashboard2](images/device-hardware-dashboard2.png)
   
-3. Change the dashboard to select only leaf1c by deleting the current query device:*. Replace with the query device:campus-pod[pod#]leaf1c
+3. Change the dashboard to select only **leaf1a** by deleting the current query device:*. Replace with the query **device:campus-pod[pod#]leaf1a**
 
 ![Device Query Edit](images/device-query-edit.png)
 
@@ -257,20 +263,20 @@ Dashboards are an important way to visualize commonly requested information. Thi
 
 ![Dashboard Filter](images/dashboard-filter.png)
 
-5. Navigate back to the Dashboards landing page by clicking Dashboards in upper left.
+5. Navigate back to the Dashboards landing page by clicking **Dashboards** in upper left.
 
 ![Dashboard Navigate](images/dashboard-navigate.png)
 
 ---
  ### Customized dashboard.
 
-1. Click the New Dashboard button.
+1. Click the **New Dashboard** button.
 
 ![New Dashboard](images/new-dashboard.png)
 
 2. New Dashboard
-    - Select the pencil next to Untitled dashboard
-    - Provide a useful name for the Dashboard, such as “Workshop Dashboard” 
+    - Select the **pencil** next to Untitled dashboard
+    - Provide a useful name for the Dashboard, such as **Workshop Dashboard**
 
 ![Rename Dashboard](images/rename-dashboard.png)
 
@@ -280,7 +286,7 @@ Dashboards are an important way to visualize commonly requested information. Thi
 ![Change Metrics to Summaries](images/add-metrics.png)
 
 
-4. Within new metrics tile now added to your dashboard, select either the 3 dots > Configure or **Click to Configure**
+4. Within new metrics tile now added to your dashboard, select either the **3 dots > Configure** or **Click to Configure**
 
 ![Metrics Configure](images/metrics-configure.png)
 
@@ -288,7 +294,7 @@ Dashboards are an important way to visualize commonly requested information. Thi
 
 ![Metrics Configure](images/metrics-configure2.png)
 
-6. Review the availabe Visualization options. Select each of them to determine which would best suite your personal preference.
+6. Review the availabe Visualization options. Select each of them to determine which would best suit your personal preference.
 
 *Note: sometimes when changing the visualization you will have to re-select the metric you would like displayed*
 
@@ -300,12 +306,14 @@ Dashboards are an important way to visualize commonly requested information. Thi
 
 
 
-7. Create another metric by selecting Metrics to the right and configure the new dashboard tile.
+7. Create another metric by selecting **Metrics** panel and configure the new dashboard tile.
 
 
 ![Metrics Configure](images/metrics-configure3.png)
 
-8. Within the Configure Metrics Panel menu, select the dropdown under Data Sources. Select Interfaces
+8. Within the Configure Metrics Panel menu,
+   - Select the dropdown under **Data Sources**
+   - Select **Interfaces**
 
 ![Metrics Configure](images/metrics-configure4.png)
 
@@ -323,7 +331,7 @@ Dashboards are an important way to visualize commonly requested information. Thi
 
 ![Metrics Configure](images/metrics-configure6.png)
 
-11. Dismiss the customization menu with the X button in upper right
+11. Dismiss the customization menu with the **X** button in upper right
 
 ![Close Metrics](images/close-metrics.png)
 
@@ -333,7 +341,7 @@ Dashboards are an important way to visualize commonly requested information. Thi
 
 ![Moving Tiles](images/moving-tiles.png)
 
-12. When done save and complete the dashboard customization by clicking the Done button in upper menu bar
+12. When done save and complete the dashboard customization by clicking the **Done** button in upper menu bar
 
 
 ![Done Dashboard](images/done-dashboard.png)
@@ -341,7 +349,7 @@ Dashboards are an important way to visualize commonly requested information. Thi
 ### Exporting and Importing Dashboards Sharing your Dashboard across Cloudvision systems!
 
 1. In the upper right corner, select the **three-dots** menu and click Export as JSON
-   - Click Download in the lower right corner. This will download a file you can share with others.
+   - Click **Download** in the lower right corner. This will download a file you can share with others.
 
 
 ![Export JSON](images/export-json.png)
@@ -370,7 +378,10 @@ Dashboards are an important way to visualize commonly requested information. Thi
 
 ![Import Dashboard](images/import-dashboard2.png)
 
-Lab section completed!
+
+---
+
+**LAB SECTION COMPLETED!**
 
 ---
 
@@ -378,19 +389,19 @@ Lab section completed!
 
 In this section, we will explore the CloudVision Events. We will reivew the tools and filters to help process and manage critical errors versus informational data.
 
-1. First Open the Events section from the menu bar:
+1. First navigate to the **Events** section in CloudVision:
 
 ![Events Menu](images/events-menu.png)
 
 2. Filter Events
-    - To filter only display more recent events, select the dropdown next to the displayed timeframe
+    - To filter and only display more recent events, select the dropdown next to the displayed timeframe
     - Select **1 Hour**
     - You can select how the events are displayed in the menu by selecting the icon for either a **graphical view** or a **table view**
 
 ![Change Timeframe](images/change-timeframe.png)
 
 
-3. Focusing on the Event List next, Note the Export button to download the current Event list as CSV. Notice you can download All Events or only Selected:
+3. Focusing on the Event List next, Note the **Export** button to download the current Event list as CSV. Notice you can **Download All Events** or **Only Selected**:
 
 ![Export Events CSV](images/export-events-csv1.png)
 
@@ -400,7 +411,7 @@ In this section, we will explore the CloudVision Events. We will reivew the tool
 
 5. Next, utilizing the Event Filters on the right you can reduce the amount of data displayed.
 
-    - Ensure that only **Critical** and **Warning** are the only highlighted event severity by toggling off all other severity levels.
+    - Ensure that **Critical** and **Warning** are the only highlighted event severity by toggling off all other severity levels.
     - Select the dropdown under Type. Search for **Device Clock Out of Sync** and **Unexpected Link Failure**
 
 *We are now only seeing events associated with the filter we have established*
@@ -408,7 +419,7 @@ In this section, we will explore the CloudVision Events. We will reivew the tool
 
 6. Acknowledge and Unacknowledging events
 
-    - Review the events displayed. You can acknoledge events by selecting the radial button nexto the the displayed event.
+    - Review the events displayed. You can acknoledge events by selecting the radial button next to the displayed event.
     - Select **Acknowledge X**
     - A pop up window will be displayed. You can **Acknowledge** these events and include a note to provide additional context on root cause or fix action.
 
@@ -482,7 +493,7 @@ In this section we will show you how to customize the notifications that can be 
 
 ![Add Event Type](images/add-event-type.png)
 
-9. Make sure to save your changes in this screen with the Save button along the top of your screen.
+9. Make sure to save your changes in this screen with the **Save** button along the top of your screen.
 
 ![Receiver Save Changes](images/receiver-save-changes.png)
 
@@ -503,4 +514,6 @@ In this section we will show you how to customize the notifications that can be 
 
 ---
 
-END OF LAB GUIDE
+**END OF LAB GUIDE**
+
+---

@@ -41,7 +41,7 @@ Campus/2026_Campus_Workshop/C-02/Rockies Campus C-02 AGNI Lab Guide - UPSK Wirel
 
 ### 1. Create Identity UPSK SSID:
 
-1. Return to the LaunchPad tab and Log into CV-CUE https://launchpad.wifi.arista.com/, or access the CV-CUE tab in your browser.
+1. Return to the **LaunchPad**, and select the **CV-CUE** tile, or go to your **CV-CUE** tab in your browser.
 
 ![image5](images/image5.png)
 
@@ -98,7 +98,7 @@ Campus/2026_Campus_Workshop/C-02/Rockies Campus C-02 AGNI Lab Guide - UPSK Wirel
 
 ### 2. Create UPSK Network and Segment:
 
-1. Return to the LaunchPad tab, and select the AGNI tile, or go to your AGNI tab in your browser.
+1. Return to the **LaunchPad**, and select the **AGNI - Trial** tile, or go to your **AGNI** tab in your browser.
 
 ![image19](images/image19.png)
 

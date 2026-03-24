@@ -39,7 +39,7 @@ NAC Lab #3 - Configuring Guest Captive Portal
 
 ## 1. Create a Guest Portal in AGNI
 
-1. Return to the LaunchPad tab and Log into AGNI [https://launchpad.wifi.arista.com/](https://launchpad.wifi.arista.com/), or access the AGNI tab in your browser.
+1. Return to the **LaunchPad**, and select the **AGNI - Trial** tile or go to your **AGNI** tab in your browser.
 
 ![image5](images/image5.png)
 
@@ -113,7 +113,7 @@ In **Guest Portals**, the **Default** portal is always present. Let’s create a
 
 ## 3. Create a Role Profile in CV-CUE
 
-1. Return to the LaunchPad tab and Log into CV-CUE [https://launchpad.wifi.arista.com/](https://launchpad.wifi.arista.com/), or access the CV-CUE tab in your browser. 
+1. Return to the **LaunchPad**, and select the **CV-CUE** tile, or go to your **CV-CUE** tab in your browser. 
 
 ![image15](images/image15.png)
 

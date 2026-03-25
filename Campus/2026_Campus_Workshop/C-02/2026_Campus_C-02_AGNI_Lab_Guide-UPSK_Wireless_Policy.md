@@ -39,7 +39,7 @@
 
 ---
 
-### 1. Create UPSK SSID:
+### 1. Create a UPSK SSID:
 
 1. Return to the **LaunchPad**, and select the **CV-CUE** tile, or go to your **CV-CUE** tab in your browser.
 
@@ -88,7 +88,7 @@
 
 ![image17](images/image17.png). 
 
-**Please Read!**
+**NOTE - Please Read!**  
 
 12. **Only select the “5 GHz” option** on the next screen (**uncheck** the 2.4 GHz box if it’s checked), then click **Turn SSID On**.
 
@@ -279,6 +279,6 @@ First, we will need to create the Client Group.
 
 ![image65](images/image65.png)
 ![image66](images/image66.png)
----
 
-**NAC LAB #2 COMPLETE**
+## End of UPSK Wireless Policy Lab
+--- 

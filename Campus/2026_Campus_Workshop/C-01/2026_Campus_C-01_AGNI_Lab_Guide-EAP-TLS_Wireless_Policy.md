@@ -79,7 +79,7 @@
 
 ---
 
-### 2. Create an EAP-TLS SSID
+### 2. Create a EAP-TLS SSID
 
 - The **Configure** section of CV-CUE is broken into several parts, including **WiFi**, **Alerts**,**WIPS**, etc.  **Alerts** is where syslog and other alert related settings are configured, and **WIPS** is where the policies are configured for the WIPS sensor.
 
@@ -122,6 +122,8 @@
 7. Next, under **RADIUS Settings** check **RadSec** and select **AGNI** in the drop down box under Authentication and Accounting Server
 
 - This step ties the **preconfigured RADIUS Profile** to the SSID so the **Authentication Requests** and **Accounting Messages** are forwarded to **AGNI**.
+- Click on **Add/Edit** below the Authentication or Accounting Server dropdown box to see the **AGNI RADIUS Server Profile**.  
+
 
 ![image14](images/image14.png)
 
@@ -144,18 +146,18 @@
 
 ![image17](images/image17.png)
 
-11. On the pop-up page, click **Customize** if that option appears, otherwise skip to the next step.
+**NOTE - Please Read!**  
 
-12. Only select the **5 GHz** option on the next screen (uncheck the 2.4 GHz box if it’s checked), then click **Turn SSID On**.
+11. Only select the **5 GHz** option on the next screen (uncheck the 2.4 GHz box if it’s checked), then click **Turn SSID On**.
 
 ![image18](images/image18.png)
 
-13. After you turn on the SSID, hover your cursor over **Monitor** in the left hand side menu, and then click **WiFi**.
+12. After you turn on the SSID, hover your cursor over **Monitor** in the left hand side menu, and then click **WiFi**.
 
 
 ![image19](images/image19.png)
 
-14. Check the **Active SSIDs** menu at the top of the screen.  Is your SSID listed?
+13. Check the **Active SSIDs** menu at the top of the screen.  Is your SSID listed?
 
 ![image20](images/image20.png)
 
@@ -281,11 +283,7 @@ CloudVision AGNI integrates with network infrastructure devices (wired switches 
 Port 2083
 The highly secure and encrypted tunnel offers complete protection to the communications that happen in a distributed network environment. This mechanism offers much greater security to AAA workflows when compared with traditional RADIUS environment workflows, which are not encrypted. 
 
-https://www.arista.com/en/support/toi/eos-4-27-0f/14891-radius-dynamic-authorization-over-tls
-
-
-
-
+https://www.arista.com/en/support/toi/eos-4-27-0f/14891-radius-dynamic-authorization-over-tls  
 
 
 Click on the **CV-CUE** and **AGNI - Beta** Tiles from the LaunchPad and they will open in a new Tab.
@@ -409,4 +407,4 @@ https://www.youtube.com/watch?v=kFJ24zRHYJ8&t=75s
 
 ---
 
-**NAC LAB #1 COMPLETE**
+## LAB GUIDE COMPLETE

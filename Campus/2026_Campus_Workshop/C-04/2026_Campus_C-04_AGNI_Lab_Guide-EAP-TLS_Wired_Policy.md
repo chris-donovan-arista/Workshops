@@ -390,4 +390,4 @@ Lastly issue the show ip access-lists command to view the dynamic access list ap
 You can try pinging the device ip from your laptop to confirm acl functionality. 
 
 
-## NAC LAB #4 COMPLETE
+## LAB GUIDE COMPLETE

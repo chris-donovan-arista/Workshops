@@ -1,21 +1,21 @@
-# Campus C-02 AGNI Lab Guide - UPSK Wireless Policy
-
+# Campus C-02 AGNI Lab Guide
+## UPSK Wireless Policy
 
 ![image1](images/CVCUE_logo.png)
 ![image2](images/AGNI_logo.png)
 
-
-#### This Lab Guide:
-Campus/2026_Campus_Workshop/C-02/Rockies Campus C-02 AGNI Lab Guide - UPSK Wireless Policy
-
 ---
+
+## This Lab Guide: [Campus C-02 AGNI Lab Guide - UPSK Wireless Policy](https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Workshop/C-02/2026_Campus_C-02_AGNI_Lab_Guide-UPSK_Wireless_Policy.md)
 
 ## Table of Contents
 
 [Full Lab Topology](#full-lab-topology)  
 [POD Topology](#pod-topology)  
 
-**NAC Lab #2 - Create Unique Pre-Shared Key (UPSK) Wireless Policy**
+---
+
+## NAC Lab #2 - Create Unique Pre-Shared Key (UPSK) Wireless Policy
 1. [Create UPSK SSID](#1-create-upsk-ssid)  
 2. [Create UPSK Network and Segment](#2-create-upsk-network-and-segment)  
 3. [Create an AGNI Local User and Enroll Personal Device](#3-create-an-agni-local-user-and-enroll-personal-device)  

@@ -109,7 +109,7 @@ In **Guest Portals**, the **Default** portal is always present. Let’s create a
 
 ![image14](images/image14.png)
 
-**Keep the browser tab for AGNI open.** We’ll return to get the Domains allowlist for the Role Profile in CV-CUE.
+**Keep the AGNI browser tab open.** We’ll return to get the Domains allowlist for the Role Profile in CV-CUE.
 
 ## 3. Create a Role Profile in CV-CUE
 
@@ -132,7 +132,7 @@ In **Guest Portals**, the **Default** portal is always present. Let’s create a
 ![image16](images/image16.png)
 ![image16a](images/image16a.png)
 
-**Keep the browser tab for CV-CUE open.**
+**Keep the CV-CUE browser tab open.**
 
 4. Return to the **AGNI tab.** From the **Guest Captive Portal** network in **AGNI**, click on **Show Domains**, click on **Copy** to copy the Domains that must be allowlisted.
 
@@ -201,4 +201,5 @@ In **Guest Portals**, the **Default** portal is always present. Let’s create a
 
 9. **Next, Go to Monitoring - Sessions in AGNI and select your Captive Portal session to see your client session details.**
 
-**NAC LAB #3 COMPLETE**
+## End of Wireless Guest Captive Portal Lab
+--- 

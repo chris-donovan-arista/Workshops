@@ -1,7 +1,5 @@
 # Campus C-03 AGNI Lab Guide
-## Wireless Guest Captive Portal
-
----
+## Wireless Guest Captive Portal 
 
 ![image1](images/CVCUE_logo.png) 
 ![image2](images/AGNI_logo.png)

@@ -1,6 +1,8 @@
 # Campus C-04 AGNI Lab Guide
 ## EAP-TLS Wired Policy
 
+---
+
 ![image1](images/CVCUE_logo.png) ![image2](images/AGNI_logo.png) ![image3](images/CVP_logo.png)
 
 --- 
@@ -12,6 +14,8 @@
 
 [Full Lab Topology](#full-lab-topology)  
 [POD Topology](#pod-topology) 
+
+---
 
 ## NAC Lab #4 - Create EAP-TLS Wired Policy  
 1. [Access CloudVision as a Service](#1-access-cloudvision-as-a-service)  

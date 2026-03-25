@@ -1,21 +1,21 @@
-# Campus C-03 AGNI Lab Guide - Wireless Guest Captive Portal
+# Campus C-03 AGNI Lab Guide
+## Wireless Guest Captive Portal
 
 ![image1](images/CVCUE_logo.png) 
 ![image2](images/AGNI_logo.png)
 
-
-#### This Lab Guide:
-Campus/2026_Campus_Workshop/C-03/Rockies Campus C-03 AGNI Lab Guide - Wireless Guest Captive Portal
-
-
 ---
+
+## This Lab Guide: [Campus C-03 AGNI Lab Guide - Wireless Guest Captive Portal](https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Workshop/C-03/2026_Campus_C-03_AGNI_Lab_Guide-Wireless_Guest_Captive_Porta.md)
 
 ## Table of Contents
 
 [Full Lab Topology](#full-lab-topology)  
 [POD Topology](#pod-topology)  
 
-NAC Lab #3 - Configuring Guest Captive Portal  
+---
+
+## NAC Lab #3 - Configuring Guest Captive Portal
 1. [Create a Guest Portal in AGNI](#1-create-a-guest-portal-in-agni)  
 2. [Create a Network in AGNI](#2-create-a-network-in-agni)  
 3. [Create a Role Profile in CV-CUE](#3-create-a-role-profile-in-cv-cue)  

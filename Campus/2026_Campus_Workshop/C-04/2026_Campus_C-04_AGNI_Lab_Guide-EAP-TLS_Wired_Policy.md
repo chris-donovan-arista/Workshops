@@ -1,13 +1,12 @@
-# Campus C-04 AGNI Lab Guide EAP-TLS Wired Policy
-
+# Campus C-04 AGNI Lab Guide
+## EAP-TLS Wired Policy
 
 ![image1](images/CVCUE_logo.png) ![image2](images/AGNI_logo.png) ![image3](images/CVP_logo.png)
 
+--- 
 
-#### This Lab Guide:
-Campus/2026_Campus_Workshop/C-04/Rockies Campus C-04 AGNI Lab Guide - EAP-TLS Wired Policy
+## This Lab Guide: [Campus C-04 AGNI Lab Guide - EAP-TLS Wired Policy](https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Workshop/C-04/2026_Campus_C-04_AGNI_Lab_Guide-EAP-TLS_Wired_Policy.md)
 
----
 
 ## Table of Contents
 

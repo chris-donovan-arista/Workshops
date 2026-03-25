@@ -1,7 +1,5 @@
 # Campus C-04 AGNI Lab Guide
-## EAP-TLS Wired Policy
-
----
+## EAP-TLS Wired Policy  
 
 ![image1](images/CVCUE_logo.png) ![image2](images/AGNI_logo.png) ![image3](images/CVP_logo.png)
 

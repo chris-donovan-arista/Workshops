@@ -1,7 +1,5 @@
-# Campus C-01 AGNI Lab Guide 
-## EAP-TLS Wireless Policy
-
----
+# Campus C-01 AGNI Lab Guide
+## EAP-TLS Wireless Policy  
 
 ![image1](images/CVCUE_logo.png) 
 ![image2](images/AGNI_logo.png)

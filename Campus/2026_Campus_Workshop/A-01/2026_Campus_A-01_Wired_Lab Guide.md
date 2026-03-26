@@ -56,7 +56,7 @@ In this lab you will be configuring the switches through CloudVision. Today you 
 
 ![Network Hierarchy](images/network-hierarchy-tree.png)
 
-3. Hover your mouse over **IDF1** and select the **3 dots** that appear. Select **Add Device** to begin the device provisioning guided workflow.
+3. Within the **IDF1** view select **Add Device** to begin the device provisioning guided workflow.
 
 ![Add Device](images/add-device.png)
 

@@ -21,7 +21,6 @@ https://github.com/arista-rockies/Workshops/tree/main/Campus
 7. [Events](#7-events)
 8. [Customize Notifications](#8-customize-notifications)
 
-
 ---
 
 ## 1. Full Lab Topology
@@ -92,7 +91,6 @@ Adding a VLAN is a common provisioning task. Let’s use the existing Campus Fab
 
 ![Campus Pod Expand](images/campus-pod-expand.png)
 
-
 7. click the **+ Add VLAN** 
 
 ![Add VLAN Button](images/add-vlan-button.png)
@@ -113,7 +111,6 @@ Adding a VLAN is a common provisioning task. Let’s use the existing Campus Fab
     * Select **+ Add Pod**
     * Select the **dropdown** from the new line that was created
     * Select **IDF1**
-
 
 ![Add Pod IDF1](images/add-pod-idf1.png)
 
@@ -143,7 +140,6 @@ You can skip entries for all of the remaining vlan configuration sections.
 
 ![Approve and Execute](images/approve-and-execute.png)
 
-
 17. Verify the VLAN has been added to the device configuration by using the Devices Comparison function.
 
      - Select ***Devices** and then **Comparison** menu
@@ -158,19 +154,15 @@ You can skip entries for all of the remaining vlan configuration sections.
 
 ![Devices Comparison](images/devices-comparison.png)
 
-
 19. Time Comparison (Continued)
     - The first screen presented shows the overview:
     - Select the **Configuration** section
 
 ![Comparison Overview](images/comparison-overview.png)
 
-
 *Note: Notice that the configuration has been updated. Feel free to explore other comparisons by feature. Since this VLAN was localized only, no new IP routes or MAC addresses should be learned.*
 
 ![Config Comparison](images/config-comparison.png)
-
-
 
 ---
 **LAB SECTION COMPLETED!**
@@ -210,7 +202,6 @@ Let’s roll back the change control we used to add a VLAN via Studios.
 
 ![Rollback Completed](images/rollback-completed.png)
 
-
 ---
 **LAB SECTION COMPLETED!**
 
@@ -222,7 +213,7 @@ You have now successfully added a VLAN through Studios and then rolled back that
 
 Dashboards are an important way to visualize commonly requested information. This lab section shows you how to navigate the built-in dashboards and customize your own.
 
-### Built in Dashboard: “Campus Health Overview”
+### Built in Dashboard: Campus Health Overview
 
 1. Navigate to **Dashboards** to arrive at the Dashboards landing page.
 
@@ -276,11 +267,9 @@ Dashboards are an important way to visualize commonly requested information. Thi
 
 ![Rename Dashboard](images/rename-dashboard.png)
 
-
 3. Next, let’s add some metrics to display from the workshop devices.
 
 ![Change Metrics to Summaries](images/add-metrics.png)
-
 
 4. Within new metrics tile now added to your dashboard, select either the **3 dots > Configure** or **Click to Configure**
 
@@ -290,7 +279,7 @@ Dashboards are an important way to visualize commonly requested information. Thi
 
 ![Metrics Configure](images/metrics-configure2.png)
 
-6. Review the availabe Visualization options. Select each of them to determine which would best suit your personal preference.
+6. Review the availabe Visualization options. Select each of them to determine which would best suit your personal preference. 
 
 *Note: sometimes when changing the visualization you will have to re-select the metric you would like displayed*
 
@@ -300,26 +289,27 @@ Dashboards are an important way to visualize commonly requested information. Thi
 
 ![Metrics Configure](images/metrics-visualization-line.png)
 
+7. Close the dashboard editor by selecting the **X** towards the top right of the **Configure Metric Panel**
 
+![Close Metrics Configure](images/close-metrics-configure.png)
 
-7. Create another metric by selecting **Metrics** panel and configure the new dashboard tile.
-
+8. Create another metric by selecting **Metrics** panel and configure the new dashboard tile.
 
 ![Metrics Configure](images/metrics-configure3.png)
 
-8. Within the Configure Metrics Panel menu,
+9. Within the Configure Metrics Panel menu,
    - Select the dropdown under **Data Sources**
    - Select **Interfaces**
 
 ![Metrics Configure](images/metrics-configure4.png)
 
-9. Additional Dashboard Tile
+10. Additional Dashboard Tile
     - Under the available metrics scroll down and locate **Bitrate In** and **Bitrate Out**
-    - Under Dataset select **Ethernet16** on both **leaf1a and leaf1b**
+    - Under Dataset select **Ethernet13** on both **leaf1a and leaf1b**. Ensure between each interface you include a **|** or an **OR** so that both interface will be displayed.
 
 ![Metrics Configure](images/metrics-configure5.png)
 
-10. Interface Dashboard Tile
+11. Interface Dashboard Tile
     - In the dashboard tile select the Pencil Icon and change the tile name to **Pod Uplinks Bitrate**
     - Select the visualization style that you believe best displays this data
 
@@ -327,7 +317,7 @@ Dashboards are an important way to visualize commonly requested information. Thi
 
 ![Metrics Configure](images/metrics-configure6.png)
 
-11. Dismiss the customization menu with the **X** button in upper right
+12. Dismiss the customization menu with the **X** button in upper right
 
 ![Close Metrics](images/close-metrics.png)
 
@@ -337,8 +327,7 @@ Dashboards are an important way to visualize commonly requested information. Thi
 
 ![Moving Tiles](images/moving-tiles.png)
 
-12. When done save and complete the dashboard customization by clicking the **Done** button in upper menu bar
-
+13. When done save and complete the dashboard customization by clicking the **Done** button in upper menu bar
 
 ![Done Dashboard](images/done-dashboard.png)
 
@@ -347,9 +336,7 @@ Dashboards are an important way to visualize commonly requested information. Thi
 1. In the upper right corner, select the **three-dots** menu and click Export as JSON
    - Click **Download** in the lower right corner. This will download a file you can share with others.
 
-
 ![Export JSON](images/export-json.png)
-
 
 2. To demonstrate the ability to import a dashboard we will delete our custom dashboard
     - After exporting your dashboard in the previous step
@@ -373,7 +360,6 @@ Dashboards are an important way to visualize commonly requested information. Thi
     - Select **Finish**
 
 ![Import Dashboard](images/import-dashboard2.png)
-
 
 ---
 
@@ -411,6 +397,7 @@ In this section, we will explore the CloudVision Events. We will reivew the tool
     - Select the dropdown under Type. Search for **Device Clock Out of Sync** and **Unexpected Link Failure**
 
 *We are now only seeing events associated with the filter we have established*
+
 ![Severity Filter](images/severity-filter.png)
 
 6. Acknowledge and Unacknowledging events
@@ -440,7 +427,7 @@ In this section, we will explore the CloudVision Events. We will reivew the tool
 ## 8. Customize Notifications
 In this section we will show you how to customize the notifications that can be generated (e.g. email, chat, SNMP, Syslog, etc) from the events.
 
-### Configure “SendGrid” email service.
+### Configure SendGrid email service.
 
 1. Navigate to the **Events** menu
 
@@ -506,7 +493,7 @@ In this section we will show you how to customize the notifications that can be 
 
 ![Test Notification Email](images/test-notification-email.png)
 
-**Congratulations, you’ve completed the “Event Notification Lab” !**
+**Congratulations, you’ve completed the Event Notification Lab!**
 
 ---
 

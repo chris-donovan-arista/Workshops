@@ -16,6 +16,13 @@
 3. WIPS Wireless Intrusion Prevention System	
     * WIPS Classify and Prevent individual client	
 
+## 1. Full Lab Topology
+
+![Full Lab Topology](images/full-lab-topology.png)
+
+## 2. POD Topology
+
+![POD Topology](images/pod-lab-topology.png)
 
 ## Arista WiFi Solution Diagram  
 

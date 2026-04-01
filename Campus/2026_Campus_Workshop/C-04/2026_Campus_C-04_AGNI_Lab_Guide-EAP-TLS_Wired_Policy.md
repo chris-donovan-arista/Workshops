@@ -5,7 +5,8 @@
 
 --- 
 
-## This Lab Guide: [Campus C-04 AGNI Lab Guide - EAP-TLS Wired Policy](https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Workshop/C-04/2026_Campus_C-04_AGNI_Lab_Guide-EAP-TLS_Wired_Policy.md)
+## This Lab Guide: 
+[Campus C-04 AGNI Lab Guide - EAP-TLS Wired Policy](https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Workshop/C-04/2026_Campus_C-04_AGNI_Lab_Guide-EAP-TLS_Wired_Policy.md)
 
 
 ## Table of Contents
@@ -29,14 +30,15 @@
 
 ---
 
-## Full Lab Topology
+## 1. Full Lab Topology
 
-![image4](images/full-lab-topology.png)
+![Full Lab Topology](images/full-lab-topology.png)
+
 ---
 
-## POD Topology
+## 2. POD Topology
 
-![image5](images/pod-lab-topology.png)
+![POD Topology](images/pod-lab-topology.png)
 
 ---
 

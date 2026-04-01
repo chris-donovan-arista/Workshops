@@ -19,8 +19,10 @@
 
 
 
-## Full Lab Topology
+## 1. Full Lab Topology
+
 ![Full Lab Topology](images/full-lab-topology.png)
+
 
 ## Pod Topology
 ![Pod Lab Topology](images/pod-lab-topology.png)

@@ -2,11 +2,11 @@
 
 ## Access Interface Configuration
 
-![CloudVision](images/cv-logo.png)
+![CloudVision](images/CVP_logo.png)
 
-This Lab Guide:
+## This Lab Guide:
+[Campus A-02 Wired Lab Guide - Access Interface Configuration](https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Workshop/A-02/2026_Campus_A-02_Wired_Lab_Guide.md)
 
-https://github.com/arista-rockies/Workshops/tree/main/Campus
 
 ---
 

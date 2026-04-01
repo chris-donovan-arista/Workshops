@@ -1,47 +1,41 @@
-# Campus B-01 Wireless Lab Guide WiFi Setup  
-![https://lh5.googleusercontent.com/TuE\_1X5at4VjzVhbTsRrQDC3NE6PyS6N\_XjvzKXMFqyjDoEXMoi10DIW2eMeLzUIPfMJTD5fKEq8ShDJed\_ubWGNmU7\_Rq5E4XNt2vlDeZf6PMLcYIktpJ6QRkv2uCPmouTReMoBURk](images/image1.png)     
+# Campus B-01 Wireless Lab Guide 
+## WiFi Setup  
+![CVP CUE Logo](images/image1.png)     
 
-## Links
+## This Lab Guide: 
 
-1. This Lab Guide:  
-   1. [https://github.com/arista-rockies/Workshops/tree/main/Campus](https://github.com/arista-rockies/Workshops/tree/main/Campus)  
-2. Lab Floor Plan Download:  
-   1. [https://tinyurl.com/wififloorplan](https://tinyurl.com/wififloorplan) \[Arista-rockies Github\]
+[Campus B-01 Wireless Lab Guide - WiFi Setup](https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Workshop/B-01/2026%20Campus%20B-01%20Wireless%20Lab%20Guide%20-%20WiFi%20setup.md)  
+
+## Floor Plan Download:  
+[Floor Plan Download](https://tinyurl.com/wififloorplan)
 
 ## Table of Contents
 
-1. Arista WiFi Solution Diagram	
-2. CloudVision Cognitive Unified Edge CV-CUE Access	
-    * Launchpad	
-    * Add a User and Assign Privileges	
-    * Assign User Privileges	
-    * WiFi Device Registration \- Reference section	
-3. CV-CUE CloudVision Wifi Access	
-4. Assign AP Name	
-5. Managing the Configuration Hierarchy	
-    * Customize the Locations Hierarchy:
-       * Creating Folders:	
-       * Creating Floors:	
-    * Move AP to destination folder	
-6. Creating an SSID	
-7. Troubleshooting	
-8. Floor Plans	
-9. Dashboard \- Client Journey
+1. [Full Lab Topology](#1-full-lab-topology)
+2. [POD Topology](#2-pod-topology)
+3. [Accessing CloudVision Cognitive Unified Edge CV-CUE](#3-accessing-cloudvision-cognitive-unified-edge-cv-cue) 
+4. [Launchpad](#4-launchpad)
+5. [WiFi Device Registration](#5-wifi-device-registration)
+6. [CV-CUE CloudVision Wifi Access](#6-cv-cue-cloudvision-wifi-access)	
+7. [Assign AP Name](#7-assign-ap-name)	
+8. [Managing the Configuration Hierarchy](#8-managing-the-configuration-hierarchy)	
+9. [Creating an SSID](#9-creating-an-ssid)
+10. [Troubleshooting](#10-troubleshooting)	
+11. [Floor Plans](#11-floor-plans)	
+12. [Dashboard - Client Journey](#12-dashboard---client-journey)
+
+
+## 1. Full Lab Topology
+
+![Full Lab Topology](images/full-lab-topology.png)
+
+## 2. POD Topology
+
+![POD Topology](images/pod-lab-topology.png)
 
 
 
-## 1. Arista WiFi Solution Diagram  
-
-![](images/image2.png)
-
-Prerequisites: The Arista Wireless AP management plane (CUE) is hosted within Arista’s public cloud presence, worldwide.  In order to complete this lab section, a default gateway is preconfigured by event staff to facilitate internet connectivity.
-
-For more information on the TCP/UDP ports and protocols involved for management functions, see the links below:  
-[https://wifihelp.arista.com/post/access-point-wireless-manager-communication](https://wifihelp.arista.com/post/access-point-wireless-manager-communication)  
-[https://wifihelp.arista.com/post/tcp-and-udp-ports-used-by-arista-wi-fi-products](https://wifihelp.arista.com/post/tcp-and-udp-ports-used-by-arista-wi-fi-products)
-
-## 2. CloudVision Cognitive Unified Edge CV-CUE Access 
-
+## 3. Accessing CloudVision Cognitive Unified Edge CV-CUE
 Go to the Arista CloudVision CUE portal via: [https://ignition.campus-atd.net/](https://ignition.campus-atd.net/)
 
 * Enter the 6 digit Access Code found on the Pod Handout Worksheet  
@@ -52,7 +46,7 @@ Go to the Arista CloudVision CUE portal via: [https://ignition.campus-atd.net/](
 Click the CV-CUE and AGNI Launchpad tile
 ![](images/Ignition_launchpad.png)  
 
-## Launchpad 
+## 4. Launchpad 
 * Launchpad is the portal to access your Arista cloud services including **WiFi Management** (CV-CUE) and **AGNI** (Network Access Control). When you open the launcher, you are presented with management applications on the Dashboard menu and access controls with the Admin menu.
 
 ![](images/image4.png)
@@ -67,65 +61,9 @@ Dashboard Applications Summary:
 * **WiFi Device Registration** is the process for importing APs onto your account  
 * **AGNI \- Beta** Arista Guardian for Network Identity (Network Access Control)
 
-## Add a User and Assign Privileges 
 
-First, use the Admin menu to add a user.
 
-Click on the **Admin** Tab at the top of the Launchpad window:
-
-Overview of Launchpad Admin menu:
-
-* **Users** \- Assign Access to users with different access levels as well as to specific folders  
-* **Keys** \- Used with API integrations  
-* **Profiles** \- Defines Access levels to CV-CUE, LaunchPad, and Guest Manager  
-* **Logs** \- Download User Action Logs  
-* **Settings** \- Lockout Policy, Password Policy, and 2-Factor settings
-
-CloudVision CUE authenticates users via SAML directory integration or via the Launchpad identity providers. These can be customized with local users in Launchpad or directory single-sign-on users.
-
-[https://arista.my.site.com/AristaCommunity/s/article/Integrating-Third-Party-SAML-Solution-Providers-with-Arista-CV-CUE](https://arista.my.site.com/AristaCommunity/s/article/Integrating-Third-Party-SAML-Solution-Providers-with-Arista-CV-CUE)
-
-Under the Admin tab, Users section, Click **New User**
-
-**![](images/image5.png)**
-
-Let's create a fake user as an example. Complete at least the following fields with false information: **Login ID**, **Email address**, **first name**, and **timezone** then click **Save in the lower right**. 
-
-![](images/image6.png) 
-When you click Save, a welcome email message will be sent to the user with an access link. Next let’s assign privileges to the newly created user.
-
-### Assign User Privileges {#assign-user-privileges}
-
-Click **Service Privileges**   
-**![](images/image7.png)**  
-And click the toggle to the right of **Wireless Manager** to enable this service for the newly created user.  
-![](images/image8.png)
-
-* Set User Role: **Viewer**  
-* **Check the boxes for  Wi-Fi Access Management** and/or **WIPS Management**.  
-* **Select the default top level locations**
-
-**![](images/image9.png)**  
-**Click Save** to save the user permissions ![](images/image10.png)
-
-Click **Users** to return to the list of all users.
-
-Click the ![](images/image11.png)3-dots icon next to the newly created example user and click Lock / Unlock to toggle whether this user is allowed to log in  
-![](images/image12.png)
-
-Delete the example user by selecting the 3-dots again
-
-![](images/image13.png)
-
-Click **Yes** to confirm the prompt  
-![](images/image14.png)
-
-Click **Settings** to view additional authentication configuration options such as 2-Factor Authentication and password policies:  
-![](images/image15.png)
-
-Do not make any further changes in the Settings menu.
-
-### WiFi Device Registration \- Reference section {#wifi-device-registration---reference-section}
+## 5. WiFi Device Registration 
 
 **Reference information below \- these steps have already been done for you by event staff**
 
@@ -142,7 +80,7 @@ End of Section 1 Exercise: CV-CUE Access
 
 The next section begins on the following page.
 
-## 2. CV-CUE CloudVision Wifi Access
+## 6. CV-CUE CloudVision Wifi Access
 
 CloudVision CUE \- Cognitive Unified Edge, provides the management plane and monitoring functions for the Arista WiFi solution. 
 
@@ -172,7 +110,7 @@ In addition to the menu bar navigation and Locations Hierarchy, the UI provides 
 
 End of lab section.
 
-## 3. Assign AP Name
+## 7. Assign AP Name
 
 Access points that successfully receive an IP address, DNS, and default gateway, via DHCP, and have connectivity over HTTPS/TCP/443 to CV-CUE will be shown within CV-CUE under **Monitor** \> **WiFi**   
 ![](images/image21.png) 
@@ -189,7 +127,7 @@ Give the AP a name such as: “POD-**\#\#**\-FL1” where **\#\#** is a 2 digit 
 
 ---
 
-## 4. Managing the Configuration Hierarchy 
+## 8. Managing the Configuration Hierarchy 
 
 In **CloudVision CUE** the configuration is hierarchical. 
 
@@ -311,7 +249,7 @@ Moving APs into the folders ensures the child devices inherit the configuration 
 
 The next section begins on the following page.
 
-## 5. Creating an SSID
+## 9. Creating an SSID
 
 In this lab, we will be working in the “**WiFi**” configuration area. **This list is just a summary of the steps. Follow the detailed configuration steps below.**
 
@@ -393,7 +331,7 @@ Next, go ahead and connect your phone to the SSID (PSK is “**AristaCampus**”
 
 The next section begins on the following page.
 
-## 6. Troubleshooting
+## 10. Troubleshooting
 
 Make sure you are at the “**Corp**” folder in the hierarchy, and then hover over “**Troubleshoot**” in the left hand menu, then click “**Packet Trace”.**
 
@@ -468,7 +406,7 @@ Explore the “**Analyze**” feature by clicking on the various menu options an
 
 The next section begins on the following page.
 
-## 7. Floor Plans
+## 11. Floor Plans
 
 Utilize the floor plan image file provided in the Workshop Files download location and shown on the title page of this guide. Save that image to your computer.
 
@@ -508,7 +446,7 @@ Next, explore the other menu options like **RF Heatmaps** (in the menu on the up
 
 ![](images/image89.png)
 
-# 8. Dashboard - Client Journey 
+## 12. Dashboard - Client Journey 
 
 Now that a client device is connected to the WiFi network we can use the dashboard functions to gain insight to the client’s journey: 
 
@@ -596,4 +534,73 @@ For more information on the “**Application Experience**” that we use to dete
 
 [Arista whitepaper on App QoE](https://www.arista.com/assets/data/pdf/Whitepapers/Arista-Application-QoE.pdf)
 
+
+
+
 **LAB GUIDE COMPLETE**
+
+## Additional Information
+### Accessing CV CUE
+Prerequisites: The Arista Wireless AP management plane (CUE) is hosted within Arista’s public cloud presence, worldwide.  In order to complete this lab section, a default gateway is preconfigured by event staff to facilitate internet connectivity.
+
+For more information on the TCP/UDP ports and protocols involved for management functions, see the links below:  
+[https://wifihelp.arista.com/post/access-point-wireless-manager-communication](https://wifihelp.arista.com/post/access-point-wireless-manager-communication)  
+[https://wifihelp.arista.com/post/tcp-and-udp-ports-used-by-arista-wi-fi-products](https://wifihelp.arista.com/post/tcp-and-udp-ports-used-by-arista-wi-fi-products)
+
+### Add a User and Assign Privileges 
+
+First, use the Admin menu to add a user.
+
+Click on the **Admin** Tab at the top of the Launchpad window:
+
+Overview of Launchpad Admin menu:
+
+* **Users** \- Assign Access to users with different access levels as well as to specific folders  
+* **Keys** \- Used with API integrations  
+* **Profiles** \- Defines Access levels to CV-CUE, LaunchPad, and Guest Manager  
+* **Logs** \- Download User Action Logs  
+* **Settings** \- Lockout Policy, Password Policy, and 2-Factor settings
+
+CloudVision CUE authenticates users via SAML directory integration or via the Launchpad identity providers. These can be customized with local users in Launchpad or directory single-sign-on users.
+
+[https://arista.my.site.com/AristaCommunity/s/article/Integrating-Third-Party-SAML-Solution-Providers-with-Arista-CV-CUE](https://arista.my.site.com/AristaCommunity/s/article/Integrating-Third-Party-SAML-Solution-Providers-with-Arista-CV-CUE)
+
+Under the Admin tab, Users section, Click **New User**
+
+**![](images/image5.png)**
+
+Let's create a fake user as an example. Complete at least the following fields with false information: **Login ID**, **Email address**, **first name**, and **timezone** then click **Save in the lower right**. 
+
+![](images/image6.png) 
+When you click Save, a welcome email message will be sent to the user with an access link. Next let’s assign privileges to the newly created user.
+
+### Assign User Privileges 
+
+Click **Service Privileges**   
+**![](images/image7.png)**  
+And click the toggle to the right of **Wireless Manager** to enable this service for the newly created user.  
+![](images/image8.png)
+
+* Set User Role: **Viewer**  
+* **Check the boxes for  Wi-Fi Access Management** and/or **WIPS Management**.  
+* **Select the default top level locations**
+
+**![](images/image9.png)**  
+**Click Save** to save the user permissions ![](images/image10.png)
+
+Click **Users** to return to the list of all users.
+
+Click the ![](images/image11.png)3-dots icon next to the newly created example user and click Lock / Unlock to toggle whether this user is allowed to log in  
+![](images/image12.png)
+
+Delete the example user by selecting the 3-dots again
+
+![](images/image13.png)
+
+Click **Yes** to confirm the prompt  
+![](images/image14.png)
+
+Click **Settings** to view additional authentication configuration options such as 2-Factor Authentication and password policies:  
+![](images/image15.png)
+
+Do not make any further changes in the Settings menu.

@@ -2,11 +2,11 @@
 
 ## Day-2 Operations, Dashboards, and Events
 
-![CloudVision](images/cv-logo.png)
+![CloudVision](images/CVP_logo.png)
 
-This Lab Guide:
+## This Lab Guide:
 
-https://github.com/arista-rockies/Workshops/tree/main/Campus
+[Campus A-03 Wired Lab Guide - Day-2 Operations, Dashboards, and Events](https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Workshop/A-03/2026_Campus_A-03_Wired_Lab_Guide.md)
 
 ---
 

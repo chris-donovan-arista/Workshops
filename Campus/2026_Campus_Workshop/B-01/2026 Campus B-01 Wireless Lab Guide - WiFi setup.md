@@ -42,17 +42,18 @@ For more information on the TCP/UDP ports and protocols involved for management 
 
 ## 2. CloudVision Cognitive Unified Edge CV-CUE Access 
 
-Go to the Arista CloudVision CUE portal via: [https://launchpad.wifi.arista.com/](https://launchpad.wifi.arista.com/)
+Go to the Arista CloudVision CUE portal via: [https://ignition.campus-atd.net/](https://ignition.campus-atd.net/)
 
-User Login is: *\[Provided by event staff\]*  
-User Passwords are: *\[Provided by event staff\]*
+* Enter the 6 digit Access Code found on the Pod Handout Worksheet  
+* Click ![](images/ignition_submit.png) 
 
-![](images/image3.png) 
-Click **Sign In**
+![](images/Ignition1.png)  
 
-### Launchpad 
+Click the CV-CUE and AGNI Launchpad tile
+![](images/Ignition_launchpad.png)  
 
-Launchpad is the portal to access your Arista cloud services including **WiFi Management** (CV-CUE) and **AGNI** (Network Access Control). When you open the launcher, you are presented with management applications on the Dashboard menu and access controls with the Admin menu.
+## Launchpad 
+* Launchpad is the portal to access your Arista cloud services including **WiFi Management** (CV-CUE) and **AGNI** (Network Access Control). When you open the launcher, you are presented with management applications on the Dashboard menu and access controls with the Admin menu.
 
 ![](images/image4.png)
 

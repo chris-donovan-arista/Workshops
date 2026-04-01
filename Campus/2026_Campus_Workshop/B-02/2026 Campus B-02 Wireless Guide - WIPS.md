@@ -19,20 +19,25 @@
 
 ## Arista WiFi Solution Diagram  
 
-![](images/image2.png)
+![](images/wirelesstopology.png)
 
 
 
 ## 1. Log in to CV-CUE CloudVision Cognitive Unified Edge 
 
-Go to the Arista GUI via: [https://launchpad.wifi.arista.com/](https://launchpad.wifi.arista.com/)
+Go to the Arista Ignition GUI via: [https://ignition.campus-atd.net/](https://ignition.campus-atd.net/)
 
-User Login is: *\[Provided by event staff\]*  
-User Passwords are: *\[Provided by event staff\]*  
-![](images/image3.png)
+* Enter the 6 digit Access Code found on the Pod Handout Worksheet
+  
+* Click  ![](images/image4a.png)
 
-Click **Sign In**
+![](images/Ignition1.png)
 
+Click the **CV-CUE and AGNI Lauchpad** tile
+
+![](images/Ignition_launchpad.png)
+
+## Launchpad
 
 Within the Launchpad Dashboard tab:
 
@@ -59,7 +64,7 @@ Wi-Fi threats include an ever changing landscape of vulnerabilities, such as:
 * DoS attack  
 * Bridging client
 
-![](images/image20.png)
+![](images/ARP-Request.png)
 
 In the menu on the left hand side of the screen, hover your cursor over “**Monitor”** and then click **“WIPS”**.  Now click on **“Access Points”** and “**Clients**” in the menu at the top of the screen and explore if any Rogue APs or Clients are connected to other APs in the area.
 

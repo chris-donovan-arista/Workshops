@@ -11,15 +11,12 @@
 
 ## Table of Contents
 
-1. [Full Lab Topology](#full-lab-topology)  
-2. [POD Topology](#pod-topology)  
-1. [Create UPSK SSID](#1-create-upsk-ssid)  
-2. [Create UPSK Network and Segment](#2-create-upsk-network-and-segment)  
-3. [Create an AGNI Local User and Enroll Personal Device](#3-create-an-agni-local-user-and-enroll-personal-device)  
-4. [Create an AGNI Client Group](#4-create-an-agni-client-group)  
----
-
-## NAC Lab #2 - Create Unique Pre-Shared Key (UPSK) Wireless Policy
+1. [Full Lab Topology](#1-full-lab-topology)  
+2. [POD Topology](#2-pod-topology)  
+3. [Create a UPSK SSID](#3-create-a-upsk-ssid)  
+4. [Create UPSK Network and Segment](#4-create-upsk-network-and-segment)  
+5. [Create an AGNI Local User and Enroll Personal Device](#5-create-an-agni-local-user-and-enroll-personal-device) 
+6. [Create an AGNI Client Group](#6-create-an-agni-client-group)  
 
 
 ---
@@ -34,13 +31,10 @@
 ## 2. POD Topology
 
 ![POD Topology](images/pod-lab-topology.png)
----
-
-## NAC Lab #2 - Create UPSK Wireless Policy
 
 ---
 
-### 1. Create a UPSK SSID:
+## 3. Create a UPSK SSID:
 
 1. Return to the **LaunchPad**, and select the **CV-CUE** tile, or go to your **CV-CUE** tab in your browser.
 
@@ -95,9 +89,11 @@
 
 ![image18](images/image18.png)  
 
+**LAB SECTION COMPLETE**
+
 ---
 
-### 2. Create UPSK Network and Segment:
+## 4. Create UPSK Network and Segment:
 
 1. Return to the **LaunchPad**, and select the **AGNI - Trial** tile, or go to your **AGNI** tab in your browser.
 
@@ -163,9 +159,11 @@
 
 ![image36](images/image36.png)
 
+**LAB SECTION COMPLETE**
+
 ---
 
-### 3. Create an AGNI Local User and Enroll Personal Device
+## 5. Create an AGNI Local User and Enroll Personal Device
 
 In this section you will create a local user and enroll the MAC of your device.
 
@@ -204,9 +202,11 @@ In this section you will create a local user and enroll the MAC of your device.
 
 ![image46](images/image46.png)
 
+**LAB SECTION COMPLETE**
+
 ---
 
-### 4. Create an AGNI Client Group
+## 6. Create an AGNI Client Group
 
 In this section, you will simulate your device as an IoT device.
 
@@ -281,5 +281,5 @@ First, we will need to create the Client Group.
 ![image65](images/image65.png)
 ![image66](images/image66.png)
 
-## End of UPSK Wireless Policy Lab
+**LAB GUIDE COMPLETE**
 --- 

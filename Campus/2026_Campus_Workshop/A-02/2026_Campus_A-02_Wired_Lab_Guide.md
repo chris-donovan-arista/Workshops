@@ -181,7 +181,7 @@ In order to make any changes within the Studios framework, you need to create a 
 ![Close Workspace Pop up](images/submit-workspace.png)
 
 
-**Lab Section Complete!**
+**LAB SECTION COMPLETE**
 
 ---
 
@@ -236,6 +236,6 @@ In order to make any changes within the Studios framework, you need to create a 
 8. Select **Close**
 
 ![Quick Action Close](images/quick-action4.png)
----
 
-**LAB GUIDE COMPLETE!**
+
+**LAB GUIDE COMPLETE**

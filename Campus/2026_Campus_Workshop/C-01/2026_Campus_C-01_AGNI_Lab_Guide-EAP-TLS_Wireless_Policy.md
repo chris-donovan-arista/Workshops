@@ -12,16 +12,15 @@
 
 ## Table of Contents
 
-1. [Full Lab Topology](#full-lab-topology)  
-2. [POD Topology](#pod-topology)  
-3. [CloudVision Cognitive Unified Edge CV-CUE Access](#1-cloudvision-cognitive-unified-edge-cv-cue-access)  
-4. [Create an EAP-TLS SSID](#2-create-an-eap-tls-ssid)  
-5. [CloudVision AGNI Access](#3-cloudvision-agni-access)  
-6. [Create AGNI Networks & Segments for the EAP-TLS Wireless Policy](#4-create-agni-networks--segments-for-the-eap-tls-wireless-policy) 
-
-## Additional Information
-1. [Setting up RadSec with a TPM AP Certificate](#1-setting-up-radsec-with-a-tpm-ap-certificate)  
-2. [Setting up RadSec with a Custom AP Certificate](#2-setting-up-radsec-with-a-custom-ap-certificate)  
+1. [Full Lab Topology](#1-full-lab-topology)  
+2. [POD Topology](#2-pod-topology)  
+3. [CloudVision Cognitive Unified Edge CV-CUE Access](#3-cloudvision-cognitive-unified-edge-cv-cue-access)  
+4. [Create an EAP-TLS SSID](#4-create-an-eap-tls-ssid)  
+5. [CloudVision AGNI Access](#5-cloudvision-agni-access)  
+6. [Create AGNI Networks & Segments for the EAP-TLS Wireless Policy](#6-create-agni-networks--segments-for-the-eap-tls-wireless-policy) 
+7. [Additional Information](#7-additional-information)
+   -  [Setting up RadSec with a TPM AP Certificate](#setting-up-radsec-with-a-tpm-ap-certificate)  
+   -  [Setting up RadSec with a Custom AP Certificate](#setting-up-radsec-with-a-custom-ap-certificate)  
 
 ---
 
@@ -35,13 +34,10 @@
 ## 2. POD Topology
 
 ![POD Topology](images/pod-lab-topology.png)
----
-
-## NAC Lab #1 - Create EAP-TLS Wireless Policy
 
 ---
 
-### 1. CloudVision Cognitive Unified Edge CV-CUE Access
+## 3. CloudVision Cognitive Unified Edge CV-CUE Access
 
 1. Go to the Arista Ignition GUI via: https://ignition.campus-atd.net/ 
 - Enter the 6 digit Access Code found on the Pod Handout Worksheet 
@@ -76,7 +72,7 @@
 
 ---
 
-### 2. Create a EAP-TLS SSID
+## 4. Create an EAP-TLS SSID
 
 - The **Configure** section of CV-CUE is broken into several parts, including **WiFi**, **Alerts**,**WIPS**, etc.  **Alerts** is where syslog and other alert related settings are configured, and **WIPS** is where the policies are configured for the WIPS sensor.
 
@@ -158,17 +154,21 @@
 
 ![image20](images/image20.png)
 
+**LAB SECTION COMPLETE**
+
 ---
 
-### 3. CloudVision AGNI Access
+## 5. CloudVision AGNI Access
 #### Launchpad ####
 1. Return to the **LaunchPad**, and select the **AGNI - Trial** tile.
 
 ![image22](images/image22.png)  
 
+**LAB SECTION COMPLETE**
+
 ---
 
-### 4. Create AGNI Networks & Segments for the EAP-TLS Wireless Policy
+## 6. Create AGNI Networks & Segments for the EAP-TLS Wireless Policy
 
 1. Click on **Networks** and select **+ Add**
 
@@ -265,12 +265,13 @@ certificates are not bound to any user but set to machine identity.
 
 ![image42](images/image42.png)
 
-## End of EAP-TLS Wireless Policy Lab
+**LAB SECTION COMPLETE**
+
 ---
 
-## Additional Information
+## 7. Additional Information
 
-### 1. Setting up RadSec with a TPM AP Certificate
+### Setting up RadSec with a TPM AP Certificate
 
 
 **NOTE**: The following example is for TPM Based AP’s. The Arista’s C-2xx (except the C-250/C-260), C-3xx, and C-4xx Series APs include a TPM chip.
@@ -327,7 +328,7 @@ https://www.youtube.com/watch?v=9kxJDjRnVnE
 
 ---
 
-### 2. Setting up RadSec with a Custom AP Certificate
+### Setting up RadSec with a Custom AP Certificate
 
 NOTE: The following example is for non-TPM Based AP’s. The Arista C-250 and C-260 APs are non-TPM Based APs.
 

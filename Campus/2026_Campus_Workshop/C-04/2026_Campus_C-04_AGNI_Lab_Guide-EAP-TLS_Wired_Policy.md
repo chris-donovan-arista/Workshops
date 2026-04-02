@@ -11,22 +11,17 @@
 
 ## Table of Contents
 
-[Full Lab Topology](#full-lab-topology)  
-[POD Topology](#pod-topology) 
-
----
-
-## NAC Lab #4 - Create EAP-TLS Wired Policy  
-1. [Access CloudVision as a Service](#1-access-cloudvision-as-a-service)  
-2. [Enable RadSec on campus-pod<xx>-leaf1b](#2-enable-radsec-on-campus-pod-leaf1b)  
-3. [Access AGNI from the LaunchPad](#3-access-agni-from-the-launchpad)  
-4. [Create Wired EAP-TLS Network and Segment](#4-create-wired-eap-tls-network-and-segment)  
-5. [Validate and Verify Wired EAP-TLS Device](#5-validate-and-verify-wired-eap-tls-device)
-    
-## Additional Information  
-1. [802.1x High-Level Overview](#1-8021x-high-level-overview)  
-2. [Configuring RadSec profile in EOS](#2-configuring-radsec-profile-in-eos)  
-3. [Adding Access Control Lists for Wired Users](#3-adding-access-control-lists-for-wired-users)  
+1. [Full Lab Topology](#1-full-lab-topology)  
+2. [POD Topology](#2-pod-topology) 
+3. [Access CloudVision as a Service](#3-access-cloudvision-as-a-service)  
+4. [Enable RadSec on campus-pod-leaf1b](#4-enable-radsec-on-campus-pod-leaf1b)  
+5. [Access AGNI from the LaunchPad](#5-access-agni-from-the-launchpad)  
+6. [Create Wired EAP-TLS Network and Segment](#6-create-wired-eap-tls-network-and-segment)  
+7. [Validate and Verify Wired EAP-TLS Device](#7-validate-and-verify-wired-eap-tls-device)
+8. [Additional Information](#8-additional-information) 
+   - [802.1x High-Level Overview](#8021x-high-level-overview)  
+   - [Configuring RadSec profile in EOS](#configuring-radsec-profile-in-eos)  
+   - [Adding Access Control Lists for Wired Users](#adding-access-control-lists-for-wired-users)  
 
 ---
 
@@ -42,10 +37,7 @@
 
 ---
 
-## NAC Lab #4 - Create EAP-TLS Wired Policy
-
-
-### 1. Access CloudVision as a Service
+## 3. Access CloudVision as a Service
 
 1. Go to the Arista Ignition GUI via: https://ignition.campus-atd.net/ 
 - Enter the 6 digit Access Code found on the Pod Handout Worksheet 
@@ -65,7 +57,7 @@
 
 ---
 
-### 2. Enable RadSec on campus-pod<xx>-leaf1b
+## 4. Enable RadSec on campus-pod-leaf1b
 
 **In this lab you will be configuring RadSec on the campus-podXX-leaf1b switch by adding the RadSec configuration to the  switch via the Static Configuration Studio.**
 
@@ -133,9 +125,11 @@ Create a workspace to propose changes to the Network Infrastructure. A workspace
 
 See **Section 2. [Configuring RadSec profile in EOS](#nac-lab-4---create-eap-tls-wired-policy)** for additional information.
 
+**LAB SECTION COMPLETED**
+
 ---
 
-### 3. Access AGNI from the LaunchPad
+## 5. Access AGNI from the LaunchPad
 
 1. Return to the **LaunchPad**, and select the **AGNI - Trial** tile or go to your **AGNI** tab in your browser.
 
@@ -149,9 +143,11 @@ See **Section 2. [Configuring RadSec profile in EOS](#nac-lab-4---create-eap-tls
 
 ![image26](images/image26.png)
 
+**LAB SECTION COMPLETED**
+
 ---
 
-### 4. Create Wired EAP-TLS Network and Segment
+## 6. Create Wired EAP-TLS Network and Segment
 
 **In this section we will create a Network and Segment in AGNI to utilize a certificate based EAP-TLS authentication method on a wired connection with a Raspberry Pi.**
 
@@ -235,9 +231,11 @@ Your Conditions should now look like this.
 
 **Note: The Client Certificate has already been applied to the Raspberry Pi.**
 
+**LAB SECTION COMPLETED**
+
 ---
 
-### 5. Validate and Verify Wired EAP-TLS Device 
+## 7. Validate and Verify Wired EAP-TLS Device 
 
 1. Click anywhere in the Row for your client session to view the **Session Details**.
 
@@ -289,15 +287,16 @@ Et2    d83a.dd98.6183   EAPOL SUCCESS   NONE
     Arista-PeriodicIdentity:
 
 
-## End of EAP-TLS Wired Policy Lab
+**LAB SECTION COMPLETED**
+
 ---
 
-## Additional Information
-## 1. 802.1X High-Level Overview
+## 8. Additional Information
+### 802.1X High-Level Overview
 
 For more information please refer to the **[Arista TOI 802.1X on Arista Switches](https://www.arista.com/en/support/toi/eos-4-24-2f/14567-802-1x-on-arista-switches)**
 
-## Overview
+#### Overview
 
 802.1X is an IEEE standard protocol that prevents unauthorized devices from gaining access to the network.  
 
@@ -309,7 +308,7 @@ For more information please refer to the **[Arista TOI 802.1X on Arista Switches
 
 Before authentication is successful the switchport is in unauthorized mode and all traffic is blocked, but after authentication has succeeded, normal data can then flow through the switchport. 
 
-### Description 
+#### Description 
 
 802.1X port security controls who can send traffic through and receive traffic from individual switch ports. A supplicant needs to authenticate itself using “Extensible Authentication Protocol over Lan” (EAPoL) packets with the switch before it gains full access to the port. Arista switches act as an authenticator, passing the messages from 802.1X supplicants through to the RADIUS server and vice versa. 802.1X can operate in three different modes:  
 
@@ -328,11 +327,11 @@ Arista switches also support Dynamic VLAN assignment, which allows the RADIUS se
 
 By default, traffic from any unauthenticated device on an 802.1X enabled port is dropped. By configuring Authentication Failure VLAN on the authenticator switch, 802.1X or MBA supplicants’ traffic can be put into a specific VLAN if the supplicant fails to authenticate via the RADIUS server.  
 
-## 2. Configuring RadSec profile in EOS  
+### Configuring RadSec profile in EOS  
 
 Reference the following article to Configure the RadSec profile in EOS: [Configuring-RadSec-profile-in-EOS](https://arista.my.site.com/AristaCommunity/s/article/Configuring-RadSec-profile-in-EOS)
 
-## 3. Adding Access Control Lists for Wired Users
+### Adding Access Control Lists for Wired Users
 In this section we will add an acl to AGNI which we can push to the switch. 
 
 First navigate to Access Control - > ACLs  and  + Add ACL in the upper right corner
@@ -392,4 +391,4 @@ Lastly issue the show ip access-lists command to view the dynamic access list ap
 You can try pinging the device ip from your laptop to confirm acl functionality. 
 
 
-## LAB GUIDE COMPLETE
+**LAB GUIDE COMPLETE**

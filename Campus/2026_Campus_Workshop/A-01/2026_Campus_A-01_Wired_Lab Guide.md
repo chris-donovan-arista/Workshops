@@ -153,4 +153,4 @@ In this lab you will be configuring the switches through CloudVision. Today you 
 17. Upon the completion of the Change Control we have deployed the configuration and provisioned leaf1b.
 
 
-LAB GUIDE COMPLETE
+**LAB GUIDE COMPLETE**

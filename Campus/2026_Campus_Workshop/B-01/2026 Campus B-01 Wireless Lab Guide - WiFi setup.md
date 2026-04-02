@@ -29,12 +29,12 @@
 
 ![Full Lab Topology](images/full-lab-topology.png)
 
+---
 ## 2. POD Topology
 
 ![POD Topology](images/pod-lab-topology.png)
 
-
-
+---
 ## 3. Accessing CloudVision Cognitive Unified Edge CV-CUE
 Go to the Arista CloudVision CUE portal via: [https://ignition.campus-atd.net/](https://ignition.campus-atd.net/)
 
@@ -46,6 +46,8 @@ Go to the Arista CloudVision CUE portal via: [https://ignition.campus-atd.net/](
 Click the CV-CUE and AGNI Launchpad tile
 ![](images/Ignition_launchpad.png)  
 
+
+---
 ## 4. Launchpad 
 * Launchpad is the portal to access your Arista cloud services including **WiFi Management** (CV-CUE) and **AGNI** (Network Access Control). When you open the launcher, you are presented with management applications on the Dashboard menu and access controls with the Admin menu.
 
@@ -61,7 +63,9 @@ Dashboard Applications Summary:
 * **WiFi Device Registration** is the process for importing APs onto your account  
 * **AGNI \- Beta** Arista Guardian for Network Identity (Network Access Control)
 
+**LAB SECTION COMPLETE**
 
+---
 
 ## 5. WiFi Device Registration 
 
@@ -76,9 +80,9 @@ Device registration requires both the Serial Number and Registration Key informa
 Within the Import Function you can provide individual AP serials and keys or upload a CSV.  
 ![](images/image18.png)
 
-End of Section 1 Exercise: CV-CUE Access
+**LAB SECTION COMPLETE**
 
-The next section begins on the following page.
+---
 
 ## 6. CV-CUE CloudVision Wifi Access
 
@@ -108,7 +112,9 @@ In addition to the menu bar navigation and Locations Hierarchy, the UI provides 
 
 ![](images/image20.png)
 
-End of lab section.
+**LAB SECTION COMPLETE**
+
+---
 
 ## 7. Assign AP Name
 
@@ -123,7 +129,7 @@ Give the AP a name such as: “POD-**\#\#**\-FL1” where **\#\#** is a 2 digit 
 
 ![](images/image24.png)
 
-**Lab Section Completed.**
+**LAB SECTION COMPLETE**
 
 ---
 
@@ -245,7 +251,10 @@ You can verify the move by selecting the “**1st Floor**” folder and then “
 ![](images/image41.png)   ![](images/image42.png)
 
 Moving APs into the folders ensures the child devices inherit the configuration of the parent hierarchy structure. This means your pod’s AP radios will have the channel and power settings applied as a shared configuration.  
-**SECTION COMPLETE.**
+
+**LAB SECTION COMPLETE**
+
+---
 
 The next section begins on the following page.
 
@@ -331,6 +340,10 @@ Next, go ahead and connect your phone to the SSID (PSK is “**AristaCampus**”
 
 The next section begins on the following page.
 
+**LAB SECTION COMPLETE**
+
+---
+
 ## 10. Troubleshooting
 
 Make sure you are at the “**Corp**” folder in the hierarchy, and then hover over “**Troubleshoot**” in the left hand menu, then click “**Packet Trace”.**
@@ -406,6 +419,9 @@ Explore the “**Analyze**” feature by clicking on the various menu options an
 
 The next section begins on the following page.
 
+**LAB SECTION COMPLETE**
+
+---
 ## 11. Floor Plans
 
 Utilize the floor plan image file provided in the Workshop Files download location and shown on the title page of this guide. Save that image to your computer.
@@ -446,6 +462,9 @@ Next, explore the other menu options like **RF Heatmaps** (in the menu on the up
 
 ![](images/image89.png)
 
+**LAB SECTION COMPLETE**
+
+---
 ## 12. Dashboard - Client Journey 
 
 Now that a client device is connected to the WiFi network we can use the dashboard functions to gain insight to the client’s journey: 

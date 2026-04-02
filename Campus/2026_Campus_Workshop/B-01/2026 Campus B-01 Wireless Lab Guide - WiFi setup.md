@@ -88,14 +88,15 @@ Within the Import Function you can provide individual AP serials and keys or upl
 
 CloudVision CUE \- Cognitive Unified Edge, provides the management plane and monitoring functions for the Arista WiFi solution. 
 
-Click on the **CV-CUE** (CloudVision WiFi) Tile in the LaunchPad from the Dashboard menu.  
+Click on the **CV-CUE** (CloudVision WiFi) Tile in the LaunchPad from the Dashboard menu.
+![](images/CV-CUETile.jpg)  
 
 When the CV-CUE interface launches, you are presented with an initial dashboard to monitor your wireless environment at a glance, we will revisit these metrics later in the lab. Since this is a new setup the initial dashboard screen will be mostly empty.  
-![](images/image19.png)
 
 Use the left menu bar to select monitoring and configuration functions.
 
 Take careful note of the **Locations Hierarchy** indicator throughout the user interface. This indicates which container you are monitoring or configuring.
+![](images/image19.png)
 
 The primary menu navigation functions are the following:
 
@@ -120,11 +121,13 @@ In addition to the menu bar navigation and Locations Hierarchy, the UI provides 
 
 Access points that successfully receive an IP address, DNS, and default gateway, via DHCP, and have connectivity over HTTPS/TCP/443 to CV-CUE will be shown within CV-CUE under **Monitor** \> **WiFi**   
 ![](images/image21.png) 
+
 Select the **Access Points** section and observe the discovered AP and default name “Arista\_” and the last 3 bytes of the MAC address.
 
 Customize the AP’s name by clicking the **3-dots menu** and **Rename**
 
 ![](images/image22.png) ![](images/image23.png) 
+
 Give the AP a name such as: “POD-**\#\#**\-FL1” where **\#\#** is a 2 digit character between 01-20 that was assigned to your lab/Pod.
 
 ![](images/image24.png)
@@ -140,7 +143,7 @@ In **CloudVision CUE** the configuration is hierarchical.
 Shared configuration is added and edited at the parent containers. These settings are inherited down the hierarchy. For example, a guest SSID you wish to be configured on all devices can be configured at the top.  
 Child containers can define the sites, buildings, functions, or any other logical construct of the wireless network and allows you to add settings at those specific levels. 
 
-**\*Note:** At any time you can go to the question mark on the top right and choose “**Enable Help**” to make fields have notations, or search in the “**Go To Help Portal**”.
+*Note:* At any time you can go to the question mark on the top right and choose “**Enable Help**” to make fields have notations, or search in the “**Go To Help Portal**”.
 
      
 
@@ -159,7 +162,7 @@ Expand the “**Locations**'' pane by clicking on the hamburger icon toward the 
   * For example, a branch location may have a unique configuration for Outdoor APs   
   * Create a Group for the Outdoor APs, put the APs into that group and override the part of the configuration that is unique to the group. 
 
-### Creating Folders: {#creating-folders:}
+### Creating Folders:
 
 Let’s lay out a simple example Organization hierarchy to keep configurations and customizations of the wireless infrastructure.  
 **\*Note:** A default “Staging Area” folder exists at the Locations root. This is where unconfigured access points reside prior to being assigned to specific locations/floors.  
@@ -180,7 +183,10 @@ Note: the folder level is the lowest level you can customize the configuration. 
 
 Next, create 2 floors called “**1st Floor”** and “**2nd Floor”**.  Right click on the word “**Corp**” to expose the menu. Be sure to click the “**Floor**” radial button (the default is “**Folder**”)
 
+![](images/CreatingFloorsImage1.png)
+
 **\*Note:**  It’s also possible to add multiple floors at once using the “**Add Multiple Folders/Floors**” menu option:  
+
 ![](images/image30.png)    ![](images/image31.png)
 
 **Important:**  
@@ -188,13 +194,20 @@ Next, create 2 floors called “**1st Floor”** and “**2nd Floor”**.  Right
 
 To customize these power settings:  Navigate to the **Configure**, **Device**, **Access Points menu** to customize the Corp Folder Settings.
 
+![](images/configaps.png)
+
 Once in that menu, ensure that Corp is selected from the tree structure on the left. If you do not see the tree structure, click the hamburger icon next to “Location” in the top left to expose the tree.
 
+![](images/LocationCorp.png)
 You will also need to click the message at the bottom of the screen to enable modification of the configuration that is being inherited from the top level: 
 
 “**Click here to enable editing and customize the policy**”
 
+![](images/EnableEditing2.png)
+
 Then click “**Continue**” to confirm.
+
+![](images/Continue.png)
 
 Set the following parameters under the **WiFi Radios** tab, **5GHz frequency**, make sure you have the “Corp” level selected/highlighted in the tree (details below):
 
@@ -293,6 +306,8 @@ Since this is our corporate SSID, leave the “**Select SSID Type**” set to �
 ![](images/image47.png)
 
 In the “**Security**” sub-category, change the association type to “**WPA2**”, select the “**PSK**” radio button, enter the passkey of “**AristaCampus**”, then select “**Next”** at the bottom of the screen.
+
+![](images/PSK.png)
 
 ![](images/image48.png)
 
@@ -432,7 +447,8 @@ Floor plan image example:
 
 ![](images/image80.png)
 
-In the left hand menu, click on “**Floor Maps”.**  Make sure to set the location level to be “**1st Floor**”.    
+In the left hand menu, click on “**Floor Maps”.**  Make sure to set the location level to be “**1st Floor**”.  
+
  ![](images/image81.png)
 
 Utilize the file provided by the lab guide link for the floor plan image.
@@ -441,7 +457,7 @@ Enter floor name as “**1st Floor”,** click the **“Upload Image**” button
 
 Click **“Save”** at the bottom of the screen.
 
-![](images/image8.png)
+![](images/AddFloorPlans.png)
 
 ![](images/image83.png)
 
@@ -452,9 +468,14 @@ If you do not see an AP, it is because your AP is assigned to another location (
 ![](images/image84.png)
 
 ![](images/image85.png)
+
 Hover over the AP image to get more information and then right-click on the AP image to see more options.  
 
-![](images/image86.png)               ![](images/image87.png)
+![](images/image86.png)  
+
+Right-click on the AP image to see more options.  
+
+![](images/image87.png)
 
 Next, explore the other menu options like **RF Heatmaps** (in the menu on the upper right hand side of the screen).
 

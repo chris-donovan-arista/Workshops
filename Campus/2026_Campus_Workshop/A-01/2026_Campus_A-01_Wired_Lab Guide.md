@@ -1,9 +1,12 @@
 # Campus A-01 Wired Lab Guide  
 ## Provisioning a Campus Fabric
+![CloudVision](images/CVP_logo.png)
 
-This Lab Guide:
+## This Lab Guide:
 
-https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Workshop/A-01/2026_Campus_A-01_Wired_Lab%20Guide.md
+
+
+[Campus A-01 Wired Lab Guide - Provisioning a Campus Fabric](https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Workshop/A-01/2026_Campus_A-01_Wired_Lab%20Guide.md)
 
 ---
 
@@ -150,4 +153,4 @@ In this lab you will be configuring the switches through CloudVision. Today you 
 17. Upon the completion of the Change Control we have deployed the configuration and provisioned leaf1b.
 
 
-LAB GUIDE COMPLETE
+**LAB GUIDE COMPLETE**

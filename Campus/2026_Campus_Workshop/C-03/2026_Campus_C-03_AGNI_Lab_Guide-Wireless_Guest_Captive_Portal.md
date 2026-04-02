@@ -6,38 +6,35 @@
 
 ---
 
-## This Lab Guide: [Campus C-03 AGNI Lab Guide - Wireless Guest Captive Portal](https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Workshop/C-03/2026_Campus_C-03_AGNI_Lab_Guide-Wireless_Guest_Captive_Porta.md)
+## This Lab Guide: 
+[Campus C-03 AGNI Lab Guide - Wireless Guest Captive Portal](https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Workshop/C-03/2026_Campus_C-03_AGNI_Lab_Guide-Wireless_Guest_Captive_Porta.md)
 
 ## Table of Contents
 
-[Full Lab Topology](#full-lab-topology)  
-[POD Topology](#pod-topology)  
+1. [Full Lab Topology](#1-full-lab-topology)  
+2. [POD Topology](#2-pod-topology)  
+3. [Create a Guest Portal in AGNI](#3-create-a-guest-portal-in-agni)  
+4. [Create a Network in AGNI](#4-create-a-network-in-agni)  
+5. [Create a Role Profile in CV-CUE](#5-create-a-role-profile-in-cv-cue)  
+6. [Create a SSID in CV-CUE](#6-create-a-ssid-in-cv-cue)  
 
 ---
 
-## NAC Lab #3 - Configuring Guest Captive Portal
-1. [Create a Guest Portal in AGNI](#1-create-a-guest-portal-in-agni)  
-2. [Create a Network in AGNI](#2-create-a-network-in-agni)  
-3. [Create a Role Profile in CV-CUE](#3-create-a-role-profile-in-cv-cue)  
-4. [Create a SSID in CV-CUE](#4-create-a-ssid-in-cv-cue)  
+## 1. Full Lab Topology
+
+![Full Lab Topology](images/full-lab-topology.png)
+
 
 ---
 
-## Full Lab Topology
+## 2. POD Topology
 
-![image3](images/full-lab-topology.png)
-
----
-
-## POD Topology
-
-![image4](images/pod-lab-topology.png)
+![POD Topology](images/pod-lab-topology.png)
 
 ---
 
-## NAC Lab #3 - Configuring Guest Captive Portal
 
-## 1. Create a Guest Portal in AGNI
+## 3. Create a Guest Portal in AGNI
 
 1. Return to the **LaunchPad**, and select the **AGNI - Trial** tile, or go to your **AGNI** tab in your browser.
 
@@ -81,7 +78,11 @@ In **Guest Portals**, the **Default** portal is always present. Let’s create a
 
 ![image9](images/image9.png)
 
-## 2. Create a Network in AGNI
+**LAB SECTION COMPLETED**
+
+---
+
+## 4. Create a Network in AGNI
 
 1. Navigate to the **Access Control \> Networks.**
 
@@ -111,7 +112,11 @@ In **Guest Portals**, the **Default** portal is always present. Let’s create a
 
 **Keep the AGNI browser tab open.** We’ll return to get the Domains allowlist for the Role Profile in CV-CUE.
 
-## 3. Create a Role Profile in CV-CUE
+**LAB SECTION COMPLETED**
+
+---
+
+## 5. Create a Role Profile in CV-CUE
 
 1. Return to the **LaunchPad**, and select the **CV-CUE** tile, or go to your **CV-CUE** tab in your browser. 
 
@@ -147,7 +152,10 @@ In **Guest Portals**, the **Default** portal is always present. Let’s create a
 
 6. Click **Save** to save the **Role Profile**.
 
-## 4. Create a SSID in CV-CUE
+**LAB SECTION COMPLETED**
+
+---
+## 6. Create a SSID in CV-CUE
 
 1. Navigate to **Configure \> WiFi.**
 
@@ -201,5 +209,4 @@ In **Guest Portals**, the **Default** portal is always present. Let’s create a
 
 9. **Next, Go to Monitoring - Sessions in AGNI and select your Captive Portal session to see your client session details.**
 
-## End of Wireless Guest Captive Portal Lab
---- 
+**LAB GUIDE COMPLETED**

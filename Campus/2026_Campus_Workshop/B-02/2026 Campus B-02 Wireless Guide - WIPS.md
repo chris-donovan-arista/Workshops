@@ -1,29 +1,37 @@
-# Campus B-02 Wireless Lab Guide - WIPS  
+# Campus B-02 Wireless Lab Guide 
+## WIPS  
 
-![CloudVision Cue](images/image1.png)     
+![CloudVision Cue](images/image1.png)   
 
-**Links:**
+---
+## This Lab Guide: 
 
-1. This Lab Guide:  
-   *  [https://github.com/arista-rockies/Workshops/tree/main/Campus](https://github.com/arista-rockies/Workshops/tree/main/Campus)  
-2. Lab Floor Plan Download:  
-   * [https://tinyurl.com/wififloorplan](https://tinyurl.com/wififloorplan) \[Arista-rockies Github\]
+[Campus B-01 Wireless Lab Guide - WiFi Setup](https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Workshop/B-02/2026%20Campus%20B-02%20Wireless%20Guide%20-%20WIPS.md)  
 
+---
+## Floor Plan Download:  
+[Floor Plan Download](https://tinyurl.com/wififloorplan)
+
+---
 ## Table of Contents
 
-1. Arista WiFi Solution Diagram
-2. Log in to CV-CUE CloudVision Cognitive Unified Edge	
-3. WIPS Wireless Intrusion Prevention System	
-    * WIPS Classify and Prevent individual client	
+1. [Full Lab Topology](#1-full-lab-topology)
+2. [POD Topology](#2-pod-topology)
+3. [Accessing CloudVision Cognitive Unified Edge CV-CUE](#3-accessing-cloudvision-cognitive-unified-edge-cv-cue) 
+4. [WIPS Wireless Intrusion Prevention System ](#4-wips-wireless-intrusion-prevention-system)
 
+---
+## 1. Full Lab Topology
 
-## Arista WiFi Solution Diagram  
+![Full Lab Topology](images/full-lab-topology.png)
 
-![](images/wirelesstopology.png)
+---
+## 2. POD Topology
 
+![POD Topology](images/pod-lab-topology.png)
 
-
-## 1. Log in to CV-CUE CloudVision Cognitive Unified Edge 
+---
+## 3. Accessing CloudVision Cognitive Unified Edge CV-CUE
 
 Go to the Arista Ignition GUI via: [https://ignition.campus-atd.net/](https://ignition.campus-atd.net/)
 
@@ -37,7 +45,7 @@ Click the **CV-CUE and AGNI Lauchpad** tile
 
 ![](images/Ignition_launchpad.png)
 
-## Launchpad
+### Launchpad
 
 Within the Launchpad Dashboard tab:
 
@@ -45,7 +53,8 @@ Within the Launchpad Dashboard tab:
 
 ![](images/image4.png)
 
-## 2. WIPS Wireless Intrusion Prevention System 
+---
+## 4. WIPS Wireless Intrusion Prevention System 
 
 Arista Wireless Intrusion Prevention System (WIPS) leverages RF broadcast and protocol properties including packet formats like probe requests and beacons common to all 802.11 standards(including 802.11ac and 802.11ax) to detect and prevent unauthorized access.
 
@@ -141,5 +150,5 @@ When you are finished, **STOP the client prevention**
 🛑   –  When you are finished, **STOP the client prevention** so that you can use this test device in upcoming labs, optionally.🛑   
  
 
-**Lab guide complete**
+**LAB GUIDE COMPLETE**
 

@@ -2,11 +2,11 @@
 
 ## Day-2 Operations, Dashboards, and Events
 
-![CloudVision](images/cv-logo.png)
+![CloudVision](images/CVP_logo.png)
 
-This Lab Guide:
+## This Lab Guide:
 
-https://github.com/arista-rockies/Workshops/tree/main/Campus
+[Campus A-03 Wired Lab Guide - Day-2 Operations, Dashboards, and Events](https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Workshop/A-03/2026_Campus_A-03_Wired_Lab_Guide.md)
 
 ---
 
@@ -164,8 +164,8 @@ You can skip entries for all of the remaining vlan configuration sections.
 
 ![Config Comparison](images/config-comparison.png)
 
----
-**LAB SECTION COMPLETED!**
+
+**LAB SECTION COMPLETE**
 
  In the next lab section you will see how to roll back a previous change control
 
@@ -202,8 +202,7 @@ Let’s roll back the change control we used to add a VLAN via Studios.
 
 ![Rollback Completed](images/rollback-completed.png)
 
----
-**LAB SECTION COMPLETED!**
+**LAB SECTION COMPLETE**
 
 You have now successfully added a VLAN through Studios and then rolled back that change across all switches.
 
@@ -361,9 +360,8 @@ Dashboards are an important way to visualize commonly requested information. Thi
 
 ![Import Dashboard](images/import-dashboard2.png)
 
----
 
-**LAB SECTION COMPLETED!**
+**LAB SECTION COMPLETE**
 
 ---
 
@@ -495,8 +493,7 @@ In this section we will show you how to customize the notifications that can be 
 
 **Congratulations, you’ve completed the Event Notification Lab!**
 
----
 
-**END OF LAB GUIDE**
+**LAB GUIDE COMPLETE**
 
 ---

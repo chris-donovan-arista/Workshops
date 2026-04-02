@@ -1,31 +1,54 @@
-# Campus B-03 Wireless Lab Guide SSU Firmware Upgrade # 
+# Campus B-03 Wireless Lab Guide 
+## SSU Firmware Upgrade  
 
-![https://lh5.googleusercontent.com/TuE\_1X5at4VjzVhbTsRrQDC3NE6PyS6N\_XjvzKXMFqyjDoEXMoi10DIW2eMeLzUIPfMJTD5fKEq8ShDJed\_ubWGNmU7\_Rq5E4XNt2vlDeZf6PMLcYIktpJ6QRkv2uCPmouTReMoBURk](images/image1.png)   
-**Links:**
+![image1](images/CVCUE_logo.png)  ![image3](images/CVP_logo.png)  
 
-1. This Lab Guide:  
-   1. [https://github.com/arista-rockies/Workshops/tree/main/Campus](https://github.com/arista-rockies/Workshops/tree/main/Campus)  
-2. Lab Floor Plan Download:  
-   1. [https://tinyurl.com/wififloorplan](https://tinyurl.com/wififloorplan) \[Arista-rockies Github\]
+---
+## This Lab Guide: 
 
-**Table of Contents**
+[Campus B-03 Wireless Lab Guide - SSU Firmware Upgrade](https://github.com/arista-rockies/Workshops/blob/main/Campus/2026_Campus_Workshop/B-03/2026%20Campus%20B-03%20Wireless%20Lab%20Guide%20-%20Switch%20SSU%20Firmware%20Upgrade.md)  
 
-1. Lab Topology
-2. Intro to Arista Smart System Upgrade (SSU)	
-  * Prerequisites	
-  * Caveats
-3. Lab Start: Perform the Arista SSU on the leaf1c switch
-  * Lab Conclusion
+---
+## Floor Plan Download:  
+[Floor Plan Download](https://tinyurl.com/wififloorplan)
 
+---
+## Table of Contents
 
+1. [Full Lab Topology](#1-full-lab-topology)
+2. [POD Topology](#2-pod-topology)
+3. [Accessing CloudVision Cognitive Unified Edge CV-CUE](#3-accessing-cloudvision-cognitive-unified-edge-cv-cue) 
+4. [Intro to Arista Smart System Upgrade (SSU)](#4-intro-to-arista-smart-system-upgrade-ssu)
+5. [Perform Arista SSU](#5-perform-arista-ssu)
 
-## Full Lab Topology
+---
+## 1. Full Lab Topology
+
 ![Full Lab Topology](images/full-lab-topology.png)
 
-## Pod Topology
-![Pod Lab Topology](images/pod-lab-topology.png)
+---
+## 2. POD Topology
 
-## 2.Intro to Arista Smart System Upgrade (SSU) 
+![POD Topology](images/pod-lab-topology.png)
+
+---
+## 3. Accessing CloudVision as a Service
+1. Go to the Arista Ignition GUI via: https://ignition.campus-atd.net/ 
+- Enter the 6 digit Access Code found on the Pod Handout Worksheet 
+- Click.  ![Submit Passcode](images/ignition_submit.png)
+
+![image5](images/Ignition1.png)
+
+2. Click the **CVaaS** tile
+
+![image5a](images/Ignition_cvaas.png)
+
+3. You will now be logged into CloudVision
+
+![CloudVision Dashboard](images/cloudvision-dashboard.png)
+
+---
+## 4. Intro to Arista Smart System Upgrade (SSU) 
 
 SSU, or Smart System Upgrade, is a feature to minimize traffic loss when upgrading from one SSU-supported EOS version to a newer SSU-supported EOS version.  SSU is also referred to as ‘hitless’ upgrades.  The SSU feature allows a switch to maintain packet forwarding performed by the switch ASIC while the management plane performs an OS upgrade.  
 
@@ -34,7 +57,7 @@ Additional information about this feature can be found here
 
 In our workshop lab topology, pictured on the previous page, you will see that leaf1b in each pod is directly connected to the RaspberryPi client.  Traditionally, a firmware upgrade on leaf1b in the pod would cause the raspberry pi client to lose network connectivity.  In this lab, we will use Arista SSU on the leaf1b switch in your pod to perform a firmware upgrade without causing network connectivity loss on any wired client connected to the switch.  Additionally, we will simulate a failure on leaf1a so that the AP will only have an active connection to leaf1b at the time of the upgrade.  We will demonstrate the AP and wireless clients will not see any loss of network connectivity.
 
-## Prerequisites
+### Prerequisites
 
 * Continuous POE should be configured to maintain POE power delivery to connected devices.  
 * Must be running an EOS version that includes the SSU feature.   
@@ -43,14 +66,18 @@ In our workshop lab topology, pictured on the previous page, you will see that l
 * Spanning-tree edge ports must have portfast and BPDUGuard enabled.  
 * If a switch is running BGP, it must be configured with graceful-restart or BGP routing information will be lost and the ASIC may fail to forward traffic.
 
-## Caveats {#caveats}
+### Caveats 
 
 * SSU only supports upgrades. Hitless image downgrades are not supported.  
 * If a new EOS version includes an FPGA upgrade, the FPGA upgrade will be suppressed.  FPGA upgrades require a full reboot of a switch to apply.  
 * Some switch features, when in use, will prevent SSU from starting.  See this link for more details  
   [https://www.arista.com/en/support/toi/eos-4-15-2f/13710-hitless-ssu\#limitations](https://www.arista.com/en/support/toi/eos-4-15-2f/13710-hitless-ssu#limitations)
 
-## 3. Lab Start: Perform the Arista SSU on the leaf1b switch 
+
+**LAB SECTION COMPLETE**
+
+---
+## 5. Perform Arista SSU 
 
 Let's begin the hands-on portion of this lab.  SSU can be triggered on the command line, or through CloudVision.  For this lab, we will be triggering an SSU upgrade using CloudVision.
 
@@ -166,13 +193,10 @@ Request timeout for icmp_seq 591
 
 ```
 
-## Lab Conclusion
+### Lab Conclusion
 
 We just observed how Arista SSU allows network connected devices to continue to operate on the network even while an EOS firmware update occurs on the connected switch.
 
-LAB GUIDE COMPLETE
+**LAB GUIDE COMPLETE**
 
 
-
-
-[def]: full-lab-topology.png

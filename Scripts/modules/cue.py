@@ -2,14 +2,22 @@
 from modules import config
 import requests, json
 
+class CueService():
+    def __init__(self, serviceType, serviceServer, serviceURI):
+        self.type = serviceType
+        self.server = serviceServer
+        self.baseURL = f'{self.server}{serviceURI}'
+        self.cookies = None
+
 class CueClient():
     def configure():
         config.parser.add_argument('-cueCleanup', default=False, action='store_true', help='do cue cleanup steps')
+        config.parser.add_argument('-cueTest', default=False, action='store_true', help='dev code')
 
     def __init__(self, token):
         self.token = token
-        self.cookies = None
         self._connected = False
+        self._services = {}
 
         self._authenticate()
 
@@ -33,38 +41,54 @@ class CueClient():
             return
 
         authCookies = resp.cookies
-        url = f'https://launchpad.wifi.arista.com/api/v2/services?type=amc'
+        url = f'https://launchpad.wifi.arista.com/api/v2/services'
         resp = requests.get(url, cookies=authCookies)
         try:
             resp.raise_for_status()
         except:
             return
 
-        # probably not the safest here...
-        wmData = resp.json()["data"]["customerServices"][0]["service"]["service_url"]
-        self.baseURL = f'{wmData}/wifi/api/'
+        for service in resp.json().get('data', {}).get('customerServices', []):
+            if service["service"]["service_type_id"] == 2:
+                self._services["wm"] = CueService(2, service["service"]["service_url"], '/wifi/api/')
 
-        if self.baseURL != self.token["cue"]["url"]:
-            raise Exception(f'the computed url of {self.baseURL} does not match the provided token of {self.token["cue"]["url"]}')
+                # do the auth
+                url = f'{self._services["wm"].baseURL}session'
+                resp = requests.post(url, json=authData)
+                try:
+                    resp.raise_for_status()
+                except:
+                    return
 
-        # now let's auth to the amc
-        url = f'{self.baseURL}session'
-        resp = requests.post(url, json=authData)
-        try:
-            resp.raise_for_status()
-        except:
-            return
+                self._services["wm"].cookies = resp.cookies
+            elif service["service"]["service_type_id"] == 3:
+                self._services["gm"] = CueService(3, service["service"]["service_url"], '/api/v1.21/')
 
-        self.cookies = resp.cookies
+                # do the auth
+                url = f'{self._services["gm"].baseURL}site/keylogin'
+                params = {
+                    "key_id": self.token["cue"]["keyid"],
+                    "key_value": self.token["cue"]["key"]
+                }
+                resp = requests.get(url, params=params)
+                print(resp.json())
+                try:
+                    resp.raise_for_status()
+                except:
+                    return
+
+                self._services["gm"].cookies = resp.cookies
+
         self._connected = True
 
-    def _doReq(self, reqType: str = 'GET', subsystem: str = None, params=None, data=None) -> dict():
-        if not self._connected:
+    def _doReq(self, reqType: str = 'GET', service: str = "wm", subsystem: str = None, params=None, data=None) -> dict():
+        service = self._services.get(service, None)
+        if not self._connected or not service:
             return
 
-        url = f'{self.baseURL}{subsystem}'
+        url = f'{service.baseURL}{subsystem}'
 
-        resp = requests.request(reqType, url=url, params=params, json=data, cookies=self.cookies)
+        resp = requests.request(reqType, url=url, params=params, json=data, cookies=service.cookies)
         resp.raise_for_status()
         if reqType in ['GET']:
             return resp.json()
@@ -100,20 +124,25 @@ class CueClient():
             }
             self._doReq(reqType='PUT', subsystem=f'manageddevices/aps/{ap["macaddress"]}', params=params, data=data)
 
+    def _doDeleteGMPortals(self):
+        print(f"{config.currentPod} - cue/delete GM Portals and users")
+        portals = self._doReq(reqType='GET', service="gm", subsystem='portals')
+        for portal in portals.get('data', {}).get('portal', []):
+            if portal['is_default'] == 1:
+                continue
+
+            # delete the portal
+            subsystem = f'portals/{portal["pid"]}'
+            self._doReq(reqType='DELETE', service="gm", subsystem=subsystem)
+
     def execute(self):
+        if config.args.cueTest:
+            self.test()
+
         if config.args.cueCleanup:
             self.cleanup()
 
     def test(self):
-        #r = self._doReq(reqType='GET', subsystem='locations')
-        #print(json.dumps(r))
-        #return
-        params = {
-            "locationid": 13,
-        }
-
-        r = self._doReq(reqType='GET', subsystem='deviceconfiguration/devicetemplates', params=params)
-        print(json.dumps(r))
         pass
 
     def _doCreateLocations(self):
@@ -152,5 +181,6 @@ class CueClient():
         self._doDeleteLocations()
         self._doDeleteRogueAPs()
         self._doDeleteSSIDs()
+        self._doDeleteGMPortals()
 
         return

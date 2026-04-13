@@ -60,6 +60,7 @@ class AgniClient():
         users = self._doReq(subsystem='identity.user.list')
 
         userPattern = r'^aristaatd(0[0-9]|1[0-9]|20)$'
+        userPattern = r'^rpi(0[0-9]|1[0-9]|20)$'
 
         for user in users.get("data", {}).get("users", []):
             if not re.match(userPattern, user["loginName"]):

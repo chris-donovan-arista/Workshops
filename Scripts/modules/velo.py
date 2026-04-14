@@ -451,7 +451,7 @@ class VeloClient():
         scp = pmClient.open_sftp()
         scp.put('files/lldpd_1.0.18-r3_x86_64.ipk', '/root/lldpd_1.0.18-r3_x86_64.ipk')
 
-        pmClient.exec_command("opkg install lldpd_1.0.18-r3_x86_64.ipk")
+        pmClient.exec_command("opkg install --force-reinstall lldpd_1.0.18-r3_x86_64.ipk")
         print("  done")
 
     def setup(self):

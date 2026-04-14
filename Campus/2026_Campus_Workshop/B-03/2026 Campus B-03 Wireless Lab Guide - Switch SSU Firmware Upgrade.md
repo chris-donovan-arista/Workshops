@@ -85,7 +85,7 @@ Let's begin the hands-on portion of this lab.  SSU can be triggered on the comma
 
 ![](images/image2.png) 
    
-![](images/image3.png)
+![](images/B-03image3.png)
 
 2. *Note that leaf1a and leaf1b are running a different version of code. During this section of the lab, we are going to bring leaf1b up to the same software version as leaf1a. To apply the new version of software to leaf1b we are going to utilize the Software Management Studio. Navigate to **Provisioning \> Studios**.   
 
@@ -100,9 +100,9 @@ Let's begin the hands-on portion of this lab.  SSU can be triggered on the comma
 
 ![](images/B-3image6a.png)
           
-5. Name the Workspace **SSU Leaf1b** and select Create  
+5. Name the Workspace **SSU Leaf1b** and select **Create**  
 
-![](images/B-3image7a.png) 
+![](images/B-3image7b.png) 
 
 6. Select **\+ Add Device**
 
@@ -110,16 +110,16 @@ Let's begin the hands-on portion of this lab.  SSU can be triggered on the comma
 
 7. Within the Software Management Studio select leaf1b.  
    1. Under the **Devices** section add **device:campus-pod\[POD\#\]leaf1b**.   
-   2. Under the Image section select the dropdown for **EOS-4.34.4.1M.swi**. *(The streaming agent will auto-populate with TerminAttr-1.34.)*   
+   2. Under the Image section select the dropdown for **EOS-4.34.4M.swi**. *(The streaming agent will auto-populate with TerminAttr-1.40.4)*   
    3. Select **Review Workspace**.
 
 ![](images/B-3image9b.png)
 
-8. Review the pending workspace. Look at the Proposed Software and verify that 4.34.4.1M. Select **Submit Workspace**  
+8. Review the pending workspace. Look at the Proposed Software and verify that 4.34.4M. Select **Submit Workspace**  
 
 ![](images/B-3image10a.png) 
      
-9. Now that you have submitted that workspace, we have added the proposed software image for Leaf1c to the designed configuration. No changes have been made to any device up until this point. Through the change control process we will upgrade the switch to the new version. Select **View Change Control**  
+9. Now that you have submitted that workspace, we have added the proposed software image for Leaf1b to the designed configuration. No changes have been made to any device up until this point. Through the change control process we will upgrade the switch to the new version. Select **View Change Control**  
 
 ![](images/image11.png)  
 
@@ -140,8 +140,8 @@ Let's begin the hands-on portion of this lab.  SSU can be triggered on the comma
 
 12. Before we apply the new firmware, let's start a ping test which will run during the switch upgrade process.  We will see that the ping traffic will continue to flow through the switch even while its software is being upgraded.  
     1. First, please make sure that your laptop is connected to the wireless network called “**ATD-\#\#\-PSK”.** Use the PSK you configured in the previous lab to associate with this wireless network.  
-    2. Second, we remove the AP connection to leaf1a to assure we are relying on the switch leaf1b.  Please remove the cable between the AP and laef1a.
-    2. Third, open a command prompt (or a terminal window if using a macbook), and issue the command “**ping \-t 10.0.1\#\#.1**” (or the command ‘ping 10.0.1\#\#.1 if using macbook).  Please replace **\#\#** with your pod number.  Now leave this window open for the following steps.  We will see ping packets being sent and received every second.  You are now pinging the gateway IP address for your pod from your wireless device connected to your pods access point.  The ping traffic must traverse the leaf1c switch to reach the gateway.  We should be able to observe how traffic is affected while leaf1c is upgrading during SSU.
+    2. Second, we remove the AP connection to leaf1a to assure we are relying on the switch leaf1b.  Please remove the cable between the AP and e14 on leaf1a.
+    2. Third, open a command prompt (or a terminal window if using a macbook), and issue the command “**ping \-t 10.0.1\#\#.1**” (or the command ‘ping 10.0.1\#\#.1 if using macbook).  Please replace **\#\#** with your pod number.  Now leave this window open for the following steps.  We will see ping packets being sent and received every second.  You are now pinging the gateway IP address for your pod from your wireless device connected to your pods access point.  The ping traffic must traverse the leaf1b switch to reach the gateway.  We should be able to observe how traffic is affected while leaf1b is upgrading during SSU.
 
 13. Return to CloudVision. Select **Review and Approve** 
 

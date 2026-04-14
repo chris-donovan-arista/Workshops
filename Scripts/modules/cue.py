@@ -109,7 +109,10 @@ class CueClient():
 
     def _doDeleteRogueAPs(self):
         print(f"{config.currentPod} - cue/deleteRogue")
-        self._doReq(reqType='DELETE', subsystem='aps/inactiveauthorized')
+        try:
+            self._doReq(reqType='DELETE', subsystem='aps/inactiveauthorized')
+        except:
+            pass
 
     def _doRenameAPs(self):
         print(f"{config.currentPod} - cue/renameAPs")

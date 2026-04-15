@@ -14,7 +14,7 @@
 
 1. [Full Lab Topology](#1-full-lab-topology)
 2. [POD Topology](#2-pod-topology)
-3. [Accessing CloudVision as a Serivce](#3-accessing-cloudvision-as-a-service)
+3. [Accessing CloudVision as a Service](#3-accessing-cloudvision-as-a-service)
 4. [Creating Port Profiles](#4-creating-port-profiles)
 5. [Assigning Port Profiles for AP and RPI](#5-assigning-port-profiles-for-ap-and-rpi)
 
@@ -106,7 +106,7 @@ In order to make any changes within the Studios framework, you need to create a 
 
 8. LACP Fallback
     - Mode: **Individual**
-    - Navigate back to the previous page by clicking the breadcrump labeled **Wireless-Access-Point**
+    - Navigate back to the previous page by clicking the breadcrumb labeled **Wireless-Access-Point**
 
 ![Add Port Profile Wireless5](images/add-port-profile-wireless5.png)
 
@@ -118,7 +118,7 @@ In order to make any changes within the Studios framework, you need to create a 
 ![Add Port Profile Wireless6](images/add-port-profile-wireless6.png)
 
 
-10. Navigate back to the Access interface Configuration Studio landing page by clicking the breakdrumb labeled **Access Interface Configuration** toward top of your window
+10. Navigate back to the Access interface Configuration Studio landing page by clicking the breakcrumb labeled **Access Interface Configuration** toward top of your window
 
 
 ![Interface Studio Navigate](images/interface-studio-navigate.png)
@@ -153,7 +153,7 @@ In order to make any changes within the Studios framework, you need to create a 
 
 15. Mac Based Authentication:
     - Set Enabled: **Yes**
-    - Navigate back to the previous page by clicking the breadcrump labeled **Wired-RasPi**
+    - Navigate back to the previous page by clicking the breadcrumb labeled **Wired-RasPi**
 
 ![Add Port Profile Wired 5](images/add-port-profile-wired5.png)
 

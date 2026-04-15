@@ -71,7 +71,6 @@ class CueClient():
                     "key_value": self.token["cue"]["key"]
                 }
                 resp = requests.get(url, params=params)
-                print(resp.json())
                 try:
                     resp.raise_for_status()
                 except:

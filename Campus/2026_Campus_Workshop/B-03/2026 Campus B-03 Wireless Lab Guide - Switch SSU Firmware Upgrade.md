@@ -168,7 +168,7 @@ PING 10.0.111.1 (10.0.111.1): 56 data bytes
 64 bytes from 10.0.111.1: icmp_seq=3 ttl=64 time=4.417 ms
 64 bytes from 10.0.111.1: icmp_seq=4 ttl=64 time=4.575 ms
 64 bytes from 10.0.111.1: icmp_seq=5 ttl=64 time=5.000 ms
-... trunkated for brevity
+... truncated for brevity
 64 bytes from 10.0.111.1: icmp_seq=579 ttl=64 time=3.853 ms
 64 bytes from 10.0.111.1: icmp_seq=580 ttl=64 time=3.993 ms
 64 bytes from 10.0.111.1: icmp_seq=581 ttl=64 time=4.263 ms

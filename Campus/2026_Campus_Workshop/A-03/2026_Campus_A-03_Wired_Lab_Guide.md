@@ -14,7 +14,7 @@
 
 1. [Full Lab Topology](#1-full-lab-topology)
 2. [POD Topology](#2-pod-topology)
-3. [Accessing CloudVision as a Serivce](#3-accessing-cloudvision-as-a-service)
+3. [Accessing CloudVision as a Service](#3-accessing-cloudvision-as-a-service)
 4. [Operations: Add a VLAN](#4-operations-add-a-vlan)
 5. [Rollback a Change Control](#5-rollback-a-change-control)
 6. [Dashboards (Built-in and Custom)](#6-dashboards-built-in-and-custom)

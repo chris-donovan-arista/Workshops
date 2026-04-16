@@ -14,7 +14,7 @@
 
 1. [Full Lab Topology](#1-full-lab-topology)
 2. [POD Topology](#2-pod-topology)
-3. [Accessing CloudVision as a Serivce](#3-accessing-cloudvision-as-a-service)
+3. [Accessing CloudVision as a Service](#3-accessing-cloudvision-as-a-service)
 4. [Creating Port Profiles](#4-creating-port-profiles)
 5. [Assigning Port Profiles for AP and RPI](#5-assigning-port-profiles-for-ap-and-rpi)
 

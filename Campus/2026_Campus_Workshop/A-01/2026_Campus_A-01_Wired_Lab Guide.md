@@ -13,8 +13,8 @@
 ## Table of Contents
 1. [Full Lab Topology](#1-full-lab-topology)
 2. [POD Topology](#2-pod-topology)
-3. [Accessing CloudVision as a Serivce](#3-accessing-cloudvision-as-a-service)
-4. [Onbaording a new device into CVaaS](#4-onboarding-a-new-device-into-cvaas)
+3. [Accessing CloudVision as a Service](#3-accessing-cloudvision-as-a-service)
+4. [Onboarding a new device into CVaaS](#4-onboarding-a-new-device-into-cvaas)
 
 ---
 
@@ -115,7 +115,7 @@ In this lab you will be configuring the switches through CloudVision. Today you 
 
 10. After taking some time to review the workspace select **Submit Workspace**.
 
-![Submit Worksapce](images/submit-workspace.png)
+![Submit Workspace](images/submit-workspace.png)
 
 11. Select **View Change Control**.
 

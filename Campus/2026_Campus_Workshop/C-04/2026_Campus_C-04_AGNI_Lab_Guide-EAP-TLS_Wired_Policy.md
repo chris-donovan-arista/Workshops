@@ -66,50 +66,45 @@
 ![image8](images/image8.png)
 ![image9](images/image9.png)
 
-Create a workspace to propose changes to the Network Infrastructure. A workspace acts as a sandbox where you can stage your configuration changes before deploying them.
-
-2. Click **Create a Workspace**, give it any name you would like and click **Create**.
-
-![image10](images/image10.png)
-![image11](images/image11.png)
-
-3. Launch the **Static Configuration Studios**
+2. Click on the **Static Configuration Studio**
 
 ![image14](images/image14.png)
 
-4. In the **Container Tree** window, to the right of **Static Configuration**, select **+ Add** and select **Device**.
+3. In the **Container Tree** window, to the right of **Static Configuration**, select **+ Add** and select **Device**.
 
 ![image15](images/image15.png)
 
-5. Select the radial button next to **campus-pod<xx>-leaf1b** and select **Add**
+4. Select the radial button next to **campus-pod<xx>-leaf1b** and select **Add**
 
 ![image16](images/image16.png)
 
-6. Under **Device Container**, **Device: campus-pod##-lead1b** will be selected, click on **+ Configlet** followed by **Configlet Library**.
+5. Under the **Device Container**, Select **Device: campus-pod##-lead1b**, click on **+ Configlet** followed by **Configlet Library**.
 
 ![image17](images/image17.png)
 
 7. Select the Configlet named **Studios-campus-pod<xx>-radsec-config** and click **Assign** to assign the configlet to the **campus-pod<xx>-leaf1b** switch.
 
+NOTE: **This will automatically create a Workspace.** 
+
 ![image18](images/image18.png)
 
-8. Click **Review Workspace** to review all the changes proposed to the CloudVision Studio
+8. The **Studios-campus-pod<xx>-radsec-config** configlet will be shown assign to the **campus-pod##-leaf1b switch**. 
 
-![image19](images/image19.png)
+![image18b](images/image18b.png)
 
-9. **Review** and **Submit the Workspace**
+9. In the **Workspace Island** at the bottom of the page, Click the **Review Workspace** icon in the **Add Container** Workspace to review the proposed changes.
 
-10. Review the workspace details showing the **Summary** of modified studios, the **Build Status**, and the **Proposed Configuration Changes** for each device.
+![image18a](images/image18a.png)
+
+10. Review the workspace details showing the **Summary** of Studios Modified, the **Build Status**, and the **Proposed Configuration Changes** for each device.
 
 11. Click **Submit Workspace**
 
-![image20](images/image20.png)
+![image19](images/image19.png)
 
 12. Click **View Change Control**
 
 ![image21](images/image21.png)
-
-**Review and Approve**, then **Approve and Execute** the Change Control to apply the configuration changes
 
 13. Click **Review and Approve**
 

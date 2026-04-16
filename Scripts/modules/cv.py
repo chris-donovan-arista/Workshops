@@ -38,6 +38,7 @@ class pgfCVClient():
         config.parser.add_argument('-cleanupNotifiers', default=False, action='store_true', help='only cleanup the event system')
         config.parser.add_argument('-allCleanup', default=False, action='store_true', help='cleanup everything')
         config.parser.add_argument('-thirdParty', default='', help='comma delimited list of 3rd party devices to configure')
+        config.parser.add_argument('-cvTest', default=False, action='store_true', help='dev code')
 
     def __init__(self, token):
         self.token = token
@@ -580,6 +581,24 @@ class pgfCVClient():
             resp = requests.post(url, files={'file': file}, verify=False, timeout=300, headers={'Authorization': f"Bearer {self.tok}"})
             resp.raise_for_status()
 
+    async def cleanupDashboards(self, client):
+        print(f"{config.currentPod} - cleanupDashboards")
+        url = f'{self.baseURL}/api/resources/dashboard/v1/Dashboard/all'
+
+        resp = requests.post(url, data={}, verify=False, timeout=300, headers={'Authorization': f'Bearer {self.tok}'})
+        resp.raise_for_status()
+
+        dashboards = json_decoder(resp.text)
+        if not isinstance(dashboards, list):
+            dashboards = [dashboards]
+
+        for dashboard in dashboards:
+            params = {
+                "key.dashboardId" : dashboard["result"]["value"]["key"]["dashboardId"]
+            }
+            url = f'{self.baseURL}/api/resources/dashboard/v1/DashboardConfig'
+            resp = requests.delete(url, params=params, timeout=300, headers={'Authorization': f'Bearer {self.tok}'})
+
     async def studios(self):
         # first get all the devices in the inventory
         deviceInventory = config.globalInventory[int(config.currentPod)]
@@ -599,7 +618,7 @@ class pgfCVClient():
         workToDo = False
         expectCC = True
 
-        if config.args.test:
+        if config.args.cvTest:
             return
 
         if config.args.addPackages:
@@ -627,6 +646,7 @@ class pgfCVClient():
             workToDo = True
 
             ###### cleanup steps
+            await self.cleanupDashboards(cvpRacClient)
             await self.tagsCleanup(c, workspaceID)
             await self.scsCleanup(c, workspaceID)
             await self.studioCleanup(c, workspaceID, "studio-avd-campus-fabric")

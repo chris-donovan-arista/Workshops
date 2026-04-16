@@ -62,7 +62,8 @@ Adding a VLAN is a common provisioning task. Let’s use the existing Campus Fab
 ![Provisioning Studios](images/provisioning-studios.png)
 
 2. Create a new Workspace 
-     - name it similar to  “<add-vlan2##>” where ## is your pod number. Examples:
+     - Select the **+** on the Workspace bar on the bottom of the page
+     - name the workspace  “<add-vlan2##>” where ## is your pod number. Examples:
 
         Pod 1 = VLAN 201  
         Pod 2 = VLAN 202  
@@ -73,6 +74,7 @@ Adding a VLAN is a common provisioning task. Let’s use the existing Campus Fab
 ![Create Workspace](images/create-workspace.png)
 
 3. Once the workspace is created, select **Campus Fabric (L2/L3/EVPN)** studio. 
+
 *If the Studios main page is not present you may have to select the blue Studios breadcrumb towards the top left of the page*
 
 ![Campus Fabric Studio](images/campus-fabric-studio.png)
@@ -116,7 +118,7 @@ Adding a VLAN is a common provisioning task. Let’s use the existing Campus Fab
 
 You can skip entries for all of the remaining vlan configuration sections.
 
-11. Click **Review Workspace** to submit the staged changes.
+11. Select the **Clipboard Icon** on the bottom of the page to **Review Workspace** and see the proposed changes.
 
 ![Review Workspace](images/review-workspace.png)
 
@@ -198,7 +200,7 @@ Let’s roll back the change control we used to add a VLAN via Studios.
 
 ![Execute Rollback](images/execute-rollback.png)
 
-6. Monitor the change control for completion to ensure the added VLAN is cleaned up on all three switches.
+6. Monitor the change control for completion to ensure the added VLAN is cleaned up on both switches.
 
 ![Rollback Completed](images/rollback-completed.png)
 

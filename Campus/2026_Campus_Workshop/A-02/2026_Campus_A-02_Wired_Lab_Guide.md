@@ -54,138 +54,7 @@
 
 This lab will help you create 2 port profiles and apply them to interfaces in your Lab network.
 
-1. Click on the **Provisioning** menu option, then choose **Studios**
-
-![Provisioning Studios](images/provisioning-studios.png)
-
-In order to make any changes within the Studios framework, you need to create a Workspace.
-
-2. Click **Create Workspace** 
-    - name it **Create Port Profiles** 
-    - Select **Create**. 
-    
-*A workspace acts as a sandbox where you can stage your configuration changes before deploying them*
-
-![Create Workspace](images/create-workspace.png)
-
-3. Select the **Access Interface Configuration Studio**
-  
-![Access Interface Configuration Studio](images/access-interface-configuration.png)
-
-4. Click **Add Port Profile**, 
-    - name it “Wireless-Access-Point”
-    - Click the **expand arrow** on the right of the new profile name
-
-![Add Port Profile Wireless1](images/add-port-profile-wireless1.png)
-
-5. Enter the following values on this configuration page
-
-    - Description: **Wireless-Access-Point**
-    - Enabled: **Yes** 
-
-![Add Port Profile Wireless2](images/add-port-profile-wireless2.png)
-
-6. Configure the VLAN and Mod
-    - Mode: **Access**  
-    - VLANs: **1##** where **##** is a 2 digit character assigned to your lab/Pod. e.g Pod01 is VLAN101, Pod13 is VLAN113  
-
-
-![Add Port Profile Wireless3](images/add-port-profile-wireless3.png)
-
-7. Port-Channel:
-    - Port-Channel: **Yes**
-    - Description: **Wireless Access Point Port-Channel**
-    - Mode: **Active**
-    - Enabled: **Yes**
-    - MLAG: **Yes**
-    - Select **LACP Fallback**
-
-*The Wireless Access Point has the capability to run a port channel but is not currently configured as such. We will use LACP fallback so we may provision the Access Point with its current configuration*
-
-![Add Port Profile Wireless4](images/add-port-profile-wireless4.png)
-
-8. LACP Fallback
-    - Mode: **Individual**
-    - Navigate back to the previous page by clicking the breadcrumb labeled **Wireless-Access-Point**
-
-![Add Port Profile Wireless5](images/add-port-profile-wireless5.png)
-
-9. POE:  
-    - Reboot Action: **Maintain**
-    - Link Down Action: **Maintain**  
-    - Shutdown Action: **Maintain** 
-
-![Add Port Profile Wireless6](images/add-port-profile-wireless6.png)
-
-
-10. Navigate back to the Access interface Configuration Studio landing page by clicking the breakcrumb labeled **Access Interface Configuration** toward top of your window
-
-
-![Interface Studio Navigate](images/interface-studio-navigate.png)
-
-11. Click Add Port Profile 
-    - Name the profile **Wired-RasPi** 
-    - Click the **expand arrow** on the right of the new profile name
-
-![Add Port Profile Wired](images/add-port-profile-wired1.png)
-
-12. Enter the following values on this configuration page
-    - Description: **Wired-RasPi**
-    - Enabled: **Yes**  
-
-![Add Port Profile Wired 2](images/add-port-profile-wired2.png)
-
-13. Mode, VLAN and Spanning-tree:
-    - Mode: **Access**  
-    - VLANs: **1##** where **##** is a 2 digit character assigned to your lab/Pod. e.g Pod01 is VLAN101, Pod13 is VLAN113  
-    - Spanning Tree
-      - Portfast: **edge**
-      - BPDU Guard: **enabled**
-
-
-![Add Port Profile Wired 3](images/add-port-profile-wired3.png)
-
-14. 802.1X:
-    - Enabled: **Yes**  
-    - Click **MAC Based Authentication**
-
-![Add Port Profile Wired 4](images/add-port-profile-wired4.png)
-
-15. Mac Based Authentication:
-    - Set Enabled: **Yes**
-    - Navigate back to the previous page by clicking the breadcrumb labeled **Wired-RasPi**
-
-![Add Port Profile Wired 5](images/add-port-profile-wired5.png)
-
-
-16. POE:  
-     - Reboot Action: **Maintain**   
-     - Link Down Action: **Maintain** 
-     - Shutdown Action: **Maintain** 
-
-![Add Port Profile Wired 6](images/add-port-profile-wired6.png)
-
-17. Select **Review Workspace**
-
-![Review Workspace](images/review-workspace.png)
-
-*Note that no device configurations changes are being proposed. We have simply created the **template** we will use to assign configuration to an interface*
-   
-18. Select **Submit Workspace**
-
-![Review Workspace2](images/review-workspace2.png)
-
-
-19. Click **Close**
-
-![Close Workspace Pop up](images/submit-workspace.png)
-
-
-**LAB SECTION COMPLETE**
-
----
-
-## 5. Assigning Port Profiles for AP and RPI
+### Wireless AP Port Profile ###
 
 1. Assign the configured port profiles to the switches access ports
 
@@ -205,37 +74,190 @@ In order to make any changes within the Studios framework, you need to create a 
 3. Select **Ethernet1** on **leaf1b**
     - Select **Configure**
 
-![Quick Action Select Interface](images/quick-action2.png)
+![Hierarchy Front Panel](images/quick-action2.png)
 
-4. All Fields should be pre-populated except the below
-    - Port Profile: **Wired-RasPi**
+4. Under the profile section Select **+ Create New Profile**
+
+![Hierarchy New Port Profile](images/hier-port-profile1.png)
+
+4. Under the **General** Section 
+    - Name: **Wireless-Access-Point**
     - Enabled: **Yes**
-    - Select **Submit**
 
-![Submit Wired Profile](images/quick-action3.png)
+![Interface Profile Quick Actions](images/wireless-profile-configuration2.png)
 
-5. Once the Change Control has been executed, click **Close** 
+5. Under the **Mode** Section
+    - Mode: **Access**
+    - VLANs: **1##** where **##** is a 2 digit character assigned to your lab/Pod. e.g Pod01 is VLAN101, Pod13 is VLAN113  
 
-![Quick Action Close](images/quick-action4.png)
+![Interface Profile Quick Actions](images/wireless-profile-configuration3.png)
 
-6. AP Interface Configuration
-  - Select **Ethernet14** on both **leaf1a** and **leaf1b**
-  - Select **Configure**
-  
+6. Under the **PoE** Section
+    - Reboot Action: **Maintain** 
+    - Link Down Action: **Maintain** 
+    - Shutdown Action: **Maintain** 
 
-![Quick Actions 3](images/quick-action5.png)
+![Interface Profile Quick Actions](images/wireless-profile-configuration4.png)
 
-
-7. All Fields should be pre-populated except the below
-    - Port Profile: **Wireless-Access-Point**
+7. Under the **Port-Channel** Section
+    - Port-Channel: **Yes**
+    - Description: **Wireless Access Point Port-Channel**
     - Enabled: **Yes**
-    - Select **Submit**
+    - Mode: **Active**
+    - MLAG: **Yes**
+    - LACTP Fallback Mode: **Individual**
 
-![Finish Configuration](images/quick-action6.png)
+*The Wireless Access Point has the capability to run a port channel but is not currently configured as such. We will use LACP fallback so we may provision the Access Point with its current configuration*
 
-8. Select **Close**
+![Interface Profile Quick Actions](images/wireless-profile-configuration5.png)
 
-![Quick Action Close](images/quick-action4.png)
+8. Select **Create**
 
+![Interface Profile Quick Actions](images/submit-profile-configuration1.png)
+
+9. Select **Close**
+
+![Close Quick Action](images/close-quick-action.png)
+
+10. Return to the **Interface Configuration** section and Under the profile Section once again select **+ Create New Profile**
+
+![Profile Quick Action](images/hier-port-profile2.png)
+
+11. Under the **General** Section
+    - Description: **Wired-RasPi**
+    - Enabled: **Yes**  
+
+![Interface Profile Quick Actions](images/wired-profile-configuration2.png)
+
+12. Under the **Mode** Section
+    - Mode: **Access**
+    - VLANs: **1##** where **##** is a 2 digit character assigned to your lab/Pod. e.g Pod01 is VLAN101, Pod13 is VLAN113  
+
+![Interface Profile Quick Actions](images/wired-profile-configuration3.png)
+
+13. Under the **Spanning Tree** Section
+    - Portfast: **Edge**
+    - BPDU Guard: **Enabled**
+
+![Interface Profile Quick Actions](images/wired-profile-configuration4.png)
+
+14. Under the **PoE** Section
+    - Reboot Action: **Maintain** 
+    - Link Down Action: **Maintain** 
+    - Shutdown Action: **Maintain** 
+
+![Interface Profile Quick Actions](images/wired-profile-configuration5.png)
+
+15. Under the **802.1x > General** Section
+    - Enabled: **Yes** 
+
+
+![Interface Profile Quick Actions](images/wired-profile-configuration6.png)
+
+16. Under the **802.1x > MAC-Based Authentication** Section
+    - Enabled: **Yes** 
+
+![Interface Profile Quick Actions](images/wired-profile-configuration7.png)
+
+17. Select **Create**
+
+![Interface Profile Quick Actions](images/submit-profile-configuration1.png)
+
+18. After the Workspace has built Select **Review**
+
+![Interface Profile Quick Actions](images/submit-profile-configuration2.png)
+
+19. Select **Submit Workspace** to save the proposed port profile.
+
+*Note at this time no configuration changes are being made. You have only configured that Port Profiles that we will use in the next next section to configure our interfaces*
+
+![Interface Profile Quick Actions](images/submit-profile-configuration3.png)
+
+20. Select **Visit Studios**
+
+![Interface Profile Quick Actions](images/submit-profile-configuration4.png)
+
+**LAB SECTION COMPLETE**
+
+---
+
+## 5. Assigning Port Profiles for AP and RPI
+
+Assign the configured port profiles to the switches access ports
+
+1. Navigate to **Network Hierarchy**
+    - Navigate through 
+      - **Network**  
+      - **Workshops** 
+      - **IT-Bldg**  
+      - **IDF1**
+
+![Hierarchy Navigation](images/hierarchy-navigation.png)
+
+2. Select the **Front Panel** tab
+
+![Hierarchy Front Panel](images/quick-action1.png)
+
+3. Select **Ethernet1** on **leaf1b**
+    - Select **Configure**
+
+![Set Port Profiles](images/quick-action2.png)
+
+4. A new **Interface Configuration** section should be available where you selected Configure. 
+    - Profile: **Wired-RasPi**
+    - Select **Save**
+
+![Set Port Profiles](images/quick-action3.png)
+
+
+
+5. De-Select **Ethernet1** on **leaf1b** and Select **Ethernet14** on **leaf1a**
+    - Select **Configure**
+
+![Set Port Profiles](images/set-profile1.png)
+
+6. A new **Interface Configuration** section should be available where you selected Configure. 
+    - Profile: **Wireless-Access-Point**
+    - Select **Save**
+
+![Set Port Profiles](images/set-profile2.png)
+
+7. De-Select **Ethernet14** on **leaf1a** and Select **Ethernet14** on **leaf1b**
+    - Select **Configure**
+
+![Set Port Profiles](images/set-profile3.png)
+
+8. A new **Interface Configuration** section should be available where you selected Configure. 
+    - Profile: **Wired-Access-Poin**
+    - Select **Save**
+
+![Set Port Profiles](images/set-profile4.png)
+
+9. Towards the bottom center of your screen you should see a black bar. Select the **Clipboard Icon**
+
+![Set Port Profiles](images/set-profile5.png)
+
+10. This will bring you to the Workspace Review Page.
+    -  Review the proposed changes 
+    -  Select **Submit Workspace**
+
+![Set Port Profiles](images/set-profile6.png)
+
+11. Select **View Change Control**
+
+![Set Wired Profile](images/set-profile7.png)
+
+12. This will bring you to the Change Control. 
+     - Select **Review and Approve**
+
+![Set Wired Profile](images/set-profile8.png)
+
+13. Review the proposed changes and select **Approve and Execute**
+
+![Set Wired Profile](images/set-profile9.png)
+
+14. Once the Change Control completes, that switches now have the interface profiles active in their configuration.
+
+![Set Wired Profile](images/set-profile10.png)
 
 **LAB GUIDE COMPLETE**

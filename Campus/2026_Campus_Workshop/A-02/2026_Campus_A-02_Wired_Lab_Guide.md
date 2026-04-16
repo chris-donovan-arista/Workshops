@@ -76,22 +76,9 @@ This lab will help you create 2 port profiles and apply them to interfaces in yo
 
 ![Hierarchy Front Panel](images/quick-action2.png)
 
-
 4. Under the profile section Select **+ Create New Profile**
 
 ![Hierarchy New Port Profile](images/hier-port-profile1.png)
-
-<!-- 1. Click on the **Provisioning** menu option, then choose **Studios**
-
-![Provisioning Studios](images/provisioning-studios.png) -->
-
-<!-- 2. Select the **Access Interface Configuration Studio**
-  
-![Access Interface Configuration Studio](images/access-interface-configuration.png)
-
-3. Locate and Select the **Create a New Interface Profile** Quick Action
-
-![Interface Profile Quick Actions](images/wireless-profile-configuration1.png) -->
 
 4. Under the **General** Section 
     - Name: **Wireless-Access-Point**
@@ -128,19 +115,6 @@ This lab will help you create 2 port profiles and apply them to interfaces in yo
 
 ![Interface Profile Quick Actions](images/submit-profile-configuration1.png)
 
-<!-- 9. After the Workspace has built Select **Review**
-
-![Interface Profile Quick Actions](images/submit-profile-configuration2.png)
-
-10. Select **Submit Workspace** to save the proposed port profile.
-
-![Interface Profile Quick Actions](images/submit-profile-configuration3.png)
-
-11. Select **Exit Workspace**
-
-![Interface Profile Quick Actions](images/submit-profile-configuration4.png) -->
-
-<!-- ### Raspberry Pi Port Profile### -->
 9. Select **Close**
 
 ![Close Quick Action](images/close-quick-action.png)
@@ -148,14 +122,6 @@ This lab will help you create 2 port profiles and apply them to interfaces in yo
 10. Return to the **Interface Configuration** section and Under the profile Section once again select **+ Create New Profile**
 
 ![Profile Quick Action](images/hier-port-profile2.png)
-
-<!-- 1. Navigate back to the **Access Interface Configuration** Studio 
-
-![Access Interface Configuration Studio](images/access-interface-configuration.png)
-
-2. Locate and Select the **Create a New Interface Profile** Quick Action 
-
-![Add Port Profile Wired](images/add-port-profile-wired1.png) -->
 
 11. Under the **General** Section
     - Description: **Wired-RasPi**
@@ -293,25 +259,5 @@ Assign the configured port profiles to the switches access ports
 14. Once the Change Control completes, that switches now have the interface profiles active in their configuration.
 
 ![Set Wired Profile](images/set-profile10.png)
-<!-- 
-6. AP Interface Configuration
-  - Select **Ethernet14** on both **leaf1a** and **leaf1b**
-  - Select **Configure**
-  
-
-![Quick Actions 3](images/quick-action5.png)
-
-
-7. All Fields should be pre-populated except the below
-    - Port Profile: **Wireless-Access-Point**
-    - Enabled: **Yes**
-    - Select **Submit**
-
-![Finish Configuration](images/quick-action6.png)
-
-8. Select **Close**
-
-![Quick Action Close](images/exit-workspace.png) -->
-
 
 **LAB GUIDE COMPLETE**

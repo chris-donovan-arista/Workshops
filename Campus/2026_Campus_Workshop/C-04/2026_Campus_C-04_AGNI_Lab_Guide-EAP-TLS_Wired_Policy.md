@@ -159,16 +159,21 @@ See **Section 2. [Configuring RadSec profile in EOS](#nac-lab-4---create-eap-tls
 - Status: **Enabled**  
 **Authentication**
 - Authentication type: **802.1X EAP** 
-- EAP Method: **EAP-TLS**  
+- EAP Method: **EAP-TLS**
+
 **EAP-TLS Authentication Settings**
 - Trust External Certificates: **Enabled** 
 - User Identity Binding: **Required**
+- Select **Update**
+
+**Fallback to MAC Authentication**
 - Fallback to MAC Authentication: **Enabled**  
 - MAC Authentication Type: **Allow Registered Clients Only**  
 - Onboarding: **Enabled** 
 - Authorized User Groups: **Employees**
 
 ![image29](images/image29.png)
+![image29a](images/image29a.png)
 ![image30](images/image30.png)
 
 3. Click on **Add Network** at the bottom of the screen.

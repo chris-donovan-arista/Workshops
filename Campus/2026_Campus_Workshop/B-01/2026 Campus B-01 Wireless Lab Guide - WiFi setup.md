@@ -199,6 +199,7 @@ To customize these power settings:  Navigate to the **Configure**, **Device**, *
 Once in that menu, ensure that Corp is selected from the tree structure on the left. If you do not see the tree structure, click the hamburger icon next to “Location” in the top left to expose the tree.
 
 ![](images/LocationCorp.png)
+
 You will also need to click the message at the bottom of the screen to enable modification of the configuration that is being inherited from the top level: 
 
 “**Click here to enable editing and customize the policy**”
@@ -224,7 +225,7 @@ Under Transmit Power Selection, select **Manual and set EIRP to 4**
 
 ![](images/image33.png)
 
-Click “**Save**” at the bottom of the page then click “**Continue**” to confirm.
+Click **Save** at the bottom of the page then click “**Continue**” to confirm.
 
 **Important:**  
 **The following steps activate the second wired connections from the AP to switch 1b.  This will be required for later labs.**
@@ -237,7 +238,7 @@ Set the following parameters:
 
 ![](images/wirelessagg.png)
 
-Click “Save” at the bottom of the page then click “Continue” to confirm.
+Click **Save** at the bottom of the page then click “Continue” to confirm.
 
 ### Move AP to destination folder 
 
@@ -384,6 +385,7 @@ Select “**30 Minutes”** in the **“Time Duration”** drop down box, select
 ![](images/image65.png)
 
 ![](images/image66.png) 
+
 Next, try connecting the device again with the **wrong PSK**.  Watch and review the Live Client Debugging Log.
 
 ![](images/image67.png)
@@ -612,7 +614,8 @@ Under the Admin tab, Users section, Click **New User**
 Let's create a fake user as an example. Complete at least the following fields with false information: **Login ID**, **Email address**, **first name**, and **timezone** then click **Save in the lower right**. 
 
 ![](images/image6.png) 
-When you click Save, a welcome email message will be sent to the user with an access link. Next let’s assign privileges to the newly created user.
+
+When you click **Save**, a welcome email message will be sent to the user with an access link. Next let’s assign privileges to the newly created user.
 
 ### Assign User Privileges 
 

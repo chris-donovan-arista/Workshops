@@ -139,6 +139,7 @@ Next, Select the **3-dots menu** for the Rogue client and click “**Prevent Thi
 # ![](images/image29.png)
 
 ![](images/image30.png) 
+
 Click Prevent to start the WIPS prevention mechanism to disrupt the selected client from sending and receiving traffic.
 
 Try to connect to a public website with your test client device with the prevention setting enabled versus disabled (be sure to disable backup wireless/LTE radios).   

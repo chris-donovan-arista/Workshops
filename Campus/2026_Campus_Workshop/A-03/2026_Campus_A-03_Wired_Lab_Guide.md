@@ -122,7 +122,7 @@ You can skip entries for all of the remaining vlan configuration sections.
 
 ![Review Workspace](images/review-workspace.png)
 
-12. Notice that the Studio is adding the VLAN to all three devices within the Pod as well as adding the newly created VLAN to the trunk interfaces.
+12. Notice that the Studio is adding the VLAN to all devices within the Pod as well as adding the newly created VLAN to the trunk interfaces.
 
 ![Review Workspace2](images/review-workspace2.png)
 

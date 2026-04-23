@@ -85,7 +85,7 @@ Let's begin the hands-on portion of this lab.  SSU can be triggered on the comma
 
 ![](images/image2.png) 
    
-![](images/B-03image3.png)
+![](images/B-03image3a.png)
 
 2. *Note that leaf1a and leaf1b are running a different version of code. During this section of the lab, we are going to bring leaf1b up to the same software version as leaf1a. To apply the new version of software to leaf1b we are going to utilize the Software Management Studio. Navigate to **Provisioning \> Studios**.   
 
@@ -96,9 +96,9 @@ Let's begin the hands-on portion of this lab.  SSU can be triggered on the comma
 
 ![](images/image5.png)
 
-4. Review leaf1a already present in the Studio. We are now going to upgrade leaf1b. Select **Create Workspace**.  
+4. Review leaf1a already present in the Studio. We are now going to upgrade leaf1b. Select **...** from Workspace Island at the bottom and **Create**.  
 
-![](images/B-3image6a.png)
+![](images/B-3image6c.png)
           
 5. Name the Workspace **SSU Leaf1b** and select **Create**  
 
@@ -111,9 +111,9 @@ Let's begin the hands-on portion of this lab.  SSU can be triggered on the comma
 7. Within the Software Management Studio select leaf1b.  
    1. Under the **Devices** section add **device:campus-pod\[POD\#\]leaf1b**.   
    2. Under the Image section select the dropdown for **EOS-4.34.4M.swi**. *(The streaming agent will auto-populate with TerminAttr-1.40.4)*   
-   3. Select **Review Workspace**.
+   3. Select **Review** from Workspace Island at the bottom of the page.
 
-![](images/B-3image9b.png)
+![](images/B-3image9c.png)
 
 8. Review the pending workspace. Look at the Proposed Software and verify that 4.34.4M. Select **Submit Workspace**  
 
@@ -131,10 +131,10 @@ Let's begin the hands-on portion of this lab.  SSU can be triggered on the comma
 
 11. Under Arguments populate the following information  
     1. DeviceID \- **campus-pod\[POD\#\]-leaf1b**  
-    2. ReloadMode \- from the dropdown select **SSU Only**.   
+    2. ReloadMode \- from the dropdown select **SSU Only - Ignore Warnings**.   
     3. Source \- **Designed Image**
 
-![](images/B-3image13a.png)
+![](images/B-3image13b.png)
 
    
 
@@ -145,7 +145,7 @@ Let's begin the hands-on portion of this lab.  SSU can be triggered on the comma
 
 13. Return to CloudVision. Select **Review and Approve** 
 
-![](images/B-3image14a.png) 
+![](images/B-3image14b.png) 
 
 14. Select **Approve and Execute** 
 
@@ -168,7 +168,7 @@ PING 10.0.111.1 (10.0.111.1): 56 data bytes
 64 bytes from 10.0.111.1: icmp_seq=3 ttl=64 time=4.417 ms
 64 bytes from 10.0.111.1: icmp_seq=4 ttl=64 time=4.575 ms
 64 bytes from 10.0.111.1: icmp_seq=5 ttl=64 time=5.000 ms
-... trunkated for brevity
+... truncated for brevity
 64 bytes from 10.0.111.1: icmp_seq=579 ttl=64 time=3.853 ms
 64 bytes from 10.0.111.1: icmp_seq=580 ttl=64 time=3.993 ms
 64 bytes from 10.0.111.1: icmp_seq=581 ttl=64 time=4.263 ms

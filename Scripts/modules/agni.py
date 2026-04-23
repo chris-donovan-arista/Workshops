@@ -128,23 +128,31 @@ class AgniClient():
         }
         self._doReq(subsystem='config.segment.add', data=data)
 
+    def _doDeletePortals(self):
+        print(f"{config.currentPod} - agni/deletePortals")
+        portals = self._doReq(subsystem='config.portal.list')
+        for portal in portals.get("data", {}).get("portals", []):
+            # going out on a limb here that name=Default shouldn't be deleted?
+            if portal["name"] == "Default":
+                continue
+
+            data = {
+                "id": portal["id"],
+                "name": portal["name"],
+                "orgID": portal["orgID"]
+            }
+
+            self._doReq(subsystem='config.portal.delete', data=data)
 
     def execute(self):
         if config.args.agniTest:
-            nadGroup = self._getNadGroup("Switches")
-            node = self.onboardSwitch("tst", nadGroup)
-            print(json.dumps(node, indent=2))
-
-            nadList = self._getNadList()
-            print(json.dumps(nadList, indent=2))
-
-            self._doDeleteNad(node["nadID"])
             return
 
         if config.args.agniCleanup:
             self.cleanup()
 
     def cleanup(self):
+        self._doDeletePortals()
         self._doDeleteUsers()
         self._doDeleteClients()
         self._doDeleteClientGroups()

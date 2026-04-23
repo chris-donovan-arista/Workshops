@@ -154,6 +154,10 @@
 
 ![image20](images/image20.png)
 
+14. Check the **Radios** menu to see the AP Radios Status and the Channel and Power values.
+
+![image20a](images/image20a.png)
+
 **LAB SECTION COMPLETE**
 
 ---
